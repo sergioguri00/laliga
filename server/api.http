@@ -1,0 +1,38 @@
+### GET main page
+GET http://localhost:1234/
+
+### GET all teams
+GET http://localhost:1234/teams
+
+### GET fcbarcelona
+GET http://localhost:1234/teams/5
+
+### GET athletic club players
+GET http://localhost:1234/teams/0/players
+
+### GET all teams founded in 1899
+GET http://localhost:1234/teams?year=1898
+
+### GET all teams from Barcelona
+GET http://localhost:1234/teams?city=barcelona
+
+### GET all players
+GET http://localhost:1234/players
+
+### GET Nico Williams
+GET http://localhost:1234/players/22
+
+### POST new match
+
+POST http://localhost:1234/match
+Content-Type: application/json
+
+{
+    "league": "LaLiga EA Sports",
+    "matchday": 10,
+    "date": "2024-12-20 21:00:00",
+    "local_team": "Betis",
+    "away_team": "Valencia",
+    "stadium": "Benito Villamarín"
+
+}
