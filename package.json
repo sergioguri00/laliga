@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Personal project of a LaLiga NodeJS app",
   "main": "./server/api.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon ./server/api.js",
     "test": "echo \"Error: no test specified\" && exit 1"

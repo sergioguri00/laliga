@@ -1,13 +1,13 @@
-const express = require('express')
+import teams from './data/teams.json' with { type: 'json' }
+import players from './data/players.json' with { type: 'json' }
+import express, { json } from 'express'
 const app = express()
-const teams = require('./data/teams.json')
-const players = require('./data/players.json')
 
 const PORT = process.env.PORT ?? 1234
 
 app.disable('x-powered-by')
 
-app.use(express.json())
+app.use(json())
 
 // GET main page
 app.get('/', (req, res) => {
@@ -44,7 +44,7 @@ app.get('/teams/:id/players', (req, res) => {
   const { id } = req.params
   const team = teams.find(team => team.id === parseInt(id))
   if (team) {
-    const teamplayers = players.filter(
+    const teamplayers = teams.filter(
       player => player.team === parseInt(id)
     )
     return res.json(teamplayers)
