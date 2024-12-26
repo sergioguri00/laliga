@@ -10,7 +10,7 @@ GET http://localhost:1234/teams/5
 ### GET athletic club players
 GET http://localhost:1234/teams/0/players
 
-### GET all teams founded in 1899
+### GET all teams founded in 1898
 GET http://localhost:1234/teams?year=1898
 
 ### GET all teams from Barcelona
