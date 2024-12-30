@@ -1,4 +1,4 @@
-import { TeamModel } from '../models/teams'
+import { TeamModel } from '../models/team.js'
 
 export class TeamController {
   static async getAll (req, res) {

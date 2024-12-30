@@ -1,4 +1,4 @@
-import { PlayerModel } from '../models/player'
+import { PlayerModel } from '../models/player.js'
 
 export class PlayerController {
   static async getAll (req, res) {
