@@ -1,6 +1,6 @@
 [
     {
-        "id": 0,
+        "id": 1,
         "name": "Athletic Club",
         "year": 1898,
         "website": "https://www.athletic-club.eus/",
@@ -12,7 +12,7 @@
         "secondaryColor": "#ffffff"
     },
     {
-        "id": 1,
+        "id": 2,
         "name": "Club Atlético de Madrid SAD",
         "year": 1903,
         "website": "https://www.atleticodemadrid.com/",
@@ -24,7 +24,7 @@
         "secondaryColor": "#ffffff"
     },
     {
-        "id": 2,
+        "id": 3,
         "name": "Club Atlético Osasuna",
         "year": 1920,
         "website": "https://www.osasuna.es/",
@@ -36,7 +36,7 @@
         "secondaryColor": "#091845"
     },
     {
-        "id": 3,
+        "id": 4,
         "name": "Club Deportivo Leganés SAD",
         "year": 1928,
         "website": "https://www.cdleganes.com/",
@@ -48,7 +48,7 @@
         "secondaryColor": "#ffffff"
     },
     {
-        "id": 4,
+        "id": 5,
         "name": "Deportivo Alavés SAD",
         "year": 1921,
         "website": "https://www.deportivoalaves.com/es/",
@@ -60,7 +60,7 @@
         "secondaryColor": "#ffffff"
     },
     {
-        "id": 5,
+        "id": 6,
         "name": "Fútbol Club Barcelona",
         "year": 1899,
         "website": "https://www.fcbarcelona.es/es/",
@@ -72,7 +72,7 @@
         "secondaryColor": "#bc161c"
     },
     {
-        "id": 6,
+        "id": 7,
         "name": "Getafe Club de Fútbol SAD",
         "year": 1983,
         "website": "https://www.getafecf.com/",
@@ -84,7 +84,7 @@
         "secondaryColor": "#0f39b8"
     },
     {
-        "id": 7,
+        "id": 8,
         "name": "Girona Fútbol Club SAD",
         "year": 1930,
         "website": "https://www.gironafc.cat/",
@@ -96,7 +96,7 @@
         "secondaryColor": "#ffffff"
     },
     {
-        "id": 8,
+        "id": 9,
         "name": "Rayo Vallecano de Madrid SAD",
         "year": 1924,
         "website": "https://www.rayovallecano.es/",
@@ -108,7 +108,7 @@
         "secondaryColor": "#f21e27"
     },
     {
-        "id": 9,
+        "id": 10,
         "name": "Real Club Celta de Vigo SAD",
         "year": 1923,
         "website": "https://www.rccelta.es/",
@@ -120,7 +120,7 @@
         "secondaryColor": "#ffffff"
     },
     {
-        "id": 10,
+        "id": 11,
         "name": "RCD Espanyol de Barcelona",
         "year": 1900,
         "website": "https://www.rcdespanyol.com/",
@@ -132,7 +132,7 @@
         "secondaryColor": "#ffffff"
     },
     {
-        "id": 11,
+        "id": 12,
         "name": "Real Club Deportivo Mallorca SAD",
         "year": 1916,
         "website": "https://www.rcdmallorca.es/",
@@ -144,7 +144,7 @@
         "secondaryColor": "#bc161c"
     },
     {
-        "id": 12,
+        "id": 13,
         "name": "Real Betis Balompié SAD",
         "year": 1907,
         "website": "https://www.realbetisbalompie.es/",
@@ -156,7 +156,7 @@
         "secondaryColor": "#ffffff"
     },
     {
-        "id": 13,
+        "id": 14,
         "name": "Real Madrid Club de Fútbol",
         "year": 1902,
         "website": "https://www.realmadrid.com/",
@@ -168,7 +168,7 @@
         "secondaryColor": "#ffffff"
     },
     {
-        "id": 14,
+        "id": 15,
         "name": "Real Sociedad de Fútbol SAD",
         "year": 1909,
         "website": "https://www.realsociedad.eus/",
@@ -180,7 +180,7 @@
         "secondaryColor": "#ffffff"
     },
     {
-        "id": 15,
+        "id": 16,
         "name": "Real Valladolid Club de Fútbol SAD",
         "year": 1928,
         "website": "https://www.realvalladolid.es/",
@@ -192,7 +192,7 @@
         "secondaryColor": "#ffffff"
     },
     {
-        "id": 16,
+        "id": 17,
         "name": "Sevilla Fútbol Club SAD",
         "year": 1905,
         "website": "https://www.sevillafc.es/",
@@ -204,7 +204,7 @@
         "secondaryColor": "#f21e27"
     },
     {
-        "id": 17,
+        "id": 18,
         "name": "Unión Deportiva Las Palmas SAD",
         "year": 1949,
         "website": "https://www.udlaspalmas.es/",
@@ -216,7 +216,7 @@
         "secondaryColor": "#0f39b8"
     },
     {
-        "id": 18,
+        "id": 19,
         "name": "Valencia Club de Fútbol SAD",
         "year": 1919,
         "website": "https://www.valenciacf.com/",
@@ -228,7 +228,7 @@
         "secondaryColor": "#000000"
     },
     {
-        "id": 19,
+        "id": 20,
         "name": "Villarreal Club de Fútbol SAD",
         "year": 1923,
         "website": "https://www.villarrealcf.es/",

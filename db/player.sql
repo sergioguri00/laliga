@@ -1,0 +1,97 @@
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Unai','Simón',1,190,'Spain','Goalkeeper','1997-06-11','https://cdn.athletic-club.eus/imagenes/fotofichas/M/unai-simon-mendibil_M.png?v=3.0',1),
+	 ('Julen','Agirrezabala',13,187,'Spain','Goalkeeper','2000-12-26','https://cdn.athletic-club.eus/imagenes/fotofichas/M/julen-agirrezabala-astulez_M.png',1),
+	 ('Alejandro','Padilla',26,190,'Mexico','Goalkeeper','2003-09-01','https://cdn.athletic-club.eus/imagenes/fotofichas/M/alex-padilla-perez_M.png',1),
+	 ('Oier','Gastesi',34,190,'Spain','Goalkeeper','2003-10-30','https://cdn.athletic-club.eus/imagenes/fotofichas/M/oier-gastesi-serrano_M.png?v=1.0',1),
+	 ('Andoni','Gorosabel',2,174,'Spain','Defender','1996-08-04','https://cdn.athletic-club.eus/imagenes/fotofichas/M/andoni-gorosabel-espinosa_M.png',1),
+	 ('Daniel','Vivian',3,183,'Spain','Defender','1999-07-05','https://cdn.athletic-club.eus/imagenes/fotofichas/M/daniel-vivian-moreno_M.png',1),
+	 ('Aitor','Paredes',4,186,'Spain','Defender','2000-04-29','https://cdn.athletic-club.eus/imagenes/fotofichas/M/aitor-paredes-casamichana_M.png',1),
+	 ('Yeray','Álvarez',5,182,'Spain','Defender','1995-01-24','https://cdn.athletic-club.eus/imagenes/fotofichas/M/yeray-alvarez-lopez_M.png',1),
+	 ('Unai','Núñez',14,186,'Spain','Defender','1997-01-30','https://cdn.athletic-club.eus/imagenes/fotofichas/M/unai-nunez-gestoso_M.png?v=2.0',1),
+	 ('Íñigo','Lekue',15,180,'Spain','Defender','1993-05-04','https://cdn.athletic-club.eus/imagenes/fotofichas/M/inigo-lekue-martinez_M.png',1);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Yuri','Berchiche',17,181,'Spain','Defender','1990-02-10','https://cdn.athletic-club.eus/imagenes/fotofichas/M/yuri-berchiche-izeta_M.png',1),
+	 ('Óscar','De Marcos',18,182,'Spain','Defender','1989-04-14','https://cdn.athletic-club.eus/imagenes/fotofichas/M/oscar-de-marcos-arana_M.png',1),
+	 ('Mikel','Vesga',6,191,'Spain','Midfielder','1993-04-08','https://cdn.athletic-club.eus/imagenes/fotofichas/M/mikel-vesga-arruti_M.png',1),
+	 ('Oihan','Sancet',8,188,'Spain','Midfielder','2000-04-25','https://cdn.athletic-club.eus/imagenes/fotofichas/M/oihan-sancet-tirapu_M.png',1),
+	 ('Íñigo','Ruíz De Galarreta',16,175,'Spain','Midfielder','1993-08-06','https://cdn.athletic-club.eus/imagenes/fotofichas/M/inigo-ruiz-de-galarreta-etxeberria_M.png',1),
+	 ('Unai','Gómez',20,183,'Spain','Midfielder','2003-05-25','https://cdn.athletic-club.eus/imagenes/fotofichas/M/unai-gomez-etxebarria_M.png',1),
+	 ('Ander','Herrera',21,182,'Spain','Midfielder','1989-08-14','https://cdn.athletic-club.eus/imagenes/fotofichas/M/ander-herrera-aguera_M.png',1),
+	 ('Mikel','Jaureguizar',23,177,'Spain','Midfielder','2003-11-13','https://cdn.athletic-club.eus/imagenes/fotofichas/M/mikel-jauregizar-alboniga_M.png?v=1.0',1),
+	 ('Beñat','Prados',24,180,'Spain','Midfielder','2001-02-08','https://cdn.athletic-club.eus/imagenes/fotofichas/M/benat-prados-diaz_M.png',1),
+	 ('Adama','Boiro',32,183,'Spain','Midfielder','2002-06-22','https://cdn.athletic-club.eus/imagenes/fotofichas/M/adama-boiro-boiro_M.png',1);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Álex','Berenguer',7,175,'Spain','Forward','1995-07-04','https://cdn.athletic-club.eus/imagenes/fotofichas/M/alejandro-berenguer-remiro_M.png?v=2.0',1),
+	 ('Iñaki','Williams',9,186,'Ghana','Forward','1994-06-15','https://cdn.athletic-club.eus/imagenes/fotofichas/M/inaki-williams-arthuer_M.png?v=1.0',1),
+	 ('Nicholas','Williams',10,181,'Spain','Forward','2002-07-12','https://cdn.athletic-club.eus/imagenes/fotofichas/M/nicholas-williams-arthuer_M.png',1),
+	 ('Álvaro','Djaló',11,175,'Spain','Forward','1999-08-16','https://cdn.athletic-club.eus/imagenes/fotofichas/M/alvaro-djalo-dias-fernandes_M.png',1),
+	 ('Gorka','Guruzeta',12,188,'Spain','Forward','1996-09-12','https://cdn.athletic-club.eus/imagenes/fotofichas/M/gorka-guruzeta-rodriguez_M.png',1),
+	 ('Javier','Martón',19,183,'Spain','Forward','1999-05-06','https://cdn.athletic-club.eus/imagenes/fotofichas/M/javier-marton-anso_M.png',1),
+	 ('Nicolás','Serrano',22,181,'Spain','Forward','2003-03-05','https://cdn.athletic-club.eus/imagenes/fotofichas/M/nicolas-serrano-galdeano_M.png',1),
+	 ('Peio','Canales',28,179,'Spain','Forward','2005-01-17','https://cdn.athletic-club.eus/imagenes/fotofichas/M/peio-canales-urtasun_M.png',1),
+	 ('Juan','Musso',1,191,'Argentina','Goalkeeper','1994-05-06','https://img-estaticos.atleticodemadrid.com/system/fotos/17866/destacado_460x460/jmusso900x900.png?1724774858',2),
+	 ('Jan','Oblak',13,188,'Slovenia','Goalkeeper','1993-01-07','https://img-estaticos.atleticodemadrid.com/system/fotos/16531/destacado_460x460/BUSTOS_WEB_900x900_0011_13_OBLAK.png?1723912745',2);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Antonio','Gomis',31,186,'Spain','Goalkeeper','2003-05-20','https://assets.laliga.com/squad/2024/t175/p493104/256x278/p493104_t175_2024_1_001_000.png',2),
+	 ('Alejandro','Iturbe',33,186,'Spain','Goalkeeper','2003-09-02','https://assets.laliga.com/squad/2024/t175/p494920/256x278/p494920_t175_2024_1_001_000.png',2),
+	 ('José María','Giménez',2,185,'Uruguay','Defender','1995-01-20','https://img-estaticos.atleticodemadrid.com/system/fotos/16532/destacado_460x460/BUSTOS_WEB_900x900_0001_2_J-M-GIMENEZ.png?1723912630',2),
+	 ('César','Azpilicueta',3,178,'Spain','Defender','1989-08-28','https://img-estaticos.atleticodemadrid.com/system/fotos/16549/destacado_460x460/BUSTOS_WEB_900x900_0002_3_AZPILICUETA.png?1723909630',2),
+	 ('Clément','Lenglet',15,186,'France','Defender','1995-06-17','https://img-estaticos.atleticodemadrid.com/system/fotos/17864/destacado_460x460/lenglet_900x900.png?1724672851',2),
+	 ('Nahuel','Molina',16,175,'Argentina','Defender','1998-04-06','https://img-estaticos.atleticodemadrid.com/system/fotos/16544/destacado_460x460/BUSTOS_WEB_900x900_0013_16_MOLINA.png?1723910992',2),
+	 ('Reinildo','Isnard',23,180,'Mozambique','Defender','1994-01-21','https://img-estaticos.atleticodemadrid.com/system/fotos/16541/destacado_460x460/BUSTOS_WEB_900x900_0020_23_REINILDO.png?1723910840',2),
+	 ('Robin','Le Normand',24,187,'Spain','Defender','1996-11-11','https://img-estaticos.atleticodemadrid.com/system/fotos/17831/destacado_460x460/BUSTOS_WEB_900x900_0021_24_LE-NORMAND.png?1723908828',2),
+	 ('Ilias','Kostis',27,188,'Greece','Defender','2003-02-27','https://assets.laliga.com/squad/2024/t175/p551309/1024x1113/p551309_t175_2024_1_001_000.png',2),
+	 ('Carlos','Gimenez',41,181,'Spain','Defender','2003-02-18','https://assets.laliga.com/squad/2024/t175/p569933/512x512/p569933_t175_2024_1_004_000.png',2);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Gerónimo','Spina',43,187,'Spain','Defender','2005-02-09','https://assets.laliga.com/squad/2024/t175/p633980/256x278/p633980_t175_2024_1_001_000.png',2),
+	 ('Conor','Gallagher',4,182,'England','Midfielder','2000-02-06','https://img-estaticos.atleticodemadrid.com/system/fotos/17861/destacado_460x460/BUSTOS_WEB_900x900_4_GALLAGHER.png?1724317286',2),
+	 ('Rodrigo','De Paul',5,180,'Argentina','Midfielder','1994-05-24','https://img-estaticos.atleticodemadrid.com/system/fotos/16539/destacado_460x460/BUSTOS_WEB_900x900_0003_5_R-DE-PAUL.png?1723911372',2),
+	 ('Jorge','Resurrección',6,176,'Spain','Midfielder','1992-01-08','https://img-estaticos.atleticodemadrid.com/system/fotos/16530/destacado_460x460/BUSTOS_WEB_900x900_0004_6_KOKE.png?1723913064',2),
+	 ('Pablo','Barrios',8,181,'Spain','Midfielder','2003-06-15','https://img-estaticos.atleticodemadrid.com/system/fotos/16546/destacado_460x460/BUSTOS_WEB_900x900_0006_8_BARRIOS.png?1723899812',2),
+	 ('Thomas','Lemar',11,171,'France','Midfielder','1995-11-12','https://img-estaticos.atleticodemadrid.com/system/fotos/16535/destacado_460x460/BUSTOS_WEB_900x900_0009_11_LEMAR.png?1723912250',2),
+	 ('Marcos','Llorente',14,184,'Spain','Midfielder','1995-01-30','https://img-estaticos.atleticodemadrid.com/system/fotos/16537/destacado_460x460/BUSTOS_WEB_900x900_0012_14_M-LLORENTE.png?1723911864',2),
+	 ('Rodrigo','Riquelme',17,174,'Spain','Midfielder','2000-04-02','https://img-estaticos.atleticodemadrid.com/system/fotos/16548/destacado_460x460/BUSTOS_WEB_900x900_0014_17_RIQUELME.png?1723910171',2),
+	 ('Axel','Witsel',20,186,'Belgium','Midfielder','1989-01-12','https://img-estaticos.atleticodemadrid.com/system/fotos/16545/destacado_460x460/BUSTOS_WEB_900x900_0017_20_WITSEL.png?1723910700',2),
+	 ('Javier','Galán',21,172,'Spain','Midfielder','1994-11-19','https://img-estaticos.atleticodemadrid.com/system/fotos/17523/destacado_460x460/BUSTOS_WEB_900x900_0022_JAVI-GALAN.png?1723904436',2);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Aitor','Gismera',28,182,'Spain','Midfielder','2004-02-21','https://assets.laliga.com/squad/2024/t175/p493108/256x278/p493108_t175_2024_1_001_000.png',2),
+	 ('Javier','Serrano',29,178,'Spain','Midfielder','2003-01-16','https://img.uefa.com/imgml/TP/players/1/2025/cutoff/250136445.webp',2),
+	 ('Antoine','Griezmann',7,176,'France','Forward','1991-03-21','https://img-estaticos.atleticodemadrid.com/system/fotos/16540/destacado_460x460/BUSTOS_WEB_900x900_0005_7_GRIEZMANN.png?1723911273',2),
+	 ('Alexander','Sørloth',9,195,'Norway','Forward','1995-12-05','https://img-estaticos.atleticodemadrid.com/system/fotos/17833/destacado_460x460/BUSTOS_WEB_900x900_0007_9_SORLOTH.png?1723908355',2),
+	 ('Ángel','Correa',10,171,'Argentina','Forward','1995-03-09','https://img-estaticos.atleticodemadrid.com/system/fotos/16533/destacado_460x460/BUSTOS_WEB_900x900_0008_10_CORREA.png?1723912394',2),
+	 ('Samuel','Lino',12,170,'Brazil','Forward','1999-12-23','https://img-estaticos.atleticodemadrid.com/system/fotos/16550/destacado_460x460/BUSTOS_WEB_900x900_0010_12_S-LINO.png?1723909316',2),
+	 ('Julián','Álvarez',19,170,'Argentina','Forward','2000-01-31','https://img-estaticos.atleticodemadrid.com/system/fotos/17850/destacado_460x460/BUSTOS_WEB_900x900_0016_19_J-ALVAREZ.png?1723896994',2),
+	 ('Giuliano','Simeone',22,173,'Argentina','Forward','2002-12-18','https://img-estaticos.atleticodemadrid.com/system/fotos/17514/destacado_460x460/BUSTOS_WEB_900x900_0019_22_GIULIANO.png?1723900610',2),
+	 ('Adrián','Niño',32,184,'Spain','Forward','2004-06-19','https://assets.laliga.com/squad/2024/t175/p593196/256x278/p593196_t175_2024_0_001_000.png',2),
+	 ('Rayane','Belaid',40,174,'Spain','Forward','2005-02-11','https://assets.laliga.com/squad/2024/t175/p621927/256x278/p621927_t175_2024_0_001_000.png',2);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Sergio','Herrera',1,192,'Spain','Goalkeeper','1993-06-05','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F5a5d7fcba066b6b95a7f481aa4313997.png&w=640&q=75',3),
+	 ('Aitor','Fernández',13,182,'Spain','Goalkeeper','1991-05-03','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F89c634a3d062086b0df2f12a4bc9acd5.png&w=640&q=75',3),
+	 ('Dimitrios','Stamatakis',32,191,'Greece','Goalkeeper','2003-04-23','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2Fba1357ffd73bc620240ff388f78ab564.png&w=640&q=75',3),
+	 ('Nacho','Vidal',2,180,'Spain','Defender','1995-01-24','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F4b20c28b66304df65685fa47295ba175.png&w=640&q=75',3),
+	 ('Juan','Cruz',3,180,'Spain','Defender','1992-07-28','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F223171c698c7c37973abf7a02359d336.png&w=640&q=75',3),
+	 ('Unai','García',4,186,'Spain','Defender','1992-02-03','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F60fdd2718063c4c2ddf3601085d027cb.png&w=640&q=75',3),
+	 ('Jorge','Herrando',5,190,'Spain','Defender','2001-02-28','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F74ebd6e0ef45d3a84c06205d94c1dc95.png&w=640&q=75',3),
+	 ('Jesús','Areso',12,182,'Spain','Defender','1999-07-02','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F608fdfb6b0acd48e828f3c746bf587f5.png&w=640&q=75',3),
+	 ('Flavien','Boyomo',22,180,'Cameroon','Defender','2001-10-07','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F04c41a1c25eba908f7283fa1c586a5f4.png&w=640&q=75',3),
+	 ('Alejandro','Catena',24,194,'Spain','Defender','1994-10-28','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2Fb9c4085b1fbb0a243f337eae1b92f469.png&w=640&q=75',3);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Diego','Espejo',30,188,'Spain','Defender','2002-08-18','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F7600a02df777e368a93cd816ed76315d.png&w=640&q=75',3),
+	 ('Lucas','Torró',6,190,'Spain','Midfielder','1994-07-19','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2Faebec82a2cb715b4884cd967db5258a5.png&w=640&q=75',3),
+	 ('Jon','Moncayola',7,189,'Spain','Midfielder','1998-05-13','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F1bb6c7fb2e50c2f10c6297c1a01eda44.png&w=640&q=75',3),
+	 ('Pablo','Ibáñez',8,179,'Spain','Midfielder','1998-09-20','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2Ff28c1f43a6a23cbbaebef9bf3645e507.png&w=640&q=75',3),
+	 ('Moisés','Gómez',16,176,'Spain','Midfielder','1994-06-23','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2Fa78bdeeb7c47e5323507ea7c5c5e1499.png&w=640&q=75',3),
+	 ('Iker','Muñoz',18,180,'Spain','Midfielder','2002-09-05','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F90318a7283e64a9c3931f270c66b3833.png&w=640&q=75',3),
+	 ('Bryan','Zaragoza',19,164,'Spain','Midfielder','2001-09-09','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2Fc9e75181262d2d44c9b896799324b2bc.png&w=640&q=75',3),
+	 ('Javier','Martínez',21,180,'Spain','Midfielder','1999-12-22','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F497ab7d588b5947cacb582f121af10d3.png&w=640&q=75',3),
+	 ('Abel','Bretones',23,188,'Spain','Midfielder','2000-08-21','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F7f0f59f0a88bd856fe1e4679c7d78296.png&w=640&q=75',3),
+	 ('Asier','Osambela',29,186,'Spain','Midfielder','2004-10-30','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2Ffac35754d399edb8cffb34e089bb1cd6.png&w=640&q=75',3);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Raúl','García',9,192,'Spain','Forward','2000-11-03','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2Fe6a5069f59f38de157bef8bb982961a0.png&w=640&q=75',3),
+	 ('Aimar','Oroz',10,177,'Spain','Forward','2001-11-27','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2Fbda81b90fed179b78c8709a14d143922.png&w=640&q=75',3),
+	 ('Enrique','Barja',11,178,'Spain','Forward','1997-04-01','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F3897ad337c89b54dd72594e62db28712.png&w=640&q=75',3),
+	 ('Rubén','García',14,171,'Spain','Forward','1993-07-14','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F45e2772e4310dc459290925eb18ab4ed.png&w=640&q=75',3),
+	 ('Rubén','Peña',15,170,'Spain','Forward','1991-07-18','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2Fb286557b090b7ba4f57c948f2c3679f4.png&w=640&q=75',3),
+	 ('Ante','Budimir',17,190,'Croatia','Forward','1991-07-22','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F4ad0a09bc6eea600b4ef160fd051bc84.png&w=640&q=75',3),
+	 ('José','Arnaiz',20,175,'Spain','Forward','1995-04-15','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F4a9783d6f9ff5a6624843fcd03f246d8.png&w=640&q=75',3),
+	 ('Iker','Benito',27,176,'Spain','Forward','2002-08-10','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F3648ff53d651038e50ad4712d78d8f1c.png&w=640&q=75',3);

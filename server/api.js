@@ -10,9 +10,13 @@ const PORT = process.env.PORT ?? 1234
 app.disable('x-powered-by')
 app.use(json())
 app.use(corsMiddleware())
+
 app.use('/teams', teamsRouter)
 app.use('/players', playersRouter)
 
+app.use('/', (req, res) => {
+  res.status(200).send('<h1>Bienvenido a la API de La Liga</h1>')
+})
 app.use((req, res) => {
   res.status(404).send('<h1>404 Not Found</h1>')
 })
