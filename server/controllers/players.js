@@ -1,6 +1,5 @@
 import { PlayerModel } from '../models/player.js'
-import { validatePartialPlayer } from '../schemas/players.js'
-import { validatePlayer } from '../validations/player.js'
+import { validatePartialPlayer, validatePlayer } from '../schemas/players.js'
 
 export class PlayerController {
   static async getAll (req, res) {

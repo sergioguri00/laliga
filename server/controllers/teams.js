@@ -1,4 +1,5 @@
 import { TeamModel } from '../models/team.js'
+import { validateTeam, validatePartialTeam } from '../schemas/teams.js'
 
 export class TeamController {
   static async getAll (req, res) {
@@ -19,5 +20,31 @@ export class TeamController {
     const players = await TeamModel.getPlayers(id)
     if (players) return res.json(players)
     res.status(404).send('<h1> 404 Error Not Found </h1>')
+  }
+
+  static async create (req, res) {
+    const result = validateTeam(req.body)
+
+    if (!result.success) {
+      return res.status(400).json({ error: JSON.parse(result.error.message) })
+    }
+
+    const newTeam = await TeamModel.create({ input: result.data })
+
+    res.status(201).json(newTeam)
+  }
+
+  static async update (req, res) {
+    const result = validatePartialTeam(req.body)
+
+    if (!result.success) {
+      return res.status(400).json({ error: JSON.parse(result.error.message) })
+    }
+
+    const { id } = req.params
+
+    const updatedTeam = await TeamModel.update({ id, input: result.data })
+
+    return res.json(updatedTeam)
   }
 }
