@@ -19,7 +19,7 @@ const stadiumSchema = z.object({
   photo: z.string().url({
     message: 'Photo must be a valid URL'
   }),
-  team_id: z.int().positive()
+  team_id: z.number().int().positive()
 })
 
 export function validateStadium (input) {

@@ -1,12 +1,12 @@
 import { Router } from 'express'
 import { ManagerController } from '../controllers/managers.js'
 
-export const teamsRouter = Router()
+export const managersRouter = Router()
 
-teamsRouter.get('/', ManagerController.getAll)
+managersRouter.get('/', ManagerController.getAll)
 
-teamsRouter.get('/:id', ManagerController.getById)
+managersRouter.get('/:id', ManagerController.getById)
 
-teamsRouter.post('/', ManagerController.create)
+managersRouter.post('/', ManagerController.create)
 
-teamsRouter.patch('/:id', ManagerController.update)
+managersRouter.patch('/:id', ManagerController.update)

@@ -12,3 +12,5 @@ teamsRouter.get('/:id/players', TeamController.getPlayers)
 teamsRouter.post('/', TeamController.create)
 
 teamsRouter.patch('/:id', TeamController.update)
+
+teamsRouter.delete('/:id', TeamController.delete)

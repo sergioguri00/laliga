@@ -1,12 +1,12 @@
 import { Router } from 'express'
-import { StadiumController } from '../controllers/managers.js'
+import { StadiumController } from '../controllers/stadiums.js'
 
-export const teamsRouter = Router()
+export const stadiumsRouter = Router()
 
-teamsRouter.get('/', StadiumController.getAll)
+stadiumsRouter.get('/', StadiumController.getAll)
 
-teamsRouter.get('/:id', StadiumController.getById)
+stadiumsRouter.get('/:id', StadiumController.getById)
 
-teamsRouter.post('/', StadiumController.create)
+stadiumsRouter.post('/', StadiumController.create)
 
-teamsRouter.patch('/:id', StadiumController.update)
+stadiumsRouter.patch('/:id', StadiumController.update)

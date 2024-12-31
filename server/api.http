@@ -4,17 +4,17 @@ GET http://localhost:1234/
 ### GET all teams
 GET http://localhost:1234/teams
 
-### GET fcbarcelona
-GET http://localhost:1234/teams/5
-
-### GET athletic club players
-GET http://localhost:1234/teams/0/players
-
 ### GET all teams founded in 1898
 GET http://localhost:1234/teams?year=1898
 
 ### GET all teams from Barcelona
 GET http://localhost:1234/teams?city=barcelona
+
+### GET alaves
+GET http://localhost:1234/teams/5
+
+### GET athletic club players
+GET http://localhost:1234/teams/1/players
 
 ### GET all players
 GET http://localhost:1234/players
@@ -24,15 +24,29 @@ GET http://localhost:1234/players/22
 
 ### POST new match
 
-POST http://localhost:1234/match
+POST http://localhost:1234/teams
 Content-Type: application/json
 
 {
-    "league": "LaLiga EA Sports",
-    "matchday": 10,
-    "date": "2024-12-20 21:00:00",
-    "local_team": "Betis",
-    "away_team": "Valencia",
-    "stadium": "Benito Villamarín"
-
+    "name": "CE Hospitalet",
+    "year": 1957,
+    "website": "https://www.celh.cat/",
+    "president": "Jordi Garcia",
+    "badge": "https://upload.wikimedia.org/wikipedia/en/4/4b/CE_L%27Hospitalet.png",
+    "city": "Hospitalet de Llobregat",
+    "mainColor": "#FF0000",
+    "secondaryColor": "#FFFFFF"
 }
+
+### UPDATE team
+PATCH http://localhost:1234/teams/21
+Content-Type: application/json
+
+{
+    "name": "CE Hospitalleeet",
+    "year": 1965,
+    "secondaryColor": "#000000"
+}
+
+### DELETE team
+DELETE http://localhost:1234/teams/21

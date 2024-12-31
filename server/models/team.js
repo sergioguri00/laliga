@@ -29,4 +29,25 @@ export class TeamModel {
     if (!team) return null
     return players.filter(player => player.team === parseInt(id))
   }
+
+  static async create ({ input }) {
+    const newTeam = {
+      id: teams.length + 1,
+      ...input
+    }
+    teams.push(newTeam)
+    return newTeam
+  }
+
+  static async update ({ id, input }) {
+    const teamIndex = teams.findIndex(stadium => stadium.id === parseInt(id))
+    if (teamIndex === -1) return false
+
+    teams[teamIndex] = {
+      ...teams[teamIndex],
+      ...input
+    }
+
+    return teams[teamIndex]
+  }
 }

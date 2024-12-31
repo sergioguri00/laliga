@@ -30,7 +30,7 @@ const playerSchema = z.object({
   photo: z.string().url({
     message: 'Poster must be a valid URL'
   }),
-  team: z.int().positive()
+  team: z.number().int().positive()
 })
 
 export function validatePlayer (input) {

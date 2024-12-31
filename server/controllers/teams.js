@@ -1,4 +1,4 @@
-import { TeamModel } from '../models/team.js'
+import { TeamModel } from '../models/mysql/team.js'
 import { validateTeam, validatePartialTeam } from '../schemas/teams.js'
 
 export class TeamController {
@@ -46,5 +46,17 @@ export class TeamController {
     const updatedTeam = await TeamModel.update({ id, input: result.data })
 
     return res.json(updatedTeam)
+  }
+
+  static async delete (req, res) {
+    const { id } = req.params
+    const team = await TeamModel.getById(id)
+
+    if (team) {
+      await TeamModel.delete(id)
+      return res.status(204).send()
+    }
+
+    return res.status(404).send('<h1> 404 Error Not Found </h1>')
   }
 }

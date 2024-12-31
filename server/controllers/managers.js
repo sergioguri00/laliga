@@ -1,5 +1,5 @@
 import { ManagerModel } from '../models/manager.js'
-import { validatePartialManager, validateManager } from '../schemas/stadiums.js'
+import { validatePartialManager, validateManager } from '../schemas/managers.js'
 
 export class ManagerController {
   static async getAll (req, res) {
