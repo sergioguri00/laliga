@@ -1,19 +1,26 @@
 import { z } from 'zod'
+const startsWithUppercase = (value) => /^[A-Z]/.test(value)
 
 const playerSchema = z.object({
   name: z.string({
     invalid_type_error: 'Name must be a string',
     required_error: 'Name is required'
+  }).refine(startsWithUppercase, {
+    message: 'Name must start with an uppercase letter'
   }),
   lastName: z.string({
     invalid_type_error: 'Last name must be a string',
     required_error: 'Last name is required'
+  }).refine(startsWithUppercase, {
+    message: 'Last name must start with an uppercase letter'
   }),
   number: z.number().int().min(1).max(99),
   height: z.number().int().min(100).max(250),
   country: z.string({
     invalid_type_error: 'Country must be a string',
     required_error: 'Country is required'
+  }).refine(startsWithUppercase, {
+    message: 'Country must start with an uppercase letter'
   }),
   position: z.enum(['Goalkeeper', 'Defender', 'Midfielder', 'Forward'], {
     required_error: 'Position is required',
