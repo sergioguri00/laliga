@@ -31,4 +31,25 @@ export class PlayerModel {
   static async getById (id) {
     return players.find(team => team.id === parseInt(id))
   }
+
+  static async create ({ input }) {
+    const newPlayer = {
+      id: players.length + 1,
+      ...input
+    }
+    players.push(newPlayer)
+    return newPlayer
+  }
+
+  static async update ({ id, input }) {
+    const playerIndex = players.findIndex(player => player.id === parseInt(id))
+    if (playerIndex === -1) return false
+
+    players[playerIndex] = {
+      ...players[playerIndex],
+      ...input
+    }
+
+    return players[playerIndex]
+  }
 }
