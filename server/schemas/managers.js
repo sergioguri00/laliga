@@ -1,5 +1,5 @@
 import { z } from 'zod'
-const startsWithUppercase = (value) => /^[A-Z]/.test(value)
+const startsWithUppercase = (value) => /^[A-ZÁÉÍÓÚÑÜ]/.test(value)
 
 const managerSchema = z.object({
   name: z.string({
@@ -23,7 +23,7 @@ const managerSchema = z.object({
   birthday: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   photo: z.string().url({
     message: 'Photo must be a valid URL'
-  }),
+  }).nullable(),
   team_id: z.number().int().positive()
 })
 

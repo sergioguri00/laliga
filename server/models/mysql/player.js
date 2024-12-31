@@ -63,13 +63,13 @@ export class PlayerModel {
       position,
       birthday,
       photo,
-      teamId
+      team
     } = input
     try {
       const [insertResult] = await connection.query(
         `INSERT INTO player(name, lastName, number, height, country, position, birthday, photo, team_id)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [name, lastName, number, height, country, position, birthday, photo, teamId]
+        [name, lastName, number, height, country, position, birthday, photo, team]
       )
       const [newPlayer] = await connection.execute('SELECT * FROM player WHERE id = ?', [insertResult.insertId])
       return newPlayer
@@ -88,8 +88,13 @@ export class PlayerModel {
 
     for (const [key, value] of Object.entries(input)) {
       if (value !== undefined) {
-        fields.push(`${key} = ?`)
-        params.push(value)
+        if (key.includes('team')) {
+          fields.push('team_id = ?')
+          params.push(value)
+        } else {
+          fields.push(`${key} = ?`)
+          params.push(value)
+        }
       }
     }
 

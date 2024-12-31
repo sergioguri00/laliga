@@ -94,4 +94,109 @@ INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthd
 	 ('Rubén','Peña',15,170,'Spain','Forward','1991-07-18','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2Fb286557b090b7ba4f57c948f2c3679f4.png&w=640&q=75',3),
 	 ('Ante','Budimir',17,190,'Croatia','Forward','1991-07-22','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F4ad0a09bc6eea600b4ef160fd051bc84.png&w=640&q=75',3),
 	 ('José','Arnaiz',20,175,'Spain','Forward','1995-04-15','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F4a9783d6f9ff5a6624843fcd03f246d8.png&w=640&q=75',3),
-	 ('Iker','Benito',27,176,'Spain','Forward','2002-08-10','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F3648ff53d651038e50ad4712d78d8f1c.png&w=640&q=75',3);
+	 ('Iker','Benito',27,176,'Spain','Forward','2002-08-10','https://www.osasuna.es/_next/image?url=https%3A%2F%2Fd2rykoxgbnupm8.cloudfront.net%2Fplayers%2F3648ff53d651038e50ad4712d78d8f1c.png&w=640&q=75',3),
+	 ('Juan','Soriano',1,184,'Spain','Goalkeeper','1997-08-23','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/f7644128-efce-4137-aa32-155515c4cd5d-134.webp',4),
+	 ('Marko','Dmitrovic',13,189,'Serbia','Goalkeeper','1992-01-24','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/92c48335-47b5-45d1-b23f-bc9d0ef3faa3-529.webp',4);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Álvaro','Abajas',36,186,'Spain','Goalkeeper','2003-05-12','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/294bcfb4-1948-4ebc-a056-750d0b387904-143.webp',4),
+	 ('Adrià','Altimira',2,167,'Spain','Defender','2001-03-28','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/0aeb5983-16f1-4ccd-8a25-acc536b10102-460.webp',4),
+	 ('Jorge','Sáenz',3,188,'Spain','Defender','1996-11-17','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/bbf46324-b72a-4adf-b587-773ba26d491d-190.webp',4),
+	 ('Jackson Gabriel','Porozo',4,192,'Ecuador','Defender','2000-08-04','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/1e87c5bb-f613-4bac-837b-07060d111fcf-275.webp',4),
+	 ('Sergio','González',6,185,'Spain','Defender','1992-04-20','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/dcaaf953-d629-4923-b056-402520e717d3-631.webp',4),
+	 ('Valentin','Rosier',12,178,'France','Defender','1996-08-19','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/acb3b5b9-dbb9-4d51-8aa6-c79f56c8ae32-615.webp',4),
+	 ('Matija','Nastasic',22,187,'Serbia','Defender','1993-03-28','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/50cad321-cfee-43c9-abaa-dff2e36171bb-588.webp',4),
+	 ('Iker','Bachiller',28,169,'Spain','Defender','2002-09-14','https://statics-maker.llt-services.com/leg/images/2024/09/09/small-wp/005fc676-7b5a-4d4e-a95e-4c02687adc02-673.webp',4),
+	 ('Joao','Urbáez',34,179,'Dominican Republic','Defender','2002-07-24','https://statics-maker.llt-services.com/leg/images/2024/09/06/small-wp/9545b2b0-9eb4-4df9-a07a-0d590fb4dec8-795.webp',4),
+	 ('Renato','Tapia',5,183,'Peru','Midfielder','1995-07-28','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/4ad7bf7b-2148-4bd0-af96-8cb72596a803-377.webp',4);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Óscar','Rodríguez',7,173,'Spain','Midfielder','1998-06-28','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/49d0c572-9621-40d8-a708-ca7998874204-298.webp',4),
+	 ('Seydouba','Cissé',8,177,'Guinea','Midfielder','2001-02-10','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/744b2f6b-0d06-4626-b5cd-4007b4e5db03-541.webp',4),
+	 ('Juan','Cruz',11,178,'Spain','Midfielder','2000-04-25','https://statics-maker.llt-services.com/leg/images/2024/09/24/small-wp/8ccbf161-e600-439e-b940-934d3b651dc4-656.webp',4),
+	 ('Darko','Brasanac',14,178,'Serbia','Midfielder','1992-02-12','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/1bb9798f-1a52-4446-a37f-86aec112e0c1-971.webp',4),
+	 ('Enric','Franquesa',15,175,'Spain','Midfielder','1997-02-26','https://statics-maker.llt-services.com/leg/images/2024/09/04/original/b79acae7-8437-4a47-9e21-7770d879c7e9-435.png',4),
+	 ('Yvan','Neyou',17,179,'Cameroon','Midfielder','1997-01-03','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/72311687-a84c-4020-b552-5657a3a78d08-835.webp',4),
+	 ('Javier','Hernández',20,182,'Spain','Midfielder','1998-05-02','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/96e27414-d5d3-4ac8-b11a-09b3a8df0260-61.webp',4),
+	 ('Roberto','López',21,178,'Spain','Midfielder','2000-04-24','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/024e1f6c-ab63-415b-8581-3fa499b927e5-373.webp',4),
+	 ('Julián','Chicco',24,186,'Argentina','Midfielder','1998-01-13','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/cf48a20d-41ae-4e1e-b45f-00439a82c8b4-256.webp',4),
+	 ('Naim','García',27,178,'Argentina','Midfielder','2002-06-11','https://statics-maker.llt-services.com/leg/images/2024/09/24/small-wp/87184761-f439-4b78-9ec7-1a64ec36f595-73.webp',4);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Hugo','Solozábal',32,178,'Spain','Midfielder','2003-02-07','https://statics-maker.llt-services.com/leg/images/2024/09/09/small-wp/87ea2392-30f2-4431-9adc-00b5cf540336-346.webp',4),
+	 ('Fernando','Rodríguez',33,182,'Spain','Midfielder','2002-11-06','https://statics-maker.llt-services.com/leg/images/2024/09/09/small-wp/239cedd1-cc23-476e-8368-6f0ff6d4ab4c-466.webp',4),
+	 ('Miguel','De la Fuente',9,181,'Spain','Forward','1999-09-03','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/8fa13181-5709-415f-8746-6bab3b19354b-133.webp',4),
+	 ('Daniel','Raba',10,182,'Spain','Forward','1995-10-29','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/b8c9f0a7-d595-470f-922e-7ae824fdfefb-425.webp',4),
+	 ('Sébastien','Haller',18,192,'Ivory Coast','Forward','1994-06-22','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/4ad70f14-df26-4811-83ed-3fdff4769e0a-743.webp',4),
+	 ('Diego','García',19,186,'Spain','Forward','2000-04-18','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/92a4869e-b526-41b6-86e6-1a2906ca2b72-583.webp',4),
+	 ('Munir','El Haddadi',23,176,'Morocco','Forward','1995-09-01','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/c9c3b4ff-e3f2-4698-a8dc-bdaa63bec09c-144.webp',4),
+	 ('Daniel','Piri',26,176,'Spain','Forward','2003-07-10','https://statics-maker.llt-services.com/leg/images/2024/09/07/small-wp/ec8a5bab-6810-4ba9-b3c5-a70be62a8b4a-683.webp',4),
+	 ('Suleiman','El Haddadi',29,175,'Morocco','Forward','2006-02-13',NULL,4),
+	 ('Antonio','Sivera',1,184,'Spain','Goalkeeper','1996-08-11','https://www.deportivoalaves.com/cms/uploads/large_1_Antonio_Sivera_Web_8bbd0bf1c3.png?format=webp',5);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Jesús','Owono',13,183,'Equatorial Guinea','Goalkeeper','2001-03-01','https://www.deportivoalaves.com/cms/uploads/large_Owono_Web_b927081cc6.png?format=webp',5),
+	 ('Adrián','Rodríguez',31,195,'Argentina','Goalkeeper','2000-12-12','https://www.deportivoalaves.com/cms/uploads/large_Adrian_Web_4885a4cf42.png?format=webp',5),
+	 ('Manuel','Sánchez',3,171,'Spain','Defender','2000-08-24','https://www.deportivoalaves.com/cms/uploads/large_Manu_Web_1d3ad04898.png?format=webp',5),
+	 ('Aleksandar','Sedlar',4,178,'Serbia','Defender','1991-12-13','https://www.deportivoalaves.com/cms/uploads/large_Sedlar_Web_094a948ab1.png?format=webp',5),
+	 ('Abdelkabir','Abqar',5,188,'Morocco','Defender','1999-03-10','https://www.deportivoalaves.com/cms/uploads/large_Abqar_Web_0ea6489b68.png?format=webp',5),
+	 ('Santiago','Mouriño',12,186,'Uruguay','Defender','2002-02-13','https://www.deportivoalaves.com/cms/uploads/large_Mourino_PNG_c0b5ffad67.png?format=webp',5),
+	 ('Nahuel','Tenaglia',14,180,'Argentina','Defender','1996-02-21','https://www.deportivoalaves.com/cms/uploads/large_Tenaglia_Web_837fb2b017.png?format=webp',5),
+	 ('Hugo','Novoa',16,182,'Spain','Defender','2003-01-24','https://www.deportivoalaves.com/cms/uploads/large_Novoa_Web_9ac575289a.png?format=webp',5),
+	 ('Moussa','Diarra',22,185,'Mali','Defender','2000-11-10','https://www.deportivoalaves.com/cms/uploads/large_DSC_8120_5ded816349.png?format=webp',5),
+	 ('Egoitz','Muñoz',27,179,'Spain','Defender','2004-04-14','https://www.deportivoalaves.com/cms/uploads/large_Egoitz_Munoz_ce721b306c.png?format=webp',5);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Eneko','Ortiz',34,180,'Spain','Defender','2003-05-26','https://www.deportivoalaves.com/cms/uploads/large_Eneko_Ortiz_2d2e95cbbd.png?format=webp',5),
+	 ('Alejandro','Jay',23,181,'Spain','Defender','2002-07-07','https://www.deportivoalaves.com/cms/uploads/large_Alejandro_jay_2d35dcf077.png?format=webp',5),
+	 ('Adrián','Hernández',36,190,'Spain','Defender','2002-04-25','https://www.deportivoalaves.com/cms/uploads/large_Adrian_Hernandez_PICA_d6e44eb8a1.png?format=webp',5),
+	 ('Ander','Guevara',6,180,'Spain','Midfielder','1997-07-07','https://www.deportivoalaves.com/cms/uploads/large_Guevara_Web_7097ef3508.png?format=webp',5),
+	 ('Antonio','Blanco',8,176,'Spain','Midfielder','2000-07-23','https://www.deportivoalaves.com/cms/uploads/large_Blanco_Web_1c360706b7.png?format=webp',5),
+	 ('Tomas','Conechny',10,170,'Argentina','Midfielder','1998-03-30','https://www.deportivoalaves.com/cms/uploads/large_Conechny_Web_a7065586e7.png?format=webp',5),
+	 ('Carlos','Martín',15,180,'Spain','Midfielder','2002-04-22','https://www.deportivoalaves.com/cms/uploads/large_DSC_7928_removebg_bb517e2947.png?format=webp',5),
+	 ('Jon','Guridi',18,179,'Spain','Midfielder','1995-02-28','https://www.deportivoalaves.com/cms/uploads/large_Guridi_Web_cf8271bf62.png?format=webp',5),
+	 ('Juan Diego','Molina',19,178,'Spain','Midfielder','1993-11-05','https://www.deportivoalaves.com/cms/uploads/large_Stoichkov_web_8b17122edc.png?format=webp',5),
+	 ('Luka','Romero',20,165,'Argentina','Midfielder','2004-11-18','https://www.deportivoalaves.com/cms/uploads/large_Luka_Web_752c2fc6b3.png?format=webp',5);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Abderrahmane','Rebbach',21,176,'Algeria','Midfielder','1998-08-11','https://www.deportivoalaves.com/cms/uploads/large_Abde_Web_a8c90ef8a9.png?format=webp',5),
+	 ('Carlos','Protesoni',23,185,'Uruguay','Midfielder','1998-03-30','https://www.deportivoalaves.com/cms/uploads/large_Protesoni_Web_7c127a81c2.png?format=webp',5),
+	 ('Joan','Jordán',24,184,'Spain','Midfielder','1994-07-06','https://www.deportivoalaves.com/cms/uploads/large_Jordan_PNG_9c4d998c3f.png?format=webp',5),
+	 ('Julen','Lartitegi',37,184,'Spain','Midfielder','2003-09-29','https://www.deportivoalaves.com/cms/uploads/large_Julen_Lartitegi_a4f9fb0c7e.png?format=webp',5),
+	 ('Carlos','Vicente',7,179,'Spain','Forward','1999-04-23','https://www.deportivoalaves.com/cms/uploads/large_C_Vicente_Web_e6faa3e880.png?format=webp',5),
+	 ('Asier','Villalibre',9,184,'Spain','Forward','1997-09-30','https://www.deportivoalaves.com/cms/uploads/large_Villalibre_Web_5c7a92d40f.png?format=webp',5),
+	 ('Antonio','Martínez',11,187,'Spain','Forward','1997-06-30','https://www.deportivoalaves.com/cms/uploads/large_Toni_Martinez_PNG_57c9fad8c0.png?format=webp',5),
+	 ('Enrique','García',17,186,'Spain','Forward','1989-11-25','https://www.deportivoalaves.com/cms/uploads/large_Kike_Web_0dc277c717.png?format=webp',5),
+	 ('Marc-André','Ter Stegen',1,187,'Germany','Goalkeeper','1992-04-30','https://www.fcbarcelona.com/photo-resources/2024/10/13/04c3b761-ccbd-498f-b988-b67ed1693906/01-Ter_Stegen-M.png?width=300&height=354',6),
+	 ('Iñaki','Peña',13,184,'Spain','Goalkeeper','1999-03-02','https://www.fcbarcelona.com/photo-resources/2024/10/13/c058dc89-fa0b-4aa9-99de-a129ece52320/13-Inaki_Pena-M.png?width=300&height=354',6);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Wojciech','Szczesny',25,195,'Poland','Goalkeeper','1990-04-18','https://www.fcbarcelona.com/photo-resources/2024/10/14/a62932d1-106c-4762-84bf-89fa9a633c71/25-Szczesny-M.png?width=300&height=354',6),
+	 ('Ander','Astralaga',26,190,'Spain','Goalkeeper','2004-03-03','https://www.fcbarcelona.com/photo-resources/2024/12/28/a4ad1349-3f43-4791-b9e6-d6710b1ca482/1-Astralaga.jpg?width=640&height=400',6),
+	 ('Diego','Kochen',31,188,'United States','Goalkeeper','2006-03-19','https://assets.laliga.com/squad/2024/t178/p499806/256x278/p499806_t178_2024_1_001_000.png',6),
+	 ('Áron','Yaakobishvili',40,185,'Hungary','Goalkeeper','2006-03-06','https://assets.laliga.com/squad/2024/t178/p499308/256x278/p499308_t178_2024_1_001_000.png',6),
+	 ('Pau','Cubarsí',2,184,'Spain','Defender','2007-01-22','https://www.fcbarcelona.com/photo-resources/2024/10/13/951e72f0-59ae-4685-be81-f2afced7e6d6/02-Cubarsi-M.png?width=300&height=354',6),
+	 ('Alejandro','Balde',3,175,'Spain','Defender','2003-10-18','https://www.fcbarcelona.com/photo-resources/2024/10/13/e3784cf8-9f03-45e2-ab44-007f2adadf32/03-Balde-M.png?width=300&height=354',6),
+	 ('Ronald','Araujo',4,188,'Uruguay','Defender','1999-03-07','https://www.fcbarcelona.com/photo-resources/2024/10/13/5352ecab-dc7a-4d20-a047-67af419dd96b/04-Araujo-M.png?width=300&height=354',6),
+	 ('Íñigo','Martínez',5,182,'Spain','Defender','1991-05-17','https://www.fcbarcelona.com/photo-resources/2024/10/13/3129af5f-0ec1-4474-988c-1415092eb74f/05-Martinez-M.png?width=300&height=354',6),
+	 ('Andreas','Christensen',15,187,'Denmark','Defender','1996-04-10','https://www.fcbarcelona.com/photo-resources/2024/10/13/0969d283-c3f8-471a-8638-9a37124ea1a0/15-Christensen-M.png?width=300&height=354',6),
+	 ('Jules','Koundé',23,180,'France','Defender','1998-11-12','https://www.fcbarcelona.com/photo-resources/2024/10/13/9f7d8d15-0244-4def-a931-8eb563a598a1/23-Kounde-M.png?width=300&height=354',6);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Eric','García',24,182,'Spain','Defender','2001-01-09','https://www.fcbarcelona.com/photo-resources/2024/10/13/60ec100e-ca62-492c-a3c7-7e73956b035b/24-Eric_Garcia-M.png?width=300&height=354',6),
+	 ('Héctor','Fort',32,185,'Spain','Defender','2006-08-02','https://assets.laliga.com/squad/2024/t178/p499310/1024x1024/p499310_t178_2024_1_003_000.png',6),
+	 ('Gerard','Martín',35,186,'Spain','Defender','2002-02-26','https://assets.laliga.com/squad/2024/t178/p523234/256x278/p523234_t178_2024_1_001_000.png',6),
+	 ('Sergi','Domínguez',36,188,'Spain','Defender','2005-04-01','https://assets.laliga.com/squad/2024/t178/p551092/256x278/p551092_t178_2024_1_001_000.png',6),
+	 ('Andrés','Cuenca',39,181,'Spain','Defender','2007-06-11','https://assets.laliga.com/squad/2024/t178/p634059/256x278/p634059_t178_2024_1_001_000.png',6),
+	 ('Álvaro','Cortés',43,189,'Spain','Defender','2005-03-17','https://assets.laliga.com/squad/2024/t178/p634056/256x278/p634056_t178_2024_1_001_000.png',6),
+	 ('Pablo','Páez',6,173,'Spain','Midfielder','2004-08-05','https://www.fcbarcelona.com/photo-resources/2024/10/13/545795b7-4c63-4347-94ab-5f2a49b1eddd/06-Gavi-M.png?width=300&height=354',6),
+	 ('Ferran','Torres',7,184,'Spain','Midfielder','2000-02-29','https://www.fcbarcelona.com/photo-resources/2024/10/13/1edefda1-8229-4232-ace9-2f35bf4d3000/07-Ferran_Torres-M.png?width=300&height=354',6),
+	 ('Pedro','González',8,174,'Spain','Midfielder','2002-11-25','https://www.fcbarcelona.com/photo-resources/2024/10/13/61d91e06-7435-4823-93e3-2ef7e91b3c8b/08-Pedri-M.png?width=300&height=354',6),
+	 ('Pablo','Torre',14,173,'Spain','Midfielder','2003-04-03','https://www.fcbarcelona.com/photo-resources/2024/10/13/0b7225dc-8ec1-4957-bb92-3ebd72f00dd7/14-Pablo_Torre-M.png?width=300&height=354',6);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Fermín','López',16,174,'Spain','Midfielder','2003-05-11','https://www.fcbarcelona.com/photo-resources/2024/10/13/bc22e993-3083-4ef5-aa77-217951756cca/16-Fermin-M.png?width=300&height=354',6),
+	 ('Marc','Casadó',17,172,'Spain','Midfielder','2003-09-14','https://www.fcbarcelona.com/photo-resources/2024/10/13/d9fb4b17-1260-48a5-841d-ffd2a60e57e4/17-Casado-M.png?width=300&height=354',6),
+	 ('Pau','Víctor',18,184,'Spain','Midfielder','2001-11-26','https://www.fcbarcelona.com/photo-resources/2024/10/13/64d7a058-2043-4a39-a5b6-2b7525541fd5/18-Pau_Victor-M.png?width=300&height=354',6),
+	 ('Daniel','Olmo',20,179,'Spain','Midfielder','1998-05-07','https://www.fcbarcelona.com/photo-resources/2024/10/13/6df53816-c907-4ecc-bd0a-c2e8e5a281c2/20-Olmo-M.png?width=300&height=354',6),
+	 ('Frenkie','De Jong',21,181,'Netherlands','Midfielder','1997-05-12','https://www.fcbarcelona.com/photo-resources/2024/10/13/1f6c10a5-07cd-47b3-929b-e29ccabe18d7/21-De_Jong-M.png?width=300&height=354',6),
+	 ('Marc','Bernal',28,191,'Spain','Midfielder','2007-05-26','https://assets.laliga.com/squad/2024/t178/p637126/256x278/p637126_t178_2024_1_001_000.png',6),
+	 ('Noah','Darvich',34,184,'Germany','Midfielder','2006-09-25','https://assets.laliga.com/squad/2024/t178/p554935/256x278/p554935_t178_2024_1_001_000.png',6),
+	 ('Guillermo','Fernández',41,181,'Spain','Midfielder','2008-06-18','https://assets.laliga.com/squad/2024/t178/p619821/256x278/p619821_t178_2024_1_001_000.png',6),
+	 ('Robert','Lewandowski',9,185,'Poland','Forward','1988-08-21','https://www.fcbarcelona.com/photo-resources/2024/10/13/894e4e5e-b6d0-434e-8610-890e0971a7b2/09-Lewandowski-M.png?width=300&height=354',6),
+	 ('Anssumane','Fati',10,178,'Spain','Forward','2002-10-31','https://www.fcbarcelona.com/photo-resources/2024/10/13/a21d9ed5-ab8a-4705-ae9a-a6bd14e9dbba/10-Ansu_Fati-M.png?width=300&height=354',6);
+INSERT INTO lldb.player (name,lastName,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Raphael','Dias',11,176,'Spain','Forward','1996-12-14','https://www.fcbarcelona.com/photo-resources/2024/10/13/266dc5af-16b0-4290-99c5-03d73a48df11/11-Raphinha-M.png?width=300&height=354',6),
+	 ('Lamine','Yamal',19,180,'Spain','Forward','2007-07-13','https://www.fcbarcelona.com/photo-resources/2024/10/13/d942d5c0-5ada-423c-baf1-4d2ba5ebe3bb/19-Lamine-M.png?width=300&height=354',6),
+	 ('Antonio','Fernández',42,175,'Spain','Forward','2008-07-15','https://assets.laliga.com/squad/2024/t178/p619822/256x278/p619822_t178_2024_1_001_000.png',6);

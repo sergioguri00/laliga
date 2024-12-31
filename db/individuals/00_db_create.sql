@@ -86,7 +86,7 @@ create table player (
 	number int not null,
 	height int not null,
 	country varchar(100) not null,
-	position enum('Goalkeeper','Defender','Midfielder','Forward'),
+	position enum('Goalkeeper','Defender','Midfielder','Forward') not null,
 	birthday date not null,
 	photo text,
 	team_id int not null,

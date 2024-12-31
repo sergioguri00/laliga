@@ -1,5 +1,5 @@
 import { z } from 'zod'
-const startsWithUppercase = (value) => /^[A-Z]/.test(value)
+const startsWithUppercase = (value) => /^[A-ZÁÉÍÓÚÑÜ]/.test(value)
 
 const stadiumSchema = z.object({
   name: z.string({
@@ -18,7 +18,7 @@ const stadiumSchema = z.object({
   capacity: z.number().int().min(0).max(150000),
   photo: z.string().url({
     message: 'Photo must be a valid URL'
-  }),
+  }).nullable(),
   team_id: z.number().int().positive()
 })
 

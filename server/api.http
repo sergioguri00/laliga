@@ -50,3 +50,20 @@ Content-Type: application/json
 
 ### DELETE team
 DELETE http://localhost:1234/teams/21
+
+
+### POST new player
+POST http://localhost:1234/players
+Content-Type: application/json
+
+{
+    "name": "Antonio",
+    "lastName": "Fernández",
+    "number": 42,
+    "height": 175,
+    "country": "Spain",
+    "position": "Forward",
+    "birthday": "2008-07-15",
+    "photo": "https://assets.laliga.com/squad/2024/t178/p619822/256x278/p619822_t178_2024_1_001_000.png",
+    "team": 6
+}
