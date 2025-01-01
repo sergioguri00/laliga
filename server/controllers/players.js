@@ -3,8 +3,8 @@ import { validatePartialPlayer, validatePlayer } from '../schemas/players.js'
 
 export class PlayerController {
   static async getAll (req, res) {
-    const { name, lastName, number, height, country, position, team } = req.query
-    const players = await PlayerModel.getAll({ name, lastName, number, height, country, position, team })
+    const { name, lastName, knownAs, number, height, country, position, team } = req.query
+    const players = await PlayerModel.getAll({ name, lastName, knownAs, number, height, country, position, team })
     res.json(players)
   }
 

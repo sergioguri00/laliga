@@ -11,7 +11,7 @@ const config = {
 const connection = await mysql.createConnection(config)
 
 export class PlayerModel {
-  static async getAll ({ name, lastName, number, height, country, position, team }) {
+  static async getAll ({ name, lastName, knownAs, number, height, country, position, team }) {
     let query = 'SELECT * FROM player WHERE 1=1'
     const params = []
 
@@ -21,7 +21,11 @@ export class PlayerModel {
     }
     if (lastName) {
       query += ' AND LOWER(lastName) LIKE ?'
-      params.push(`%${name.toLowerCase()}%`)
+      params.push(`%${lastName.toLowerCase()}%`)
+    }
+    if (knownAs) {
+      query += ' AND LOWER(knownAs) LIKE ?'
+      params.push(`%${knownAs.toLowerCase()}%`)
     }
     if (number) {
       query += ' AND number = ?'
@@ -57,6 +61,7 @@ export class PlayerModel {
     const {
       name,
       lastName,
+      knownAs,
       number,
       height,
       country,
@@ -67,9 +72,9 @@ export class PlayerModel {
     } = input
     try {
       const [insertResult] = await connection.query(
-        `INSERT INTO player(name, lastName, number, height, country, position, birthday, photo, team_id)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [name, lastName, number, height, country, position, birthday, photo, team]
+        `INSERT INTO player(name, lastName, knownAs, number, height, country, position, birthday, photo, team_id)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [name, lastName, knownAs, number, height, country, position, birthday, photo, team]
       )
       const [newPlayer] = await connection.execute('SELECT * FROM player WHERE id = ?', [insertResult.insertId])
       return newPlayer

@@ -14,6 +14,11 @@ const playerSchema = z.object({
   }).refine(startsWithUppercase, {
     message: 'Last name must start with an uppercase letter'
   }),
+  knownAs: z.string({
+    invalid_type_error: '"Known as" must be a string'
+  }).refine(startsWithUppercase, {
+    message: 'Last name must start with an uppercase letter'
+  }).nullable(),
   number: z.number().int().min(1).max(99),
   height: z.number().int().min(100).max(250),
   country: z.string({

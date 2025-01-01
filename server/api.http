@@ -20,7 +20,7 @@ GET http://localhost:1234/teams/1/players
 GET http://localhost:1234/players
 
 ### GET Nico Williams
-GET http://localhost:1234/players/22
+GET http://localhost:1234/players/23
 
 ### POST new match
 
@@ -57,13 +57,13 @@ POST http://localhost:1234/players
 Content-Type: application/json
 
 {
-    "name": "Antonio",
-    "lastName": "Fernández",
-    "number": 42,
+    "name": "David",
+    "lastName": "Argüelles",
+    "number": 34,
     "height": 175,
     "country": "Spain",
-    "position": "Forward",
-    "birthday": "2008-07-15",
-    "photo": "https://assets.laliga.com/squad/2024/t178/p619822/256x278/p619822_t178_2024_1_001_000.png",
-    "team": 6
+    "position": "Defender",
+    "birthday": "2002-01-10",
+    "photo": "https://statics-maker.llt-services.com/get/images/2024/07/29/small-wp/41812221-6f4d-454a-a524-915d1ac7be75-485.webp",
+    "team": 7
 }

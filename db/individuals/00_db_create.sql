@@ -83,6 +83,7 @@ create table player (
 	id int auto_increment primary key,
 	name varchar(100) not null,
 	lastName varchar(100) not null,
+	knownAs varchar(100),
 	number int not null,
 	height int not null,
 	country varchar(100) not null,
