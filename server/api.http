@@ -57,13 +57,14 @@ POST http://localhost:1234/players
 Content-Type: application/json
 
 {
-    "name": "David",
-    "lastName": "Argüelles",
-    "number": 34,
-    "height": 175,
+    "name": "Miguel",
+    "lastName": "Gutiérrez",
+    "knownAs": "Miguel",
+    "number": 3,
+    "height": 180,
     "country": "Spain",
     "position": "Defender",
-    "birthday": "2002-01-10",
-    "photo": "https://statics-maker.llt-services.com/get/images/2024/07/29/small-wp/41812221-6f4d-454a-a524-915d1ac7be75-485.webp",
-    "team": 7
+    "birthday": "2001-07-27",
+    "photo": "https://statics-maker.llt-services.com/gir/images/2024/09/16/small-wp/af825815-9d38-4b7a-bc2a-8bf7f47edbfa-117.webp",
+    "team": 8
 }

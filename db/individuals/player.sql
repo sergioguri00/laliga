@@ -218,3 +218,25 @@ INSERT INTO lldb.player (name,lastName,knownAs,`number`,height,country,`position
 	 ('Gorka','Rivera','Gorka',30,184,'Spain','Defender','2004-08-01','https://statics-maker.llt-services.com/get/images/2024/07/29/small-wp/c7ca22e5-f4a4-44d7-a6a1-087427bece1a-892.webp',7),
 	 ('Guillem','Trilla',NULL,33,188,'Spain','Defender','2003-02-04','https://statics-maker.llt-services.com/get/images/2024/07/29/small-wp/23732e9f-fcfc-4cb6-9bcb-f2207bc8b3bf-130.webp',7),
 	 ('David','Argüelles',NULL,34,175,'Spain','Defender','2002-01-10','https://statics-maker.llt-services.com/get/images/2024/07/29/small-wp/41812221-6f4d-454a-a524-915d1ac7be75-485.webp',7);
+INSERT INTO lldb.player (name,lastName,knownAs,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Luis','Milla','L. Milla',5,175,'Spain','Midfielder','1994-10-07','https://statics-maker.llt-services.com/get/images/2024/10/18/small-wp/b5f4da37-58d9-4df9-914c-14caa86508a8-154.webp',7),
+	 ('Christantus','Uche',NULL,6,190,'Nigeria','Midfielder','2003-05-19','https://statics-maker.llt-services.com/get/images/2024/10/18/small-wp/9f991f3a-2eb2-4849-a070-fc161a32b887-306.webp',7),
+	 ('Mauro Wilney','Arambarri',NULL,8,175,'Uruguay','Midfielder','1995-09-30','https://statics-maker.llt-services.com/get/images/2024/10/18/small-wp/cb8f9ce5-9497-414c-98ee-3ebe2fbff0b6-416.webp',7),
+	 ('Carles','Aleñá',NULL,11,180,'Spain','Midfielder','1998-01-05','https://statics-maker.llt-services.com/get/images/2024/10/18/small-wp/53bac10d-6b17-4572-8b35-3249c8bced7f-369.webp',7),
+	 ('Peter Federico','González','Peter',19,180,'Dominican Republic','Midfielder','2002-07-25','https://statics-maker.llt-services.com/get/images/2024/10/18/original/4641ff3c-587e-46b7-807c-0d539489e85c-362.png',7),
+	 ('Jesús','Santiago','Yellu',20,192,'Spain','Midfielder','2004-05-25','https://statics-maker.llt-services.com/get/images/2024/10/18/original/3fcd6fa6-e62f-4d49-9751-97eaf25e3d43-884.png',7),
+	 ('Alberto','Risco','Alberto',26,157,'Spain','Midfielder','2005-08-30','https://statics-maker.llt-services.com/get/images/2024/07/29/small-wp/20767e08-1f63-4d88-9696-8b99058ce3ad-20.webp',7),
+	 ('Coba Gomes','Da Costa','Coba',29,182,'Spain','Midfielder','2002-07-26','https://statics-maker.llt-services.com/get/images/2024/07/29/small-wp/1729b492-a320-43fa-98ec-181a47ce5b02-82.webp',7),
+	 ('John Joe','Patrick','J. Patrick',31,192,'Ireland','Midfielder','2003-09-24','https://statics-maker.llt-services.com/get/images/2024/08/06/small-wp/d097dc45-ce5d-498d-b111-cdafb3abdb64-943.webp',7),
+	 ('Abdoulaye','Keita',NULL,36,186,'Spain','Midfielder','2002-09-01','https://statics-maker.llt-services.com/get/images/2024/07/29/small-wp/d30eded5-fcbd-48fb-adc9-247c412dbafe-788.webp',7);
+INSERT INTO lldb.player (name,lastName,knownAs,`number`,height,country,`position`,birthday,photo,team_id) VALUES
+	 ('Borja','Mayoral','B. Mayoral',9,182,'Spain','Forward','1997-04-05','https://statics-maker.llt-services.com/get/images/2024/10/18/original/27c845aa-920b-4be5-aa0e-17b431ec3f30-820.png',7),
+	 ('Bertuğ','Yıldırım','Bertuğ',10,191,'Turkey','Forward','2002-07-12','https://statics-maker.llt-services.com/get/images/2024/10/18/original/6fb64d9e-3ad6-4b7e-aec5-94ab65070e66-391.png',7),
+	 ('Carles','Pérez','C. Pérez',17,173,'Spain','Forward','1998-02-16','https://statics-maker.llt-services.com/get/images/2024/10/18/small-wp/09e94490-a5f5-4c2a-afcd-8bf6153b4f0d-281.webp',7),
+	 ('Álvaro','Rodríguez','Álvaro',18,192,'Uruguay','Forward','2004-07-14','https://statics-maker.llt-services.com/get/images/2024/10/18/original/02b9df43-f521-485d-8d51-43f2b1af5def-167.png',7),
+	 ('Juan Carlos','Martín','Juan Carlos',1,186,'Spain','Goalkeeper','1988-01-20','https://statics-maker.llt-services.com/gir/images/2024/08/14/original/3b3d22d9-22a2-4c09-a0b7-e5ac343ce0a8-158.png',8),
+	 ('Paulo','Gazzaniga',NULL,13,195,'Argentina','Goalkeeper','1992-01-02','https://statics-maker.llt-services.com/gir/images/2024/08/14/original/b456bdb7-b80a-4b9b-9ac3-524c8408e15b-374.png',8),
+	 ('Pau','López','Pau López',25,189,'Spain','Goalkeeper','1994-12-13','https://statics-maker.llt-services.com/gir/images/2024/09/16/small-wp/0cf35395-fd05-44ee-8a98-ca0240a162b6-128.webp',8),
+	 ('Lucas','García','Lucas',42,190,'Spain','Goalkeeper','2004-06-18','https://assets.laliga.com/squad/2024/t2893/p674483/256x278/p674483_t2893_2024_1_001_000.png',8),
+	 ('Aleksandar','Andreev',NULL,43,190,'Bulgaria','Goalkeeper','2006-03-25','https://assets.laliga.com/squad/2024/t2893/p669619/256x278/p669619_t2893_2024_1_001_000.png',8),
+	 ('Miguel','Gutiérrez','Miguel',3,180,'Spain','Defender','2001-07-27','https://statics-maker.llt-services.com/gir/images/2024/09/16/small-wp/af825815-9d38-4b7a-bc2a-8bf7f47edbfa-117.webp',8);
