@@ -57,14 +57,14 @@ POST http://localhost:1234/players
 Content-Type: application/json
 
 {
-    "name": "Oriol",
-    "lastName": "Romeu",
-    "knownAs": "Oriol Romeu",
-    "number": 14,
-    "height": 183,
+    "name": "Adrián",
+    "lastName": "Arnuncio",
+    "knownAs": "Arnu",
+    "number": 29,
+    "height": 185,
     "country": "Spain",
-    "position": "Midfielder",
-    "birthday": "1991-09-24",
-    "photo": "https://statics-maker.llt-services.com/gir/images/2024/08/14/original/30a5680b-f84e-4665-8f66-2007beb8f725-563.png",
-    "team": 8
+    "position": "Forward",
+    "birthday": "2007-03-04",
+    "photo": "https://statics-maker.llt-services.com/vll/images/2024/08/23/original/9ffadb06-554e-4e33-aa63-82f8f891224d-873.jpg",
+    "team": 16
 }
