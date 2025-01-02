@@ -1,3 +1,5 @@
 # laliga
 
-Personal project of a LaLiga NodeJS app
+Personal project of LaLiga NodeJS app
+
+![Diagram of the database](laliga.drawio.svg)

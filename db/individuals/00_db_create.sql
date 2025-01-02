@@ -45,7 +45,7 @@ create table `match` (
 	awayTeam_id int not null,
 	stadium_id int not null,
 	matchday_id int not null,
-	foreign key (matchday_id) references matchday(id),
+	foreign key (matchday_id) references matchday(matchday),
 	foreign key (localTeam_id) references team(id),
 	foreign key (awayTeam_id) references team(id),
 	foreign key (stadium_id) references stadium(id),

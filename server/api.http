@@ -57,14 +57,14 @@ POST http://localhost:1234/players
 Content-Type: application/json
 
 {
-    "name": "Miguel",
-    "lastName": "Gutiérrez",
-    "knownAs": "Miguel",
-    "number": 3,
-    "height": 180,
+    "name": "Oriol",
+    "lastName": "Romeu",
+    "knownAs": "Oriol Romeu",
+    "number": 14,
+    "height": 183,
     "country": "Spain",
-    "position": "Defender",
-    "birthday": "2001-07-27",
-    "photo": "https://statics-maker.llt-services.com/gir/images/2024/09/16/small-wp/af825815-9d38-4b7a-bc2a-8bf7f47edbfa-117.webp",
+    "position": "Midfielder",
+    "birthday": "1991-09-24",
+    "photo": "https://statics-maker.llt-services.com/gir/images/2024/08/14/original/30a5680b-f84e-4665-8f66-2007beb8f725-563.png",
     "team": 8
 }
