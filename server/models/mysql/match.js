@@ -36,13 +36,38 @@ export class MatchModel {
       params.push(parseInt(matchday))
     }
 
-    const [matches] = await connection.execute(query, params)
+    query += ' ORDER BY matchdate ASC'
+    const [result] = await connection.execute(query, params)
+
+    const matches = await Promise.all(result.map(async match => {
+      const [localTeam] = await connection.execute('SELECT shortName FROM team WHERE id = ?', [match.localTeam_id])
+      const [awayTeam] = await connection.execute('SELECT shortName FROM team WHERE id = ?', [match.awayTeam_id])
+      const [stadium] = await connection.execute('SELECT name FROM stadium WHERE id = ?', [match.stadium_id])
+      return {
+        ...match,
+        localTeam: localTeam[0].shortName,
+        awayTeam: awayTeam[0].shortName,
+        stadium: stadium[0].name
+      }
+    }))
+
     return matches
   }
 
   static async getMatch (matchdate, localTeam, awayTeam, stadium, matchday) {
-    const [match] = await connection.execute('SELECT * FROM `match` WHERE matchdate = ? AND localTeam_id = ? AND awayTeam_id = ? AND stadium_id = ? AND matchday_id = ?',
+    const [result] = await connection.execute('SELECT * FROM `match` WHERE matchdate = ? AND localTeam_id = ? AND awayTeam_id = ? AND stadium_id = ? AND matchday_id = ?',
       [matchdate, localTeam, awayTeam, stadium, matchday])
+    const match = await Promise.all(result.map(async match => {
+      const [localTeam] = await connection.execute('SELECT shortName FROM team WHERE id = ?', [match.localTeam_id])
+      const [awayTeam] = await connection.execute('SELECT shortName FROM team WHERE id = ?', [match.awayTeam_id])
+      const [stadium] = await connection.execute('SELECT name FROM stadium WHERE id = ?', [match.stadium_id])
+      return {
+        ...match,
+        localTeam: localTeam[0].shortName,
+        awayTeam: awayTeam[0].shortName,
+        stadium: stadium[0].name
+      }
+    }))
     return match
   }
 

@@ -18,6 +18,7 @@ create table matchday (
 create table team (
 	id int auto_increment primary key,
 	name varchar(100) unique not null,
+	shortName varchar(100) not null,
 	year int not null,
 	website text,
 	president varchar(255) not null,
@@ -40,7 +41,7 @@ create table stadium (
 );
 
 create table `match` (
-	matchdate date not null,
+	matchdate datetime not null,
 	localTeam_id int not null,
 	awayTeam_id int not null,
 	stadium_id int not null,
@@ -56,7 +57,7 @@ CREATE INDEX idx_matchdate ON `match` (matchdate);
 
 create table teammatchstats (
 	team_id int not null,
-	matchdate date not null,
+	matchdate datetime not null,
 	possession int not null,
 	shots int,
 	shots_on_target int,
@@ -100,7 +101,7 @@ create table matchevent (
 	minute int not null,
 	other_player_id int,
 	team_id int not null,
-	matchdate date not null,
+	matchdate datetime not null,
 	foreign key (player_id) references player(id),
 	foreign key (other_player_id) references player(id),
 	foreign key (team_id, matchdate) references teammatchstats(team_id,matchdate),

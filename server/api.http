@@ -70,19 +70,19 @@ Content-Type: application/json
 }
 
 ### GET matches
-GET http://localhost:1234/matches
+GET http://localhost:1234/matches?matchday=1
 
 ### GET match
-GET http://localhost:1234/matches/2024-08-18,20,2,20,1
+GET http://localhost:1234/matches/2024-08-18 21:30:00,12,14,12,1
 
 ### POST new match
 POST http://localhost:1234/matches
 Content-Type: application/json
 
 {
-    "matchdate": "2024-09-26",
+    "matchdate": "2024-12-22",
+    "localTeam": "betis",
+    "awayTeam": "rayo",
     "stadium": 10,
-    "localTeam": "celta",
-    "awayTeam": "atletico",
-    "matchday": 7
+    "matchday": 18
 }

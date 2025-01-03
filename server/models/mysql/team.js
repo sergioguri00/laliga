@@ -11,13 +11,17 @@ const config = {
 const connection = await mysql.createConnection(config)
 
 export class TeamModel {
-  static async getAll ({ name, year, city, mainColor }) {
+  static async getAll ({ name, shortName, year, city, mainColor }) {
     let query = 'SELECT * FROM team WHERE 1=1'
     const params = []
 
     if (name) {
       query += ' AND LOWER(name) LIKE ?'
       params.push(`%${name.toLowerCase()}%`)
+    }
+    if (shortName) {
+      query += ' AND LOWER(shortName) LIKE ?'
+      params.push(`%${shortName.toLowerCase()}%`)
     }
     if (year) {
       query += ' AND year = ?'
