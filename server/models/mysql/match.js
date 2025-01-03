@@ -53,8 +53,8 @@ export class MatchModel {
       awayTeam,
       matchday
     } = input
-    const [local] = await connection.execute(`SELECT * FROM team WHERE name LIKE '%${localTeam}%' LIMIT 1;`)
-    const [away] = await connection.execute(`SELECT * FROM team WHERE name LIKE '%${awayTeam}%' LIMIT 1;`)
+    const [local] = await connection.execute(`SELECT * FROM team WHERE LOWER(name) LIKE '%${localTeam.toLowerCase()}%' LIMIT 1;`)
+    const [away] = await connection.execute(`SELECT * FROM team WHERE LOWER(name) LIKE '%${awayTeam.toLowerCase()}%' LIMIT 1;`)
     try {
       await connection.query(
         'INSERT INTO `match`(matchdate, localTeam_id, awayTeam_id, stadium_id, matchday_id) VALUES (?, ?, ?, ?, ?)',
