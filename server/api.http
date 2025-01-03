@@ -80,9 +80,9 @@ POST http://localhost:1234/matches
 Content-Type: application/json
 
 {
-    "matchdate": "2024-08-18",
-    "stadium": 20,
-    "localTeam": 20,
-    "awayTeam": 2,
+    "matchdate": "2024-08-25",
+    "stadium": 10,
+    "localTeam": "Atlético",
+    "awayTeam": "Girona",
     "matchday": 1
 }
