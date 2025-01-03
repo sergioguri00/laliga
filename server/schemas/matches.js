@@ -11,7 +11,3 @@ const matchSchema = z.object({
 export function validateMatch (input) {
   return matchSchema.safeParse(input)
 }
-
-export function validatePartialMatch (input) {
-  return matchSchema.partial().safeParse(input)
-}

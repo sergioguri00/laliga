@@ -12,11 +12,11 @@ const connection = await mysql.createConnection(config)
 
 export class MatchModel {
   static async getAll ({ matchdate, localTeam, awayTeam, stadium, matchday }) {
-    let query = 'SELECT * FROM team WHERE 1=1'
+    let query = 'SELECT * FROM `match` WHERE 1=1'
     const params = []
 
     if (matchdate) {
-      query += ' AND matchdate = ?'
+      query += ' AND DATE(matchdate) = ?'
       params.push(matchdate)
     }
     if (localTeam) {
@@ -56,7 +56,7 @@ export class MatchModel {
     } = input
     try {
       await connection.query(
-        'INSERT INTO `match`(matchdate, localTeam_id, awayTeam_id, stadium_id, matchday_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+        'INSERT INTO `match`(matchdate, localTeam_id, awayTeam_id, stadium_id, matchday_id) VALUES (?, ?, ?, ?, ?)',
         [matchdate, localTeam, awayTeam, stadium, matchday]
       )
       const [newMatch] = await this.getMatch(matchdate, localTeam, awayTeam, stadium, matchday)
@@ -67,15 +67,16 @@ export class MatchModel {
     }
   }
 
-  static async delete (id) {
-    const team = await this.getById(id)
-    if (!team) return null
+  static async delete (matchdate, localTeam, awayTeam, stadium, matchday) {
+    const match = await this.getMatch(matchdate, localTeam, awayTeam, stadium, matchday)
+    if (!match) return null
 
     try {
-      await connection.execute('DELETE FROM team WHERE id = ?', [id])
-      return team
+      await connection.execute('DELETE FROM `match` WHERE matchdate = ? AND localTeam_id = ? AND awayTeam_id = ? AND stadium_id = ? AND matchday_id = ?',
+        [matchdate, localTeam, awayTeam, stadium, matchday])
+      return match
     } catch (error) {
-      console.error('Error deleting team', error)
+      console.error('Error deleting match', error)
       return null
     }
   }

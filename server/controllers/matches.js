@@ -26,4 +26,16 @@ export class MatchController {
 
     res.status(201).json(newMatch)
   }
+
+  static async delete (req, res) {
+    const { matchdate, localTeam, awayTeam, stadium, matchday } = req.params
+    const match = await MatchModel.getMatch(matchdate, localTeam, awayTeam, stadium, matchday)
+
+    if (match) {
+      await MatchModel.delete(matchdate, localTeam, awayTeam, stadium, matchday)
+      return res.status(204).send()
+    }
+
+    return res.status(404).send('<h1> 404 Error Not Found </h1>')
+  }
 }
