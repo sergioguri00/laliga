@@ -86,3 +86,30 @@ Content-Type: application/json
     "stadium": 10,
     "matchday": 18
 }
+
+### GET leagues
+GET http://localhost:1234/leagues
+
+### GET league
+GET http://localhost:1234/leagues/1
+
+### GET league table
+GET http://localhost:1234/leagues/1/table
+
+### GET TeamMatchStats
+GET http://localhost:1234/teammatchstats/
+
+### POST TeamMatchStats
+POST http://localhost:1234/teammatchstats
+Content-Type: application/json
+
+{
+    "team": "atletico",
+    "matchdate": "2024-08-19 19:00:00",
+    "possession": 55,
+    "shots": 9,
+    "shotsOnTarget": 5,
+    "corners": 3,
+    "offsides": 2,
+    "fouls": 12
+}

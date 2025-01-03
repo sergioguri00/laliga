@@ -4,6 +4,8 @@ import { playersRouter } from './routes/players.js'
 import { managersRouter } from './routes/managers.js'
 import { stadiumsRouter } from './routes/stadiums.js'
 import { matchesRouter } from './routes/matches.js'
+import { leaguesRouter } from './routes/leagues.js'
+import { teamMatchStatsRouter } from './routes/teammatchstats.js'
 import { corsMiddleware } from './middlewares/cors.js'
 
 const app = express()
@@ -19,6 +21,8 @@ app.use('/players', playersRouter)
 app.use('/managers', managersRouter)
 app.use('/stadiums', stadiumsRouter)
 app.use('/matches', matchesRouter)
+app.use('/leagues', leaguesRouter)
+app.use('/teammatchstats', teamMatchStatsRouter)
 
 app.use('/', (req, res) => {
   res.status(200).send('<h1>Bienvenido a la API de La Liga</h1>')

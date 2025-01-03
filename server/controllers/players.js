@@ -21,7 +21,6 @@ export class PlayerController {
     if (!result.success) {
       return res.status(400).json({ error: JSON.parse(result.error.message) })
     }
-    console.log(result.data)
     const newPlayer = await PlayerModel.create({ input: result.data })
 
     res.status(201).json(newPlayer)
