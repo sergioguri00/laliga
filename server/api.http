@@ -70,7 +70,7 @@ Content-Type: application/json
 }
 
 ### GET matches
-GET http://localhost:1234/matches?matchday=1
+GET http://localhost:1234/matches?matchday=12
 
 ### GET match
 GET http://localhost:1234/matches/2024-08-18 21:30:00,12,14,12,1
@@ -80,11 +80,11 @@ POST http://localhost:1234/matches
 Content-Type: application/json
 
 {
-    "matchdate": "2024-12-22",
-    "localTeam": "betis",
-    "awayTeam": "rayo",
+    "matchdate": "2025-01-03",
+    "localTeam": "valencia",
+    "awayTeam": "real madrid",
     "stadium": 10,
-    "matchday": 18
+    "matchday": 12
 }
 
 ### GET leagues
@@ -104,12 +104,13 @@ POST http://localhost:1234/teammatchstats
 Content-Type: application/json
 
 {
-    "team": "atletico",
-    "matchdate": "2024-08-19 19:00:00",
-    "possession": 55,
-    "shots": 9,
-    "shotsOnTarget": 5,
-    "corners": 3,
-    "offsides": 2,
-    "fouls": 12
+    "team": "real madrid",
+    "matchdate": "2024-08-29 21:30:00",
+    "possession": 56,
+    "shots": 25,
+    "shotsOnTarget": 8,
+    "corners": 6,
+    "offsides": 0,
+    "fouls": 13,
+    "goals": 1
 }

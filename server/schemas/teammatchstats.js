@@ -10,11 +10,12 @@ const teamMatchStatsSchema = z.object({
     required_error: 'Matchdate is required'
   }),
   possession: z.number().int().min(0),
-  shots: z.number().int().min(0),
-  shotsOnTarget: z.number().int().min(0),
-  corners: z.number().int().min(0),
-  offsides: z.number().int().min(0),
-  fouls: z.number().int().min(0)
+  shots: z.number().int().min(0).nullable(),
+  shotsOnTarget: z.number().int().min(0).nullable(),
+  corners: z.number().int().min(0).nullable(),
+  offsides: z.number().int().min(0).nullable(),
+  fouls: z.number().int().min(0).nullable(),
+  goals: z.number().int().min(0)
 })
 
 export function validateTeamMatchStats (input) {

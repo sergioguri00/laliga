@@ -64,6 +64,7 @@ create table teammatchstats (
 	corners int,
 	offsides int,
 	fouls int,
+	goals int not null,
 	foreign key (team_id) references team(id),
 	foreign key (matchdate) references `match`(matchdate),
 	primary key (team_id,matchdate)
