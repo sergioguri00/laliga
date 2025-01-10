@@ -2,8 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
-const response = await fetch("http://localhost:1234/teams");
-const data = await response.json();
+const teamResponse = await fetch("http://localhost:1234/teams");
+const stadiumsRespone = await fetch("http://localhost:1234/stadiums");
+const teamData = await teamResponse.json();
 ---
 
 <head>
@@ -17,10 +18,10 @@ const data = await response.json();
     class="grid justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
   >
     {
-      data.map((team) => (
+      teamData.map((team) => (
         <a
           href={`/teams/${team.id}`}
-          class={`${team.mainColor === "#ffffff" ? "border-2 border-gray-200" : "border-0"} p-4 rounded-2xl w-80 h-72`}
+          class={`${team.mainColor === "#ffffff" ? "border-2 border-gray-200" : "border-0"} p-4 rounded-2xl w-80 h-72 hover:opacity-80 hover:scale-[0.98] transition inline-block`}
           style={`background-color: ${team.mainColor};`}
         >
           <img
