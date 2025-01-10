@@ -1,11 +1,45 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import "../styles/global.css";
+const response = await fetch("http://localhost:1234/teams");
+const data = await response.json();
 ---
 
 <head>
+  <meta charset="UTF-8" />
   <title>LaLiga Teams</title>
 </head>
 
-<Layout title="LaLiga Teams">
-  <h1>aqui van los equipos</h1>
+<Layout>
+  <Navbar />
+  <section
+    class="grid justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
+  >
+    {
+      data.map((team) => (
+        <a
+          href={`/teams/${team.id}`}
+          class={`${team.mainColor === "#ffffff" ? "border-2 border-gray-200" : "border-0"} p-4 rounded-2xl w-80 h-72`}
+          style={`background-color: ${team.mainColor};`}
+        >
+          <img
+            src={team.badge}
+            alt={team.shortName}
+            class="w-32 h-32 mx-auto"
+          />
+          <div
+            class="font-la-liga-font text-center"
+            style={`color: ${team.mainColor === "#ffffff" || team.mainColor === "#ffd301" ? "black" : "white"};`}
+          >
+            <h1 class="text-3xl uppercase">{team.shortName}</h1>
+            <div class="flex flex-row justify-center items-end">
+              <p class="text-lg mr-1">EST.</p>
+              <p class="text-2xl">{team.year}</p>
+            </div>
+          </div>
+        </a>
+      ))
+    }
+  </section>
 </Layout>
