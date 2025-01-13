@@ -46,6 +46,14 @@ export class TeamModel {
     return players
   }
 
+  static async getStadium (id) {
+    const [team] = await this.getById(id)
+    if (!team) return null
+
+    const [stadium] = await connection.execute('SELECT * FROM stadium WHERE team_id = ?', [id])
+    return stadium
+  }
+
   static async create ({ input }) {
     const {
       name,

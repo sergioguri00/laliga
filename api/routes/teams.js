@@ -9,6 +9,8 @@ teamsRouter.get('/:id', TeamController.getById)
 
 teamsRouter.get('/:id/players', TeamController.getPlayers)
 
+teamsRouter.get('/:id/stadium', TeamController.getStadium)
+
 teamsRouter.post('/', TeamController.create)
 
 teamsRouter.patch('/:id', TeamController.update)

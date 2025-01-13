@@ -33,7 +33,7 @@ export class StadiumModel {
   }
 
   static async getByTeam (teamId) {
-    const [stadium] = await connection.execute('SELECT * FROM stadium WHERE team_id = ?', [teamId])
+    const [stadium] = await connection.execute('SELECT * FROM stadium WHERE id = ?', [teamId])
     return stadium
   }
 

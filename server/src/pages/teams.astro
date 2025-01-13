@@ -2,11 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
-const teamResponse = await fetch("http://localhost:1234/teams");
-const teamData = await teamResponse.json();
+const teamsResponse = await fetch("http://localhost:1234/teams");
+const teamsData = await teamsResponse.json();
 const stadiumsResponse = await fetch("http://localhost:1234/stadiums");
 const stadiumData = await stadiumsResponse.json();
-console.log(stadiumData);
 
 interface Team {
   id: number;
@@ -14,6 +13,12 @@ interface Team {
   badge: string;
   mainColor: string;
   year: number;
+}
+
+interface Stadium {
+  id: number;
+  name: string;
+  photo: string;
 }
 ---
 
@@ -29,26 +34,35 @@ interface Team {
       class="grid justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3 mt-20"
     >
       {
-        teamData.map((team: Team) => (
+        teamsData.map((team: Team, stadium: Stadium) => (
           <a
             href={`/teams/${team.id}`}
-            class={`${team.mainColor === "#ffffff" ? "border-2 border-gray-200" : "border-0"} p-4 rounded-2xl w-80 h-72 hover:opacity-80 hover:scale-[0.98] transition inline-block`}
+            class={`${team.mainColor === "#ffffff" ? "border-2 border-gray-200" : "border-0"} flex flex-col justify-center p-4 rounded-2xl w-80 h-[22rem] hover:opacity-80 hover:scale-[0.98] transition`}
             style={`background-color: ${team.mainColor}; background-image: url('images/background-teams-grid.png'); background-size: cover; background-position: center;`}
           >
-            <img
-              src={team.badge}
-              alt={team.shortName}
-              class="w-32 h-32 mx-auto"
-            />
-            <div
-              class="font-la-liga-font text-center"
-              style={`color: ${team.mainColor === "#ffffff" || team.mainColor === "#ffd301" ? "black" : "white"};`}
-            >
-              <h1 class="text-3xl uppercase">{team.shortName}</h1>
-              <div class="flex flex-row justify-center items-end">
-                <p class="text-lg mr-1">EST.</p>
-                <p class="text-2xl">{team.year}</p>
+            <div class="flex flex-col justify-center items-center">
+              <img
+                src={team.badge}
+                alt={team.shortName}
+                class="w-32 h-32 mx-auto"
+              />
+              <div
+                class="font-la-liga-font text-center"
+                style={`color: ${team.mainColor === "#ffffff" || team.mainColor === "#ffd301" ? "black" : "white"};`}
+              >
+                <h1 class="text-3xl uppercase">{team.shortName}</h1>
+                <div class="flex flex-row justify-center items-end">
+                  <p class="text-lg mr-1">EST.</p>
+                  <p class="text-2xl">{team.year}</p>
+                </div>
               </div>
+            </div>
+            <div>
+              <img
+                src={stadiumData[team.id - 1].photo}
+                alt={stadiumData[team.id - 1].name}
+                class="w-48 mx-auto"
+              />
             </div>
           </a>
         ))

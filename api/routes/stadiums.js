@@ -7,7 +7,7 @@ stadiumsRouter.get('/', StadiumController.getAll)
 
 stadiumsRouter.get('/:id', StadiumController.getById)
 
-stadiumsRouter.get('/team/:id', StadiumController.getByTeam)
+stadiumsRouter.get('/team/:teamId', StadiumController.getByTeam)
 
 stadiumsRouter.post('/', StadiumController.create)
 
