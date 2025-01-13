@@ -1,4 +1,4 @@
-import { ManagerModel } from '../models/manager.js'
+import { ManagerModel } from '../models/mysql/manager.js'
 import { validatePartialManager, validateManager } from '../schemas/managers.js'
 
 export class ManagerController {

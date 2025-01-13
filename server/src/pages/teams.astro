@@ -3,8 +3,10 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
 const teamResponse = await fetch("http://localhost:1234/teams");
-const stadiumsResponse = await fetch("http://localhost:1234/stadiums");
 const teamData = await teamResponse.json();
+const stadiumsResponse = await fetch("http://localhost:1234/stadiums");
+const stadiumData = await stadiumsResponse.json();
+console.log(stadiumData);
 
 interface Team {
   id: number;

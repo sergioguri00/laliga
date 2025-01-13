@@ -24,7 +24,7 @@ const managerSchema = z.object({
   photo: z.string().url({
     message: 'Photo must be a valid URL'
   }).nullable(),
-  team_id: z.number().int().positive()
+  teamId: z.number().int().positive()
 })
 
 export function validateManager (input) {

@@ -5,7 +5,7 @@ const connection = await mysql.createConnection(config)
 
 export class StadiumModel {
   static async getAll ({ name, year, team }) {
-    let query = 'SELECT * FROM `match` WHERE 1=1'
+    let query = 'SELECT * FROM stadium WHERE 1=1'
     const params = []
 
     if (name) {
