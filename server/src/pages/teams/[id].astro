@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
+import { countryCodes } from "../../utils/countryCodes";
 import "../../styles/global.css";
 
 const { id } = Astro.params;
@@ -15,8 +16,17 @@ const stadiumResponse = await fetch(
 const stadiumData = await stadiumResponse.json();
 const stadium = stadiumData[0];
 
+const managerResponse = await fetch(
+  `http://localhost:1234/teams/${id}/manager`
+);
+const managerData = await managerResponse.json();
+const manager = managerData[0];
+console.log(manager);
 const playersData = await fetch(`http://localhost:1234/teams/${id}/players`);
-const players = await playersData.json();
+const players: Array<{
+  country: keyof typeof countryCodes;
+  [key: string]: any;
+}> = await playersData.json();
 
 export async function getStaticPaths() {
   const teamsResponse = await fetch("http://localhost:1234/teams");
@@ -146,95 +156,402 @@ export async function getStaticProps({ params }) {
                 Manager
               </p>
             </div>
-            <div>
-              <p class="mt-4 text-start">{team.manager}</p>
-            </div>
-          </div>
-          <div>
-            <div class="border-b-2 border-[#00001B] w-full text-start">
-              <p class="mt-4 uppercase font-la-liga-font text-2xl pb-2">
-                Goalkeepers
-              </p>
-            </div>
             <div
-              class="grid justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3 mt-20"
+              class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
             >
-              {
-                players.map((player) =>
-                  player.position === "Goalkeeper" ? (
-                    <div class="mt-4 text-start">
-                      <p
-                        class={`text-bold text-5xl font-la-liga-font text-[${team.mainColor}]`}
-                      >
-                        {player.number}
-                      </p>
-                      <p
-                        class={`text-bold text-2xl font-la-liga-font text-[${team.mainColor}]`}
-                      >
-                        {player.knownAs !== null
-                          ? player.knownAs
-                          : player.lastName}
-                      </p>
+              <div
+                class="text-start border-2 border-[#00001B] rounded-2xl p-10 w-full grid grid-cols-2 gap-4 relative mt-4"
+              >
+                <div
+                  class="absolute inset-0 bg-cover bg-center opacity-10"
+                  style={`background-image: url('${team.badge}');`}
+                >
+                </div>
+                <div class="flex flex-col justify-between relative z-10">
+                  <div class="self-start">
+                    <p
+                      class={`text-bold text-2xl font-la-liga-font text-[#00001B]`}
+                    >
+                      {`${manager.name} ${manager.lastName}`}
+                    </p>
+                  </div>
+                  <div class="flex flex-col">
+                    <p class="uppercase font-bold text-sm">managaer</p>
+                    <div class="flex flex-row items-center">
                       <img
-                        src={player.photo}
-                        alt={player.knownAs}
-                        class="w-24 h-24"
+                        src={`https://flagcdn.com/${countryCodes[manager.country as keyof typeof countryCodes]}.svg`}
+                        alt={manager.country}
+                        class="mr-2 w-6 h-4"
                       />
+                      <p class="text-center text-sm">{manager.country}</p>
                     </div>
-                  ) : null
-                )
-              }
+                  </div>
+                </div>
+                <a href="" class="relative z-10">
+                  <img
+                    src={manager.photo}
+                    alt={manager.lastName}
+                    class="w-full hover:opacity-80 hover:scale-[0.98] transition"
+                  />
+                </a>
+              </div>
+            </div>
+            <div>
+              <div class="border-b-2 border-[#00001B] w-full text-start mt-10">
+                <p class="uppercase font-la-liga-font text-2xl pb-2">
+                  Goalkeepers
+                </p>
+              </div>
+              <div
+                class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
+              >
+                {
+                  players.map((player) =>
+                    player.position === "Goalkeeper" ? (
+                      <div class="text-start border-2 border-[#00001B] rounded-2xl p-10 w-full grid grid-cols-2 gap-4 relative">
+                        <div
+                          class="absolute inset-0 bg-cover bg-center opacity-10"
+                          style={`background-image: url('${team.badge}');`}
+                        />
+                        <div class="flex flex-col justify-between relative z-10">
+                          <div class="self-start">
+                            <p
+                              class={`text-bold text-5xl font-la-liga-font`}
+                              style={`color:${team.mainColor === "#ffffff" ? "#00001B" : team.mainColor}`}
+                            >
+                              {player.number}
+                            </p>
+                            <p
+                              class={`text-bold text-2xl font-la-liga-font text-[#00001B]`}
+                            >
+                              {player.knownAs !== null
+                                ? player.knownAs
+                                : player.lastName}
+                            </p>
+                          </div>
+                          <div class="flex flex-col">
+                            <p class="uppercase font-bold text-sm">
+                              {player.position}
+                            </p>
+                            <div class="flex flex-row items-center">
+                              <img
+                                src={`https://flagcdn.com/${countryCodes[player.country as keyof typeof countryCodes]}.svg`}
+                                alt={player.country}
+                                class="mr-2 w-6 h-4"
+                              />
+                              <p class="text-center text-sm">
+                                {player.country}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="" class="relative z-10">
+                          <img
+                            src={player.photo}
+                            alt={player.knownAs}
+                            class="w-full hover:opacity-80 hover:scale-[0.98] transition"
+                          />
+                        </a>
+                        <div class="grid grid-cols-2 col-span-2 border-t-2 pt-2 gap-4 relative z-10 border-[#00001B]">
+                          <div>
+                            <p class="text-center uppercase font-bold">
+                              birthday
+                            </p>
+                            <p class="text-center">
+                              {player.birthday.toString().split("T")[0]}
+                            </p>
+                          </div>
+                          <div>
+                            <p class="text-center uppercase font-bold">
+                              height
+                            </p>
+                            <p class="text-center">{player.height} cm</p>
+                          </div>
+                        </div>
+                      </div>
+                    ) : null
+                  )
+                }
+              </div>
+              <div class="border-b-2 border-[#00001B] w-full text-start mt-10">
+                <p class="uppercase font-la-liga-font text-2xl pb-2">
+                  Defenders
+                </p>
+              </div>
+              <div
+                class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
+              >
+                {
+                  players.map((player) =>
+                    player.position === "Defender" ? (
+                      <div class="text-start border-2 border-[#00001B] rounded-2xl p-10 w-full grid grid-cols-2 gap-4 relative">
+                        <div
+                          class="absolute inset-0 bg-cover bg-center opacity-10"
+                          style={`background-image: url('${team.badge}');`}
+                        />
+                        <div class="flex flex-col justify-between relative z-10">
+                          <div class="self-start">
+                            <p
+                              class={`text-bold text-5xl font-la-liga-font`}
+                              style={`color:${team.mainColor === "#ffffff" ? "#00001B" : team.mainColor}`}
+                            >
+                              {player.number}
+                            </p>
+                            <p
+                              class={`text-bold text-2xl font-la-liga-font text-[#00001B]`}
+                            >
+                              {player.knownAs !== null
+                                ? player.knownAs
+                                : player.lastName}
+                            </p>
+                          </div>
+                          <div class="flex flex-col">
+                            <p class="uppercase font-bold text-sm">
+                              {player.position}
+                            </p>
+                            <div class="flex flex-row items-center">
+                              <img
+                                src={`https://flagcdn.com/${countryCodes[player.country as keyof typeof countryCodes]}.svg`}
+                                alt={player.country}
+                                class="mr-2 w-6 h-4"
+                              />
+                              <p class="text-center text-sm">
+                                {player.country}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="" class="relative z-10">
+                          <img
+                            src={player.photo}
+                            alt={player.knownAs}
+                            class="w-full hover:opacity-80 hover:scale-[0.98] transition"
+                          />
+                        </a>
+                        <div class="grid grid-cols-2 col-span-2 border-t-2 pt-2 gap-4 relative z-10 border-[#00001B]">
+                          <div>
+                            <p class="text-center uppercase font-bold">
+                              birthday
+                            </p>
+                            <p class="text-center">
+                              {player.birthday.toString().split("T")[0]}
+                            </p>
+                          </div>
+                          <div>
+                            <p class="text-center uppercase font-bold">
+                              height
+                            </p>
+                            <p class="text-center">{player.height} cm</p>
+                          </div>
+                        </div>
+                      </div>
+                    ) : null
+                  )
+                }
+              </div>
+              <div class="border-b-2 border-[#00001B] w-full text-start mt-10">
+                <p class="uppercase font-la-liga-font text-2xl pb-2">
+                  Midfielders
+                </p>
+              </div>
+              <div
+                class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
+              >
+                {
+                  players.map((player) =>
+                    player.position === "Midfielder" ? (
+                      <div class="text-start border-2 border-[#00001B] rounded-2xl p-10 w-full grid grid-cols-2 gap-4 relative">
+                        <div
+                          class="absolute inset-0 bg-cover bg-center opacity-10"
+                          style={`background-image: url('${team.badge}');`}
+                        />
+                        <div class="flex flex-col justify-between relative z-10">
+                          <div class="self-start">
+                            <p
+                              class={`text-bold text-5xl font-la-liga-font`}
+                              style={`color:${team.mainColor === "#ffffff" ? "#00001B" : team.mainColor}`}
+                            >
+                              {player.number}
+                            </p>
+                            <p
+                              class={`text-bold text-2xl font-la-liga-font text-[#00001B]`}
+                            >
+                              {player.knownAs !== null
+                                ? player.knownAs
+                                : player.lastName}
+                            </p>
+                          </div>
+                          <div class="flex flex-col">
+                            <p class="uppercase font-bold text-sm">
+                              {player.position}
+                            </p>
+                            <div class="flex flex-row items-center">
+                              <img
+                                src={`https://flagcdn.com/${countryCodes[player.country as keyof typeof countryCodes]}.svg`}
+                                alt={player.country}
+                                class="mr-2 w-6 h-4"
+                              />
+                              <p class="text-center text-sm">
+                                {player.country}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="" class="relative z-10">
+                          <img
+                            src={player.photo}
+                            alt={player.knownAs}
+                            class="w-full hover:opacity-80 hover:scale-[0.98] transition"
+                          />
+                        </a>
+                        <div class="grid grid-cols-2 col-span-2 border-t-2 pt-2 gap-4 relative z-10 border-[#00001B]">
+                          <div>
+                            <p class="text-center uppercase font-bold">
+                              birthday
+                            </p>
+                            <p class="text-center">
+                              {player.birthday.toString().split("T")[0]}
+                            </p>
+                          </div>
+                          <div>
+                            <p class="text-center uppercase font-bold">
+                              height
+                            </p>
+                            <p class="text-center">{player.height} cm</p>
+                          </div>
+                        </div>
+                      </div>
+                    ) : null
+                  )
+                }
+              </div>
+              <div class="border-b-2 border-[#00001B] w-full text-start mt-10">
+                <p class="uppercase font-la-liga-font text-2xl pb-2">
+                  Forwarders
+                </p>
+              </div>
+              <div
+                class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
+              >
+                {
+                  players.map((player) =>
+                    player.position === "Forward" ? (
+                      <div class="text-start border-2 border-[#00001B] rounded-2xl p-10 w-full grid grid-cols-2 gap-4 relative">
+                        <div
+                          class="absolute inset-0 bg-cover bg-center opacity-10"
+                          style={`background-image: url('${team.badge}');`}
+                        />
+                        <div class="flex flex-col justify-between relative z-10">
+                          <div class="self-start">
+                            <p
+                              class={`text-bold text-5xl font-la-liga-font`}
+                              style={`color:${team.mainColor === "#ffffff" ? "#00001B" : team.mainColor}`}
+                            >
+                              {player.number}
+                            </p>
+                            <p
+                              class={`text-bold text-2xl font-la-liga-font text-[#00001B]`}
+                            >
+                              {player.knownAs !== null
+                                ? player.knownAs
+                                : player.lastName}
+                            </p>
+                          </div>
+                          <div class="flex flex-col">
+                            <p class="uppercase font-bold text-sm">
+                              {player.position}
+                            </p>
+                            <div class="flex flex-row items-center">
+                              <img
+                                src={`https://flagcdn.com/${countryCodes[player.country as keyof typeof countryCodes]}.svg`}
+                                alt={player.country}
+                                class="mr-2 w-6 h-4"
+                              />
+                              <p class="text-center text-sm">
+                                {player.country}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="" class="relative z-10">
+                          <img
+                            src={player.photo}
+                            alt={player.knownAs}
+                            class="w-full hover:opacity-80 hover:scale-[0.98] transition"
+                          />
+                        </a>
+                        <div class="grid grid-cols-2 col-span-2 border-t-2 pt-2 gap-4 relative z-10 border-[#00001B]">
+                          <div>
+                            <p class="text-center uppercase font-bold">
+                              birthday
+                            </p>
+                            <p class="text-center">
+                              {player.birthday.toString().split("T")[0]}
+                            </p>
+                          </div>
+                          <div>
+                            <p class="text-center uppercase font-bold">
+                              height
+                            </p>
+                            <p class="text-center">{player.height} cm</p>
+                          </div>
+                        </div>
+                      </div>
+                    ) : null
+                  )
+                }
+              </div>
             </div>
           </div>
         </div>
+        <!-- Staff Content Goes Here -->
       </section>
-      <!-- Staff Content Goes Here -->
+
+      <section id="resultsSection" class="p-10 hidden">
+        <h2 class="text-3xl font-semibold text-center">Results</h2>
+        <p class="mt-4 text-center">Here you can find the team's results.</p>
+        <!-- Results Content Goes Here -->
+      </section>
     </div>
-
-    <section id="resultsSection" class="p-10 hidden">
-      <h2 class="text-3xl font-semibold text-center">Results</h2>
-      <p class="mt-4 text-center">Here you can find the team's results.</p>
-      <!-- Results Content Goes Here -->
-    </section>
   </Layout>
-</body>
-<Footer />
+  <Footer />
 
-<script>
-  const sections = document.querySelectorAll("div.section");
-  sections.forEach((section) => {
-    section.addEventListener("click", () => changeTab(section.id));
-  });
+  <script>
+    const sections = document.querySelectorAll("div.section");
+    sections.forEach((section) => {
+      section.addEventListener("click", () => changeTab(section.id));
+    });
 
-  function changeTab(tab: string) {
-    const squadSection = document.getElementById("squadSection");
-    const resultsSection = document.getElementById("resultsSection");
-    const squad = document.getElementById("squad");
-    const results = document.getElementById("results");
-    if (squadSection && resultsSection) {
-      if (tab === "results") {
-        squadSection.classList.add("hidden");
-        resultsSection.classList.remove("hidden");
-        if (squad && results) {
-          squad.classList.remove("border-[#ff4b44]");
-          squad.classList.remove("font-bold");
-          squad.classList.add("hover:text-[#ff4b44]");
-          results.classList.add("border-[#ff4b44]");
-          results.classList.add("font-bold");
-          results.classList.remove("hover:text-[#ff4b44]");
-        }
-      } else {
-        squadSection.classList.remove("hidden");
-        resultsSection.classList.add("hidden");
-        if (squad && results) {
-          squad.classList.add("border-[#ff4b44]");
-          squad.classList.add("font-bold");
-          squad.classList.remove("hover:text-[#ff4b44]");
-          results.classList.remove("border-[#ff4b44]");
-          results.classList.remove("font-bold");
-          results.classList.add("hover:text-[#ff4b44]");
+    function changeTab(tab: string) {
+      const squadSection = document.getElementById("squadSection");
+      const resultsSection = document.getElementById("resultsSection");
+      const squad = document.getElementById("squad");
+      const results = document.getElementById("results");
+      if (squadSection && resultsSection) {
+        if (tab === "results") {
+          squadSection.classList.add("hidden");
+          resultsSection.classList.remove("hidden");
+          if (squad && results) {
+            squad.classList.remove("border-[#ff4b44]");
+            squad.classList.remove("font-bold");
+            squad.classList.add("hover:text-[#ff4b44]");
+            results.classList.add("border-[#ff4b44]");
+            results.classList.add("font-bold");
+            results.classList.remove("hover:text-[#ff4b44]");
+          }
+        } else {
+          squadSection.classList.remove("hidden");
+          resultsSection.classList.add("hidden");
+          if (squad && results) {
+            squad.classList.add("border-[#ff4b44]");
+            squad.classList.add("font-bold");
+            squad.classList.remove("hover:text-[#ff4b44]");
+            results.classList.remove("border-[#ff4b44]");
+            results.classList.remove("font-bold");
+            results.classList.add("hover:text-[#ff4b44]");
+          }
         }
       }
     }
-  }
-</script>
+  </script>
+</body>
