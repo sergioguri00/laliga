@@ -1,4 +1,4 @@
-import { TeamModel } from '../models/mysql/team.js'
+import { TeamModel } from '../models/team.js'
 import { validateTeam, validatePartialTeam } from '../schemas/teams.js'
 
 export class TeamController {

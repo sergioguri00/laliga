@@ -1,4 +1,4 @@
-import { TeamMatchStatsModel } from '../models/mysql/teammatchstats.js'
+import { TeamMatchStatsModel } from '../models/teammatchstats.js'
 import { validateTeamMatchStats } from '../schemas/teammatchstats.js'
 
 export class TeamMatchStatsController {

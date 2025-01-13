@@ -1,4 +1,4 @@
-import { LeagueModel } from '../models/mysql/league.js'
+import { LeagueModel } from '../models/league.js'
 
 export class LeagueController {
   static async getAll (req, res) {

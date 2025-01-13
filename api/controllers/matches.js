@@ -1,4 +1,4 @@
-import { MatchModel } from '../models/mysql/match.js'
+import { MatchModel } from '../models/match.js'
 import { validateMatch } from '../schemas/matches.js'
 
 export class MatchController {
