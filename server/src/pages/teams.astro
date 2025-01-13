@@ -3,8 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
 const teamResponse = await fetch("http://localhost:1234/teams");
-const stadiumsRespone = await fetch("http://localhost:1234/stadiums");
+const stadiumsResponse = await fetch("http://localhost:1234/stadiums");
 const teamData = await teamResponse.json();
+
+interface Team {
+  id: number;
+  shortName: string;
+  badge: string;
+  mainColor: string;
+  year: number;
+}
 ---
 
 <head>
@@ -19,13 +27,12 @@ const teamData = await teamResponse.json();
       class="grid justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3 mt-20"
     >
       {
-        teamData.map((team) => (
+        teamData.map((team: Team) => (
           <a
             href={`/teams/${team.id}`}
             class={`${team.mainColor === "#ffffff" ? "border-2 border-gray-200" : "border-0"} p-4 rounded-2xl w-80 h-72 hover:opacity-80 hover:scale-[0.98] transition inline-block`}
-            style={`background-color: ${team.mainColor};`}
+            style={`background-color: ${team.mainColor}; background-image: url('images/background-teams-grid.png'); background-size: cover; background-position: center;`}
           >
-            <img src="background-teams-grid.png" class="sticky" />
             <img
               src={team.badge}
               alt={team.shortName}

@@ -15,6 +15,13 @@ export class StadiumController {
     res.status(404).send('<h1> 404 Error Not Found </h1>')
   }
 
+  static async getByTeam (req, res) {
+    const { teamId } = req.params
+    const stadium = await StadiumModel.getByTeam(teamId)
+    if (stadium) return res.json(stadium)
+    res.status(404).send('<h1> 404 Error Not Found </h1>')
+  }
+
   static async create (req, res) {
     const result = validateStadium(req.body)
 
