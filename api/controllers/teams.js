@@ -36,6 +36,13 @@ export class TeamController {
     res.status(404).send('<h1> 404 Error Not Found </h1>')
   }
 
+  static async getMatches (req, res) {
+    const { id } = req.params
+    const matches = await TeamModel.getMatches(id)
+    if (matches) return res.json(matches)
+    res.status(404).send('<h1> 404 Error Not Found </h1>')
+  }
+
   static async create (req, res) {
     const result = validateTeam(req.body)
 
