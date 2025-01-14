@@ -64,3 +64,12 @@ body {
     }
   }
 }
+
+.match-button {
+  background-color: #00001B;
+  color: white;
+}
+
+.match-button:hover {
+  background-color: #ff4b44;
+}
