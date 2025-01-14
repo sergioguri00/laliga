@@ -13,7 +13,7 @@ INSERT INTO lldb.manager (name,lastName,country,birthday,photo,team_id) VALUES
 	 ('Manolo','González','Spain','1979-01-14','https://assets.laliga.com/squad/2024/t177/man50805/256x278/man50805_t177_2024_1_001_000.png',11),
 	 ('Jagoba','Arrasate','Spain','1978-04-22','https://assets.laliga.com/squad/2024/t181/man42602/256x278/man42602_t181_2024_1_001_000.png',12),
 	 ('Manuel','Pellegrini','Chile','1953-09-16','https://assets.laliga.com/squad/2024/t185/man257/256x278/man257_t185_2024_1_001_000.png',13),
-	 ('Carlo','Ancelotti','Italia','1959-06-10','https://assets.laliga.com/squad/2024/t186/man50/256x278/man50_t186_2024_1_001_000.png',14),
+	 ('Carlo','Ancelotti','Italy','1959-06-10','https://assets.laliga.com/squad/2024/t186/man50/256x278/man50_t186_2024_1_001_000.png',14),
 	 ('Imanol','Alguacil','Spain','1971-07-04','https://assets.laliga.com/squad/2024/t188/man44987/256x278/man44987_t188_2024_1_001_000.png',15),
 	 ('Diego','Cocca','Argentina','1972-02-11','https://assets.laliga.com/assets/useful/default-player/512x512/manager_003.png',16),
 	 ('Francisco Javier','García Pimienta','Spain','1974-08-03','https://assets.laliga.com/squad/2024/t179/man49389/256x278/man49389_t179_2024_1_001_000.png',17),

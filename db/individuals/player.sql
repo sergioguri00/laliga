@@ -128,7 +128,7 @@ INSERT INTO lldb.player (name,lastName,knownAs,`number`,height,country,`position
 	 ('Diego','García','Diego',19,186,'Spain','Forward','2000-04-18','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/92a4869e-b526-41b6-86e6-1a2906ca2b72-583.webp',4),
 	 ('Munir','El Haddadi','Munir',23,176,'Morocco','Forward','1995-09-01','https://statics-maker.llt-services.com/leg/images/2024/09/04/small-wp/c9c3b4ff-e3f2-4698-a8dc-bdaa63bec09c-144.webp',4),
 	 ('Daniel','Piri',NULL,26,176,'Spain','Forward','2003-07-10','https://statics-maker.llt-services.com/leg/images/2024/09/07/small-wp/ec8a5bab-6810-4ba9-b3c5-a70be62a8b4a-683.webp',4),
-	 ('Suleiman','El Haddadi','Sule',29,175,'Morocco','Forward','2006-02-13',NULL,4),
+	 ('Suleiman','El Haddadi','Sule',29,175,'Morocco','Forward','2006-02-13','https://assets.laliga.com/squad/2024/t957/default/512x512/default_t957_2024_1_003_000.png',4),
 	 ('Antonio','Sivera',NULL,1,184,'Spain','Goalkeeper','1996-08-11','https://www.deportivoalaves.com/cms/uploads/large_1_Antonio_Sivera_Web_8bbd0bf1c3.png?format=webp',5);
 INSERT INTO lldb.player (name,lastName,knownAs,`number`,height,country,`position`,birthday,photo,team_id) VALUES
 	 ('Jesús','Owono',NULL,13,183,'Equatorial Guinea','Goalkeeper','2001-03-01','https://www.deportivoalaves.com/cms/uploads/large_Owono_Web_b927081cc6.png?format=webp',5),
@@ -165,7 +165,7 @@ INSERT INTO lldb.player (name,lastName,knownAs,`number`,height,country,`position
 	 ('Iñaki','Peña','Iñaki Peña',13,184,'Spain','Goalkeeper','1999-03-02','https://www.fcbarcelona.com/photo-resources/2024/10/13/c058dc89-fa0b-4aa9-99de-a129ece52320/13-Inaki_Pena-M.png?width=300&height=354',6);
 INSERT INTO lldb.player (name,lastName,knownAs,`number`,height,country,`position`,birthday,photo,team_id) VALUES
 	 ('Wojciech','Szczesny',NULL,25,195,'Poland','Goalkeeper','1990-04-18','https://www.fcbarcelona.com/photo-resources/2024/10/14/a62932d1-106c-4762-84bf-89fa9a633c71/25-Szczesny-M.png?width=300&height=354',6),
-	 ('Ander','Astralaga',NULL,26,190,'Spain','Goalkeeper','2004-03-03','https://www.fcbarcelona.com/photo-resources/2024/12/28/a4ad1349-3f43-4791-b9e6-d6710b1ca482/1-Astralaga.jpg?width=640&height=400',6),
+	 ('Ander','Astralaga',NULL,26,190,'Spain','Goalkeeper','2004-03-03','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI-XLdQvHpOvizcmxZlaot8J_fBGqSN-4eTw&s',6),
 	 ('Diego','Kochen',NULL,31,188,'United States','Goalkeeper','2006-03-19','https://assets.laliga.com/squad/2024/t178/p499806/256x278/p499806_t178_2024_1_001_000.png',6),
 	 ('Áron','Yaakobishvili','Aron',40,185,'Hungary','Goalkeeper','2006-03-06','https://assets.laliga.com/squad/2024/t178/p499308/256x278/p499308_t178_2024_1_001_000.png',6),
 	 ('Pau','Cubarsí','Cubarsi',2,184,'Spain','Defender','2007-01-22','https://www.fcbarcelona.com/photo-resources/2024/10/13/951e72f0-59ae-4685-be81-f2afced7e6d6/02-Cubarsi-M.png?width=300&height=354',6),
@@ -488,7 +488,7 @@ INSERT INTO lldb.player (name,lastName,knownAs,`number`,height,country,`position
 	 ('Endrick Felipe','Moreira de Sousa','Endrick',16,173,'Brazil','Forward','2006-07-21','https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--68a92c48-1a45-4d94-911c-58e9916293ca/POSE__4.app.webp?preferwebp=true&width=420',14),
 	 ('Gonzalo','García','Gonzalo',30,182,'Spain','Forward','2004-03-24','https://assets.laliga.com/squad/2024/t186/p551466/256x278/p551466_t186_2024_1_001_000.png',14),
 	 ('Daniel','Yañez',NULL,42,177,'Spain','Forward','2007-03-28','https://assets.laliga.com/squad/2024/t186/p634864/256x278/p634864_t186_2024_1_001_000.png',14),
-	 ('Alejandro','Remiro','A. Remiro',1,191,'Spain','Goalkeeper','1995-03-24','https://cdn.realsociedad.eus//Uploads/jugadores/_0_remiro.png',15),
+	 ('Alejandro','Remiro','A. Remiro',1,191,'Spain','Goalkeeper','1995-03-24','https://cdn.realsociedad.eus//Uploads/jugadores/_0_remiro.png',14),
 	 ('Unai','Marrero',NULL,13,189,'Spain','Goalkeeper','2001-10-09','https://cdn.realsociedad.eus//Uploads/jugadores/_1_marrero.png',15),
 	 ('Aitor','Fraga',NULL,32,194,'Spain','Goalkeeper','2003-03-12','https://cdn.realsociedad.eus//Uploads/jugadores/_0_aitor-fraga.png',15),
 	 ('Egoitz','Arana',NULL,35,197,'Spain','Goalkeeper','2002-02-19','https://cdn.realsociedad.eus//Uploads/jugadores/_2_egoitz-arana.png',15),
@@ -672,7 +672,7 @@ INSERT INTO lldb.player (name,lastName,knownAs,`number`,height,country,`position
 INSERT INTO lldb.player (name,lastName,knownAs,`number`,height,country,`position`,birthday,photo,team_id) VALUES
 	 ('Luiz Lúcio','Reis','Junior R.',1,194,'Brazil','Goalkeeper','2001-01-14','https://villarrealcf.es/wp-content/uploads/2024/08/1-JUNIOR.png',20),
 	 ('Diego José','Conde','Diego Conde',13,188,'Spain','Goalkeeper','1998-10-28','https://villarrealcf.es/wp-content/uploads/2024/08/13-CONDE.png',20),
-	 ('Iker','Álvarez','Iker Alvarez',31,190,'Andorra','Goalkeeper','2001-07-25','https://villarrealcf.es/wp-content/uploads/2021/09/1-Iker.pnghttps://villarrealcf.es/wp-content/uploads/2021/09/1-Iker.png',20),
+	 ('Iker','Álvarez','Iker Alvarez',31,190,'Andorra','Goalkeeper','2001-07-25','https://villarrealcf.es/wp-content/uploads/2021/09/1-Iker.png',20),
 	 ('Rubén','Gómez','Ruben',55,185,'Spain','Goalkeeper','2002-01-24','https://villarrealcf.es/wp-content/uploads/2021/09/13-Ruben-G.png',20),
 	 ('Logan Evans','Costa',NULL,2,190,'Cape Verde','Defender','2001-04-01','https://villarrealcf.es/wp-content/uploads/2024/08/2-COSTA.png',20),
 	 ('Raúl','Albiol','R. Albiol',3,190,'Spain','Defender','1985-09-04','https://villarrealcf.es/wp-content/uploads/2024/08/3-ALBIOL.png',20),
