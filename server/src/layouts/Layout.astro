@@ -20,9 +20,10 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     <meta name="generator" content={Astro.generator} />
   </head>
+  <Navbar />
   <body>
-    <Navbar />
     <slot />
-    <Footer />
   </body>
+  <Footer />
+
 </html>
