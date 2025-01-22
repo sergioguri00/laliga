@@ -1,4 +1,4 @@
-export const countryCodes = {
+const countryCodes = {
     "Albania": "al",
     "Algeria": "dz",
     "Andorra": "ad",
@@ -68,4 +68,8 @@ export const countryCodes = {
     "United States": "us",
     "Uruguay": "uy",
     "Venezuela": "ve"
+}
+
+export function getCountryCode(country) {
+    return countryCodes[country];
 }

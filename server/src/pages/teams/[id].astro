@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { countryCodes } from "../../utils/countryCodes";
+import { getCountryCode } from "../../utils/countryCodes";
 import "../../styles/global.css";
 
 const { id } = Astro.params;
@@ -26,10 +26,7 @@ const resultsResponse = await fetch(
 const resultsData = await resultsResponse.json();
 
 const playersData = await fetch(`http://localhost:1234/teams/${id}/players`);
-const players: Array<{
-  country: keyof typeof countryCodes;
-  [key: string]: any;
-}> = await playersData.json();
+const players = await playersData.json();
 
 const tableResponse = await fetch("http://localhost:1234/leagues/1/table");
 const tableData = await tableResponse.json();
@@ -59,6 +56,19 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
   }
 
   return { props: { teamData } };
+}
+
+interface Player {
+  id: number;
+  name: string;
+  lastName: string;
+  knownAs: string;
+  number: number;
+  position: string;
+  country: string;
+  birthday: string;
+  height: number;
+  photo: string;
 }
 ---
 
@@ -191,7 +201,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
                   <p class="uppercase font-bold text-sm">manager</p>
                   <div class="flex flex-row items-center">
                     <img
-                      src={`/flags/${countryCodes[manager.country as keyof typeof countryCodes]}.svg`}
+                      src={`/flags/${getCountryCode(manager.country)}.svg`}
                       alt={manager.country}
                       class="mr-2 w-6 h-4"
                     />
@@ -229,7 +239,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
               class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
             >
               {
-                players.map((player) =>
+                players.map((player: Player) =>
                   player.position === "Goalkeeper" ? (
                     <div class="text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
                       <div
@@ -258,8 +268,8 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
                           </p>
                           <div class="flex flex-row items-center">
                             <img
-                              src={`/flags/${countryCodes[player.country as keyof typeof countryCodes]}.svg`}
-                              alt={player.country}
+                              src={`/flags/${getCountryCode(player.country)}.svg`}
+                              alt={String(player.country)}
                               class="mr-2 w-6 h-4"
                             />
                             <p class="text-center text-sm">{player.country}</p>
@@ -305,7 +315,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
               class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
             >
               {
-                players.map((player) =>
+                players.map((player: Player) =>
                   player.position === "Defender" ? (
                     <div class="text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
                       <div
@@ -334,8 +344,8 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
                           </p>
                           <div class="flex flex-row items-center">
                             <img
-                              src={`/flags/${countryCodes[player.country as keyof typeof countryCodes]}.svg`}
-                              alt={player.country}
+                              src={`/flags/${getCountryCode(player.country)}.svg`}
+                              alt={String(player.country)}
                               class="mr-2 w-6 h-4"
                             />
                             <p class="text-center text-sm">{player.country}</p>
@@ -383,7 +393,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
               class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
             >
               {
-                players.map((player) =>
+                players.map((player: Player) =>
                   player.position === "Midfielder" ? (
                     <div class="text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
                       <div
@@ -412,8 +422,8 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
                           </p>
                           <div class="flex flex-row items-center">
                             <img
-                              src={`/flags/${countryCodes[player.country as keyof typeof countryCodes]}.svg`}
-                              alt={player.country}
+                              src={`/flags/${getCountryCode(player.country)}.svg`}
+                              alt={String(player.country)}
                               class="mr-2 w-6 h-4"
                             />
                             <p class="text-center text-sm">{player.country}</p>
@@ -461,7 +471,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
               class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
             >
               {
-                players.map((player) =>
+                players.map((player: Player) =>
                   player.position === "Forward" ? (
                     <div class="text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
                       <div
@@ -490,8 +500,8 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
                           </p>
                           <div class="flex flex-row items-center">
                             <img
-                              src={`/flags/${countryCodes[player.country as keyof typeof countryCodes]}.svg`}
-                              alt={player.country}
+                              src={`/flags/${getCountryCode(player.country)}.svg`}
+                              alt={String(player.country)}
                               class="mr-2 w-6 h-4"
                             />
                             <p class="text-center text-sm">{player.country}</p>
@@ -605,31 +615,29 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
     const resultsSection = document.getElementById("resultsSection");
     const squad = document.getElementById("squad");
     const results = document.getElementById("results");
-    if (squadSection && resultsSection) {
-      if (tab === "results") {
-        squadSection.classList.add("hidden");
-        resultsSection.classList.remove("hidden");
-        if (squad && results) {
-          squad.classList.remove("border-[#ff4b44]");
-          squad.classList.remove("font-bold");
-          squad.classList.add("hover:text-[#ff4b44]");
-          results.classList.add("border-[#ff4b44]");
-          results.classList.add("font-bold");
-          results.classList.remove("hover:text-[#ff4b44]");
-          window.location.href = "#results";
-        }
-      } else {
-        squadSection.classList.remove("hidden");
-        resultsSection.classList.add("hidden");
-        if (squad && results) {
-          squad.classList.add("border-[#ff4b44]");
-          squad.classList.add("font-bold");
-          squad.classList.remove("hover:text-[#ff4b44]");
-          results.classList.remove("border-[#ff4b44]");
-          results.classList.remove("font-bold");
-          results.classList.add("hover:text-[#ff4b44]");
-          window.location.href = "#squad";
-        }
+    if (tab === "results") {
+      squadSection?.classList.add("hidden");
+      resultsSection?.classList.remove("hidden");
+      if (squad && results) {
+        squad.classList.remove("border-[#ff4b44]");
+        squad.classList.remove("font-bold");
+        squad.classList.add("hover:text-[#ff4b44]");
+        results.classList.add("border-[#ff4b44]");
+        results.classList.add("font-bold");
+        results.classList.remove("hover:text-[#ff4b44]");
+        window.location.href = "#results";
+      }
+    } else {
+      squadSection?.classList.remove("hidden");
+      resultsSection?.classList.add("hidden");
+      if (squad && results) {
+        squad.classList.add("border-[#ff4b44]");
+        squad.classList.add("font-bold");
+        squad.classList.remove("hover:text-[#ff4b44]");
+        results.classList.remove("border-[#ff4b44]");
+        results.classList.remove("font-bold");
+        results.classList.add("hover:text-[#ff4b44]");
+        window.location.href = "#squad";
       }
     }
   }

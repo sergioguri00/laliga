@@ -14,59 +14,46 @@ interface Team {
   mainColor: string;
   year: number;
 }
-
-interface Stadium {
-  id: number;
-  name: string;
-  photo: string;
-}
 ---
 
-<head>
-  <meta charset="UTF-8" />
-  <title>LaLiga Teams</title>
-</head>
-
-<body>
-  <Layout title="LaLiga Teams" description="Explore all the teams in LaLiga">
-    <Navbar />
-    <section
-      class="grid justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 py-3 px-10 mt-20"
-    >
-      {
-        teamsData.map((team: Team, stadium: Stadium) => (
-          <a
-            href={`/teams/${team.id}`}
-            class={`${team.mainColor === "#ffffff" ? "border-2 border-gray-200" : "border-0"} flex flex-col justify-center p-4 rounded-2xl w-full h-[22rem] hover:opacity-80 hover:scale-[0.98] transition`}
-            style={`background-color: ${team.mainColor}; background-image: url('images/background-teams-grid.png'); background-size: cover; background-position: center;`}
-          >
-            <div class="flex flex-col justify-center items-center">
-              <img
-                src={team.badge}
-                alt={team.shortName}
-                class="w-32 h-32 mx-auto"
-              />
-              <div
-                class="font-la-liga-font text-center"
-                style={`color: ${team.mainColor === "#ffffff" || team.mainColor === "#ffd301" ? "black" : "white"};`}
-              >
-                <h1 class="text-3xl uppercase">{team.shortName}</h1>
-                <div class="flex flex-row justify-center items-end">
-                  <p class="text-lg mr-1">EST.</p>
-                  <p class="text-2xl">{team.year}</p>
-                </div>
+<Layout title="LaLiga Teams" description="Explore all the teams in LaLiga">
+  <Navbar />
+  <section
+    class="grid justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 py-3 px-10 mt-20"
+  >
+    {
+      teamsData.map((team: Team) => (
+        <a
+          href={`/teams/${team.id}`}
+          class={`${team.mainColor === "#ffffff" ? "border-2 border-gray-200" : "border-0"} flex flex-col justify-center p-4 rounded-2xl w-full h-[22rem] hover:opacity-80 hover:scale-[0.98] transition`}
+          style={`background-color: ${team.mainColor}; background-image: url('images/background-teams-grid.png'); background-size: cover; background-position: center;`}
+        >
+          <div class="flex flex-col justify-center items-center">
+            <img
+              src={team.badge}
+              alt={team.shortName}
+              class="w-32 h-32 mx-auto"
+            />
+            <div
+              class="font-la-liga-font text-center"
+              style={`color: ${team.mainColor === "#ffffff" || team.mainColor === "#ffd301" ? "black" : "white"};`}
+            >
+              <h1 class="text-3xl uppercase">{team.shortName}</h1>
+              <div class="flex flex-row justify-center items-end">
+                <p class="text-lg mr-1">EST.</p>
+                <p class="text-2xl">{team.year}</p>
               </div>
             </div>
-            <div>
-              <img
-                src={stadiumData[team.id - 1].photo}
-                alt={stadiumData[team.id - 1].name}
-                class="w-48 mx-auto"
-              />
-            </div>
-          </a>
-        ))
-      }
-    </section>
-  </Layout>
-</body>
+          </div>
+          <div>
+            <img
+              src={stadiumData[team.id - 1].photo}
+              alt={stadiumData[team.id - 1].name}
+              class="w-48 mx-auto"
+            />
+          </div>
+        </a>
+      ))
+    }
+  </section>
+</Layout>
