@@ -1,7 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Navbar from "../../components/Navbar.astro";
-import Footer from "../../components/Footer.astro";
 import { countryCodes } from "../../utils/countryCodes";
 import "../../styles/global.css";
 
@@ -68,7 +66,6 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
   title=`LaLiga Teams | ${team.shortName}`
   description={`All information about ${team.name} team`}
 >
-  <Navbar />
   <div class="py-3 px-5 mt-20">
     {
       (
@@ -586,7 +583,6 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
       </div>
     </section>
   </div>
-  <Footer />
 </Layout>
 
 <script>

@@ -1,13 +1,19 @@
 ---
 const teamsResponse = await fetch("http://localhost:1234/teams");
 const teamsData = await teamsResponse.json();
+interface TeamBadge {
+  id: string;
+  name: string;
+  badge: string;
+}
 ---
 
 <footer
   class={`flex flex-row items-center sm:justify-between p-4 mt-10 w-full overflow-x-auto border-t-[1px] border-[#00001B]`}
+  style="background-color: white;"
 >
   {
-    teamsData.map((teambadge) => (
+    teamsData.map((teambadge: TeamBadge) => (
       <a
         href={`/teams/${teambadge.id}`}
         class="inline-block hover:scale-105 transition"
