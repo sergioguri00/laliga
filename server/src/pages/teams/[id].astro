@@ -74,7 +74,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
           style={`background: radial-gradient(circle, ${team.secondaryColor} 0%, ${team.mainColor} 50%)`}
         >
           <div
-            class={`text-center flex flex-col gap-4 ${team.mainColor === "#ffffff" || team.mainColor === "#ffd301" ? "text-[#00001B]" : "text-white"}`}
+            class={`text-center flex flex-col gap-4 ${team.mainColor === "#ffffff" || team.mainColor === "#ffd301" ? "text-mainblack" : "text-white"}`}
           >
             <div class="flex flex-col justify-between items-center font-la-liga-font">
               <h1 class="text-4xl font-medium text-center font-la-liga-font">
@@ -106,7 +106,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
             </a>
           </div>
           <div
-            class={`grid grid-rows-2 justify-center items-center ${team.mainColor === "#ffffff" || team.mainColor === "#ffd301" ? "text-[#00001B]" : "text-white"}`}
+            class={`grid grid-rows-2 justify-center items-center ${team.mainColor === "#ffffff" || team.mainColor === "#ffd301" ? "text-mainblack" : "text-white"}`}
           >
             <div class="text-center">
               <p class="text-2xl font-la-liga-font">{stadium.name}</p>
@@ -163,7 +163,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
       </h2>
       <div class="flex flex-col">
         <div>
-          <div class="border-b-[1px] border-[#00001B] w-full text-start">
+          <div class="border-b-[1px] border-mainblack w-full text-start">
             <p class="mt-4 font-la-liga-font text-2xl pb-2 uppercase">
               manager
             </p>
@@ -172,7 +172,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
             class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3 text-sm md:text-md xl:text-[16px]"
           >
             <div
-              class="text-start border-[1px] border-[#00001B] rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative mt-4"
+              class="text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative mt-4"
             >
               <div
                 class="absolute inset-0 bg-cover bg-center opacity-10"
@@ -182,7 +182,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
               <div class="flex flex-col justify-between relative z-10">
                 <div class="self-start">
                   <p
-                    class={`text-bold text-2xl font-la-liga-font text-[#00001B]`}
+                    class={`text-bold text-2xl font-la-liga-font text-mainblack`}
                   >
                     {`${manager.name} ${manager.lastName}`}
                   </p>
@@ -206,7 +206,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
                 style="align-self: center"
               />
               <div
-                class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-[#00001B]"
+                class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack"
               >
                 <div class="col-span-2 w-full">
                   <p class="text-center uppercase font-bold">birthday</p>
@@ -219,7 +219,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
           </div>
           <div>
             <div
-              class="border-b-[1px] border-[#00001B] w-full text-start mt-10"
+              class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
               <p class="uppercase font-la-liga-font text-2xl pb-2">
                 goalkeepers
@@ -231,7 +231,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
               {
                 players.map((player) =>
                   player.position === "Goalkeeper" ? (
-                    <div class="text-start border-[1px] border-[#00001B] rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
+                    <div class="text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
                       <div
                         class="absolute inset-0 bg-cover bg-center opacity-10"
                         style={`background-image: url('${team.badge}');`}
@@ -245,7 +245,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
                             {player.number}
                           </p>
                           <p
-                            class={`text-bold text-2xl font-la-liga-font text-[#00001B]`}
+                            class={`text-bold text-2xl font-la-liga-font text-mainblack`}
                           >
                             {player.knownAs !== null
                               ? player.knownAs
@@ -277,7 +277,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
                           class="w-full hover:opacity-80 hover:scale-[0.98] transition"
                         />
                       </a>
-                      <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-[#00001B]">
+                      <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
                             birthday
@@ -297,7 +297,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
               }
             </div>
             <div
-              class="border-b-[1px] border-[#00001B] w-full text-start mt-10"
+              class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
               <p class="uppercase font-la-liga-font text-2xl pb-2">defenders</p>
             </div>
@@ -307,7 +307,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
               {
                 players.map((player) =>
                   player.position === "Defender" ? (
-                    <div class="text-start border-[1px] border-[#00001B] rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
+                    <div class="text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
                       <div
                         class="absolute inset-0 bg-cover bg-center opacity-10"
                         style={`background-image: url('${team.badge}');`}
@@ -321,7 +321,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
                             {player.number}
                           </p>
                           <p
-                            class={`text-bold text-2xl font-la-liga-font text-[#00001B]`}
+                            class={`text-bold text-2xl font-la-liga-font text-mainblack`}
                           >
                             {player.knownAs !== null
                               ? player.knownAs
@@ -353,7 +353,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
                           class="w-full hover:opacity-80 hover:scale-[0.98] transition"
                         />
                       </a>
-                      <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-[#00001B]">
+                      <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
                             birthday
@@ -373,7 +373,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
               }
             </div>
             <div
-              class="border-b-[1px] border-[#00001B] w-full text-start mt-10"
+              class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
               <p class="uppercase font-la-liga-font text-2xl pb-2">
                 midfielders
@@ -385,7 +385,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
               {
                 players.map((player) =>
                   player.position === "Midfielder" ? (
-                    <div class="text-start border-[1px] border-[#00001B] rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
+                    <div class="text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
                       <div
                         class="absolute inset-0 bg-cover bg-center opacity-10"
                         style={`background-image: url('${team.badge}');`}
@@ -399,7 +399,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
                             {player.number}
                           </p>
                           <p
-                            class={`text-bold text-2xl font-la-liga-font text-[#00001B]`}
+                            class={`text-bold text-2xl font-la-liga-font text-mainblack`}
                           >
                             {player.knownAs !== null
                               ? player.knownAs
@@ -431,7 +431,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
                           class="w-full hover:opacity-80 hover:scale-[0.98] transition"
                         />
                       </a>
-                      <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-[#00001B]">
+                      <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
                             birthday
@@ -451,7 +451,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
               }
             </div>
             <div
-              class="border-b-[1px] border-[#00001B] w-full text-start mt-10"
+              class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
               <p class="uppercase font-la-liga-font text-2xl pb-2">
                 forwarders
@@ -463,7 +463,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
               {
                 players.map((player) =>
                   player.position === "Forward" ? (
-                    <div class="text-start border-[1px] border-[#00001B] rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
+                    <div class="text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
                       <div
                         class="absolute inset-0 bg-cover bg-center opacity-10"
                         style={`background-image: url('${team.badge}');`}
@@ -477,7 +477,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
                             {player.number}
                           </p>
                           <p
-                            class={`text-bold text-2xl font-la-liga-font text-[#00001B]`}
+                            class={`text-bold text-2xl font-la-liga-font text-mainblack`}
                           >
                             {player.knownAs !== null
                               ? player.knownAs
@@ -509,7 +509,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
                           class="w-full hover:opacity-80 hover:scale-[0.98] transition"
                         />
                       </a>
-                      <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-[#00001B]">
+                      <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
                             birthday
@@ -541,7 +541,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
         {
           resultsData.map((result: any) => (
             <div class="sm:mx-4 md:mx-10 lg:mx-20 xl:mx-40 py-2 flex flex-col gap-4 relative mt-4">
-              <h3 class="text-2xl text-bold uppercase font-la-liga-font border-b-[1px] border-[#00001B] pb-2 pl-2">
+              <h3 class="text-2xl text-bold uppercase font-la-liga-font border-b-[1px] border-mainblack pb-2 pl-2">
                 matchday {result.matchday_id}
               </h3>
               <div
