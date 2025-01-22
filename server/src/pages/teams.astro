@@ -6,6 +6,20 @@ const teamsResponse = await fetch("http://localhost:1234/teams");
 const teamsData = await teamsResponse.json();
 const stadiumsResponse = await fetch("http://localhost:1234/stadiums");
 const stadiumData = await stadiumsResponse.json();
+
+interface Team {
+  id: number;
+  shortName: string;
+  badge: string;
+  mainColor: string;
+  year: number;
+}
+
+interface Stadium {
+  id: number;
+  name: string;
+  photo: string;
+}
 ---
 
 <head>
@@ -14,7 +28,7 @@ const stadiumData = await stadiumsResponse.json();
 </head>
 
 <body>
-  <Layout>
+  <Layout title="LaLiga Teams" description="Explore all the teams in LaLiga">
     <Navbar />
     <section
       class="grid justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 py-3 px-10 mt-20"
