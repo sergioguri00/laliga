@@ -79,8 +79,8 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
 ---
 
 <Layout
-  title=`LaLiga Teams | ${team.shortName}`
-  description={`All information about ${team.name}`}
+  title=`Equipos LaLiga | ${team.shortName}`
+  description={`Toda la información sobre ${team.name}`}
 >
   <div class="py-3 px-5 mt-20">
     {
@@ -175,7 +175,7 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
 
     <section id="squadSection" class="p-4 xl:p-10 hidden">
       <h2 class="text-3xl text-bold uppercase font-la-liga-font">
-        plantilla del {team.shortName}
+        plantilla {team.shortName}
       </h2>
       <div class="flex flex-col">
         <div>
@@ -543,7 +543,7 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
 
     <section id="resultsSection" class="p-10 hidden">
       <h2 class="text-3xl text-bold uppercase font-la-liga-font">
-        resultados del {team.shortName}
+        resultados {team.shortName}
       </h2>
       <div class="flex flex-col">
         {
