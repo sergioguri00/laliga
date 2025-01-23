@@ -1,7 +1,7 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
-import "../styles/global.css";
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import "../../styles/global.css";
 const teamsResponse = await fetch("http://localhost:1234/teams");
 const teamsData = await teamsResponse.json();
 const stadiumsResponse = await fetch("http://localhost:1234/stadiums");
@@ -14,6 +14,12 @@ interface Team {
   mainColor: string;
   year: number;
 }
+
+const currentLang = Astro.currentLocale || "es";
+
+function getRelativeLocaleUrl(locale: string, path: string): string {
+  return `/${locale}${path}`;
+}
 ---
 
 <Layout title="LaLiga Teams" description="Explore all the teams in LaLiga">
@@ -24,9 +30,9 @@ interface Team {
     {
       teamsData.map((team: Team) => (
         <a
-          href={`/teams/${team.id}`}
+          href={getRelativeLocaleUrl(currentLang, `/teams/${team.id}`)}
           class={`${team.mainColor === "#ffffff" ? "border-2 border-gray-200" : "border-0"} flex flex-col justify-center p-4 rounded-2xl w-full h-[22rem] hover:opacity-80 hover:scale-[0.98] transition`}
-          style={`background-color: ${team.mainColor}; background-image: url('images/background-teams-grid.png'); background-size: cover; background-position: center;`}
+          style={`background-color: ${team.mainColor}; background-image: url('/images/background-teams-grid.png'); background-size: cover; background-position: center;`}
         >
           <div class="flex flex-col justify-center items-center">
             <img

@@ -1,0 +1,91 @@
+---
+const { lang } = Astro.props;
+---
+
+<div
+  class="relative inline-block justify-self-end mr-2 sm:mr-5"
+  id="language-selector"
+>
+  <button
+    class="rounded-2xl p-2 flex items-center gap-2 cursor-pointer flag-button"
+    id="selected-language"
+  >
+    {
+      lang === "en" ? (
+          <img src="/flags/uk.svg" class="w-5 h-4 object-cover" />
+          <span class="hidden sm:block">English</span>
+      ) : (
+          <img src="/flags/es.svg" class="w-5 h-4 object-cover" />
+          <span class="hidden sm:block">Español</span>
+      )
+    }
+  </button>
+  <ul
+    class="hidden absolute t-full rounded-2xl list-none right-0 m-0 p-4 w-40 z-[60] text-white"
+    style={`background-color: #00001B`}
+    id="language-dropdown"
+  >
+    <li
+      data-lang="en"
+      class="w-5 h-4 flex items-center gap-2 cursor-pointer hover:scale-105 transition"
+      id="en-option"
+    >
+      <img src="/flags/uk.svg" class="w-5 h-4 object-cover" />
+      <span>English</span>
+    </li>
+    <li
+      data-lang="es"
+      class="w-5 h-4 flex items-center gap-2 cursor-pointer hover:scale-105 transition mt-4"
+      id="es-option"
+    >
+      <img src="/flags/es.svg" class="w-5 h-4 object-cover" />
+      <span>Español</span>
+    </li>
+  </ul>
+</div>
+<script>
+  const selectedLanguage = document.getElementById("selected-language");
+  const languageDropdown = document.getElementById("language-dropdown");
+  const enOption = document.getElementById("en-option");
+  const esOption = document.getElementById("es-option");
+
+  selectedLanguage?.addEventListener("click", () => {
+    if (languageDropdown?.classList.contains("hidden")) {
+      languageDropdown?.classList.remove("hidden");
+      languageDropdown?.classList.add("block");
+    } else {
+      languageDropdown?.classList.remove("block");
+      languageDropdown?.classList.add("hidden");
+    }
+  });
+
+  enOption?.addEventListener("click", () => languageOptionClick(enOption));
+
+  esOption?.addEventListener("click", () => languageOptionClick(esOption));
+
+  document.addEventListener("click", (event) => {
+    if (
+      !document
+        .getElementById("language-selector")
+        ?.contains(event.target as Node)
+    ) {
+      languageDropdown?.classList.remove("block");
+      languageDropdown?.classList.add("hidden");
+    }
+  });
+
+  function languageOptionClick(option: HTMLElement) {
+    const img = option.querySelector("img")?.src;
+    const text = option.querySelector("span")?.textContent;
+    const chnode = selectedLanguage?.childNodes[3] as Node;
+
+    if (img) selectedLanguage!.querySelector("img")!.src = img?.toString();
+    chnode.textContent = `${text}`;
+
+    let link = window.location.href.toString().split("/");
+    if (option.dataset.lang) {
+      link[3] = option.dataset.lang;
+    }
+    window.location.href = link.join("/");
+  }
+</script>

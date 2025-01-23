@@ -1,7 +1,19 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 import "../styles/global.css";
+import LanguageSelector from "./LanguageSelector.astro";
+const pageTranslations = {
+  teams: "equipos",
+};
+
 const page = Astro.request.url.toString().split("/");
-const pageId = page[3];
+const pageId =
+  page[3] !== "en"
+    ? pageTranslations[page[4] as keyof typeof pageTranslations]
+    : page[4];
+
+const currentLang = Astro.currentLocale || "es";
+console.log(currentLang);
 ---
 
 <header
@@ -25,9 +37,9 @@ const pageId = page[3];
       </svg>
     </a>
     {
-      page.length > 4 ? (
+      page.length > 5 ? (
         <a
-          href={`/${pageId}`}
+          href={getRelativeLocaleUrl(currentLang, `/${page[4]}`)}
           class="font-la-liga-font text-2xl sm:text-3xl flex items-center justify-center text-mainblack hover:scale-105 transition"
         >
           <span class="uppercase">{pageId}</span>
@@ -38,93 +50,6 @@ const pageId = page[3];
         </div>
       )
     }
-    <div
-      class="relative inline-block justify-self-end mr-2 sm:mr-5"
-      id="language-selector"
-    >
-      <button
-        class="rounded-2xl p-2 flex items-center gap-2 cursor-pointer flag-button"
-        id="selected-language"
-      >
-        <img src="/flags/uk.svg" class="w-5 h-4 object-cover" />
-        <span class="hidden sm:block">English</span>
-      </button>
-      <ul
-        class="hidden absolute t-full rounded-2xl list-none right-0 m-0 p-4 w-40 z-[60] text-white"
-        style={`background-color: #00001B`}
-        id="language-dropdown"
-      >
-        <li
-          data-lang="en"
-          class="w-5 h-4 flex items-center gap-2 cursor-pointer hover:scale-105 transition"
-          id="en-option"
-        >
-          <img src="/flags/uk.svg" class="w-5 h-4 object-cover" />
-          <span>English</span>
-        </li>
-        <li
-          data-lang="es"
-          class="w-5 h-4 flex items-center gap-2 cursor-pointer hover:scale-105 transition mt-4"
-          id="es-option"
-        >
-          <img src="/flags/es.svg" class="w-5 h-4 object-cover" /><span
-            >Español</span
-          >
-        </li>
-      </ul>
-    </div>
-    <script>
-      const selectedLanguage = document.getElementById("selected-language");
-      const languageDropdown = document.getElementById("language-dropdown");
-      const enOption = document.getElementById("en-option");
-      const esOption = document.getElementById("es-option");
-
-      selectedLanguage?.addEventListener("click", () => {
-        if (languageDropdown?.classList.contains("hidden")) {
-          languageDropdown?.classList.remove("hidden");
-          languageDropdown?.classList.add("block");
-        } else {
-          languageDropdown?.classList.remove("block");
-          languageDropdown?.classList.add("hidden");
-        }
-      });
-
-      enOption?.addEventListener("click", () => {
-        const enImg = enOption?.querySelector("img")?.src;
-        const enText = enOption?.querySelector("span")?.textContent;
-        const enQueryImg = selectedLanguage?.querySelector("img");
-        const enChnode = selectedLanguage?.childNodes[4] as Node;
-
-        enQueryImg.src = enImg;
-        enChnode.nodeValue = ` ${enText}`;
-
-        languageDropdown?.classList.remove("block");
-        languageDropdown?.classList.add("hidden");
-      });
-
-      esOption?.addEventListener("click", () => {
-        const esImg = esOption?.querySelector("img")?.src;
-        const esText = esOption?.querySelector("span")?.textContent;
-        const esQueryImg = selectedLanguage?.querySelector("img");
-        const esChnode = selectedLanguage?.childNodes[4] as Node;
-
-        esQueryImg.src = esImg;
-        esChnode.nodeValue = `${esText}`;
-
-        languageDropdown?.classList.remove("block");
-        languageDropdown?.classList.add("hidden");
-      });
-
-      document.addEventListener("click", (event) => {
-        if (
-          !document
-            .getElementById("language-selector")
-            ?.contains(event.target as Node)
-        ) {
-          languageDropdown?.classList.remove("block");
-          languageDropdown?.classList.add("hidden");
-        }
-      });
-    </script>
+    <LanguageSelector lang={page[3]} />
   </nav>
 </header>

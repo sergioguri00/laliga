@@ -1,4 +1,5 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 import "../styles/global.css";
 const teamsResponse = await fetch("http://localhost:1234/teams");
 const teamsData = await teamsResponse.json();
@@ -7,6 +8,7 @@ interface TeamBadge {
   name: string;
   badge: string;
 }
+const currentLang = Astro.currentLocale || "es";
 ---
 
 <footer class="flex flex-col justify-center items-center w-full">
@@ -17,7 +19,7 @@ interface TeamBadge {
     {
       teamsData.map((teambadge: TeamBadge) => (
         <a
-          href={`/teams/${teambadge.id}`}
+          href={getRelativeLocaleUrl(currentLang, `/teams/${teambadge.id}`)}
           class="inline-block hover:scale-105 transition"
         >
           <img

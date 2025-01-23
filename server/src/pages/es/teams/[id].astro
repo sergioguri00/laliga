@@ -1,7 +1,7 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import { getCountryCode } from "../../utils/countryCodes";
-import "../../styles/global.css";
+import Layout from "../../../layouts/Layout.astro";
+import { getCountryCode } from "../../../utils/countryCodes";
+import "../../../styles/global.css";
 
 const { id } = Astro.params;
 const teamResponse = await fetch(`http://localhost:1234/teams/${id}`);
@@ -70,17 +70,23 @@ interface Player {
   height: number;
   photo: string;
 }
+
+const currentLang = Astro.currentLocale || "es";
+
+function getRelativeLocaleUrl(locale: string, path: string): string {
+  return `/${locale}${path}`;
+}
 ---
 
 <Layout
   title=`LaLiga Teams | ${team.shortName}`
-  description={`All information about ${team.name} team`}
+  description={`All information about ${team.name}`}
 >
   <div class="py-3 px-5 mt-20">
     {
       (
         <div
-          class={`w-full h-auto grid grid-cols-1 sm:h-72 sm:grid-cols-3 grid-rows-3 sm:grid-rows-1 items-center gap-4 rounded-3xl p-8 shadow-zinc-500 shadow-lg`}
+          class={`w-full h-auto grid grid-cols-1 sm:h-96 sm:grid-cols-3 grid-rows-3 sm:grid-rows-1 items-center gap-4 rounded-3xl p-8 shadow-zinc-500 shadow-lg`}
           style={`background: radial-gradient(circle, ${team.secondaryColor} 0%, ${team.mainColor} 50%)`}
         >
           <div
@@ -96,7 +102,7 @@ interface Player {
               </div>
             </div>
             <div>
-              <p class="font-bold uppercase">president</p>
+              <p class="font-bold uppercase">presidente</p>
               <p>{team.president}</p>
             </div>
             <div>
@@ -126,7 +132,7 @@ interface Player {
                   <p>{stadium.year}</p>
                 </div>
                 <div>
-                  <p class="font-bold uppercase">capacity</p>
+                  <p class="font-bold uppercase">capacidad</p>
                   <p>{stadium.capacity}</p>
                 </div>
               </div>
@@ -155,27 +161,27 @@ interface Player {
     <nav class="flex flex-row w-full justify-around px-5">
       <div
         id="squad"
-        class={"cursor-pointer text-xl hover:border-[#ff4b44] transition border-b-4 border-[#ff4b44] font-bold section w-24 text-center uppercase"}
+        class={"cursor-pointer text-xl hover:border-[#ff4b44] transition border-b-4 border-[#ff4b44] font-bold section w-32 text-center uppercase"}
       >
-        squad
+        plantilla
       </div>
       <div
         id="results"
-        class="cursor-pointer text-xl hover:text-[#ff4b44] hover:border-[#ff4b44] transition border-b-4 section w-24 text-center uppercase"
+        class="cursor-pointer text-xl hover:text-[#ff4b44] hover:border-[#ff4b44] transition border-b-4 section w-36 text-center uppercase"
       >
-        results
+        resultados
       </div>
     </nav>
 
     <section id="squadSection" class="p-4 xl:p-10 hidden">
       <h2 class="text-3xl text-bold uppercase font-la-liga-font">
-        {team.shortName} squad
+        plantilla del {team.shortName}
       </h2>
       <div class="flex flex-col">
         <div>
           <div class="border-b-[1px] border-mainblack w-full text-start">
             <p class="mt-4 font-la-liga-font text-2xl pb-2 uppercase">
-              manager
+              entrenador
             </p>
           </div>
           <div
@@ -198,7 +204,7 @@ interface Player {
                   </p>
                 </div>
                 <div class="flex flex-col">
-                  <p class="uppercase font-bold text-sm">manager</p>
+                  <p class="uppercase font-bold text-sm">entrenador</p>
                   <div class="flex flex-row items-center">
                     <img
                       src={`/flags/${getCountryCode(manager.country)}.svg`}
@@ -219,7 +225,7 @@ interface Player {
                 class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack"
               >
                 <div class="col-span-2 w-full">
-                  <p class="text-center uppercase font-bold">birthday</p>
+                  <p class="text-center uppercase font-bold">cumpleaños</p>
                   <p class="text-center">
                     {manager.birthday.toString().split("T")[0]}
                   </p>
@@ -231,9 +237,7 @@ interface Player {
             <div
               class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
-              <p class="uppercase font-la-liga-font text-2xl pb-2">
-                goalkeepers
-              </p>
+              <p class="uppercase font-la-liga-font text-2xl pb-2">porteros</p>
             </div>
             <div
               class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
@@ -263,9 +267,7 @@ interface Player {
                           </p>
                         </div>
                         <div class="flex flex-col">
-                          <p class="uppercase font-bold text-sm">
-                            {player.position}
-                          </p>
+                          <p class="uppercase font-bold text-sm">portero</p>
                           <div class="flex flex-row items-center">
                             <img
                               src={`/flags/${getCountryCode(player.country)}.svg`}
@@ -290,14 +292,14 @@ interface Player {
                       <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
-                            birthday
+                            cumpleaños
                           </p>
                           <p class="text-center">
                             {player.birthday.toString().split("T")[0]}
                           </p>
                         </div>
                         <div>
-                          <p class="text-center uppercase font-bold">height</p>
+                          <p class="text-center uppercase font-bold">altura</p>
                           <p class="text-center">{player.height} cm</p>
                         </div>
                       </div>
@@ -309,7 +311,7 @@ interface Player {
             <div
               class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
-              <p class="uppercase font-la-liga-font text-2xl pb-2">defenders</p>
+              <p class="uppercase font-la-liga-font text-2xl pb-2">defensas</p>
             </div>
             <div
               class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
@@ -339,9 +341,7 @@ interface Player {
                           </p>
                         </div>
                         <div class="flex flex-col">
-                          <p class="uppercase font-bold text-sm">
-                            {player.position}
-                          </p>
+                          <p class="uppercase font-bold text-sm">defensa</p>
                           <div class="flex flex-row items-center">
                             <img
                               src={`/flags/${getCountryCode(player.country)}.svg`}
@@ -366,14 +366,14 @@ interface Player {
                       <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
-                            birthday
+                            cumpleaños
                           </p>
                           <p class="text-center">
                             {player.birthday.toString().split("T")[0]}
                           </p>
                         </div>
                         <div>
-                          <p class="text-center uppercase font-bold">height</p>
+                          <p class="text-center uppercase font-bold">altura</p>
                           <p class="text-center">{player.height} cm</p>
                         </div>
                       </div>
@@ -386,7 +386,7 @@ interface Player {
               class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
               <p class="uppercase font-la-liga-font text-2xl pb-2">
-                midfielders
+                centrocampistas
               </p>
             </div>
             <div
@@ -418,7 +418,7 @@ interface Player {
                         </div>
                         <div class="flex flex-col">
                           <p class="uppercase font-bold text-sm">
-                            {player.position}
+                            centrocampista
                           </p>
                           <div class="flex flex-row items-center">
                             <img
@@ -444,14 +444,14 @@ interface Player {
                       <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
-                            birthday
+                            cumpleaños
                           </p>
                           <p class="text-center">
                             {player.birthday.toString().split("T")[0]}
                           </p>
                         </div>
                         <div>
-                          <p class="text-center uppercase font-bold">height</p>
+                          <p class="text-center uppercase font-bold">altura</p>
                           <p class="text-center">{player.height} cm</p>
                         </div>
                       </div>
@@ -464,7 +464,7 @@ interface Player {
               class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
               <p class="uppercase font-la-liga-font text-2xl pb-2">
-                forwarders
+                delanteros
               </p>
             </div>
             <div
@@ -495,9 +495,7 @@ interface Player {
                           </p>
                         </div>
                         <div class="flex flex-col">
-                          <p class="uppercase font-bold text-sm">
-                            {player.position}
-                          </p>
+                          <p class="uppercase font-bold text-sm">delantero</p>
                           <div class="flex flex-row items-center">
                             <img
                               src={`/flags/${getCountryCode(player.country)}.svg`}
@@ -522,14 +520,14 @@ interface Player {
                       <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
-                            birthday
+                            cumpleaños
                           </p>
                           <p class="text-center">
                             {player.birthday.toString().split("T")[0]}
                           </p>
                         </div>
                         <div>
-                          <p class="text-center uppercase font-bold">height</p>
+                          <p class="text-center uppercase font-bold">altura</p>
                           <p class="text-center">{player.height} cm</p>
                         </div>
                       </div>
@@ -545,14 +543,14 @@ interface Player {
 
     <section id="resultsSection" class="p-10 hidden">
       <h2 class="text-3xl text-bold uppercase font-la-liga-font">
-        {team.shortName} results
+        resultados del {team.shortName}
       </h2>
       <div class="flex flex-col">
         {
           resultsData.map((result: any) => (
             <div class="sm:mx-4 md:mx-10 lg:mx-20 xl:mx-40 py-2 flex flex-col gap-4 relative mt-4">
               <h3 class="text-2xl text-bold uppercase font-la-liga-font border-b-[1px] border-mainblack pb-2 pl-2">
-                matchday {result.matchday_id}
+                jornada {result.matchday_id}
               </h3>
               <div
                 class="grid place-items-center items-center align-middle font-la-liga-font text-sm md:text-xl gap-2 md:gap-10"
@@ -565,7 +563,10 @@ interface Player {
                   <p>{result.matchdate.toString().split("T")[1].slice(0, 5)}</p>
                 </div>
                 <a
-                  href={`/teams/${result.localTeamId}`}
+                  href={getRelativeLocaleUrl(
+                    currentLang,
+                    `/teams/${result.localTeamId}`
+                  )}
                   class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-[#ff4b44] transition"
                 >
                   <img src={result.localTeamBadge} class="h-10" />
@@ -575,7 +576,10 @@ interface Player {
                   {result.localTeamGoals} - {result.awayTeamGoals}
                 </p>
                 <a
-                  href={`/teams/${result.awayTeamId}`}
+                  href={getRelativeLocaleUrl(
+                    currentLang,
+                    `/teams/${result.awayTeamId}`
+                  )}
                   class="flex-row flex items-center justify-self-start hover:scale-105 hover:text-[#ff4b44] transition"
                 >
                   <img src={result.awayTeamBadge} class="h-10" />
@@ -583,7 +587,7 @@ interface Player {
                 </a>
                 <a href="">
                   <button class="p-2 rounded-lg hover:scale-105 text-sm transition match-button uppercase">
-                    view stats
+                    ver partido
                   </button>
                 </a>
               </div>
