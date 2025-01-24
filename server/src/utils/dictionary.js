@@ -18,7 +18,21 @@ const dictionary = {
     forwards: 'forwards',
     forward: 'forward',
     matchday: 'matchday',
-    viewMatch: 'view match'
+    viewMatch: 'view match',
+    leagueTable: 'league table',
+    team: 'team',
+    mp: 'mp',
+    mw: 'mw',
+    md: 'md',
+    ml: 'ml',
+    gf: 'gf',
+    ga: 'ga',
+    gd: 'gd',
+    lastMatchday: 'last matchday',
+    exploreTeams: 'explore laliga teams',
+    about: 'about',
+    aboutWebsite: 'about this website',
+    teams: 'teams'
   },
   es: {
     president: 'presidente',
@@ -39,7 +53,21 @@ const dictionary = {
     forwards: 'delanteros',
     forward: 'delantero',
     matchday: 'jornada',
-    viewMatch: 'ver partido'
+    viewMatch: 'ver partido',
+    leagueTable: 'clasificación',
+    team: 'equipo',
+    mp: 'pj',
+    mw: 'pg',
+    md: 'pe',
+    ml: 'pp',
+    gf: 'gf',
+    ga: 'gc',
+    gd: 'dg',
+    lastMatchday: 'última jornada',
+    exploreTeams: 'ver equipos de laliga',
+    about: 'acerca de',
+    aboutWebsite: 'acerca de esta web',
+    teams: 'equipos'
   }
 }
 

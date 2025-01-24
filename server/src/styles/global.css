@@ -84,3 +84,44 @@ body {
   --tw-scale-y: 1.05;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+
+.leagueTable {
+  color: #00001B;
+
+  tr:first-child {
+    border-bottom: 1px solid #00001B;
+  }
+
+  th {
+    padding: 0px 10px
+  }
+
+  td {
+    text-align: center;
+    margin: 0 10;
+  }
+}
+
+.results-grid {
+  grid-template-columns: 5.5rem 1fr 40px 1fr 60px;
+}
+
+@media (min-width: 768px) {
+  .results-grid {
+    grid-template-columns: 8rem 1fr 40px 1fr 85px;
+  }
+}
+
+.about-button {
+  border-radius: 9999px;
+  padding: 10px;
+}
+
+.about-button:hover {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}

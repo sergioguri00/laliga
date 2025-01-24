@@ -66,7 +66,7 @@ export class TeamModel {
     const [team] = await this.getById(id)
     if (!team) return null
 
-    const [matches] = await connection.execute('SELECT matchdate, localTeam_id, awayTeam_id, matchday_id FROM `match` WHERE localTeam_id = ? OR awayTeam_id = ? ORDER BY matchday_id', [id, id])
+    const [matches] = await connection.execute('SELECT matchdate, localTeam_id, awayTeam_id, matchday_id FROM `match` WHERE localTeam_id = ? OR awayTeam_id = ? ORDER BY matchday_id DESC', [id, id])
     const results = []
     for (const match of matches) {
       const [localTeam] = await connection.execute('SELECT badge,shortName FROM team WHERE id = ?', [match.localTeam_id])

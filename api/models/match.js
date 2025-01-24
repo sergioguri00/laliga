@@ -69,16 +69,17 @@ export class MatchModel {
       matchdate,
       localTeam,
       awayTeam,
-      matchday
+      matchday,
+      leagueId
     } = input
     const [local] = await connection.execute(`SELECT * FROM team WHERE LOWER(name) LIKE '%${localTeam.toLowerCase()}%' LIMIT 1;`)
     const [away] = await connection.execute(`SELECT * FROM team WHERE LOWER(name) LIKE '%${awayTeam.toLowerCase()}%' LIMIT 1;`)
     try {
       await connection.query(
-        'INSERT INTO `match`(matchdate, localTeam_id, awayTeam_id, stadium_id, matchday_id) VALUES (?, ?, ?, ?, ?)',
-        [matchdate, local[0].id, away[0].id, local[0].id, matchday]
+        'INSERT INTO `match`(matchdate, localTeam_id, awayTeam_id, stadium_id, matchday_id, league_id) VALUES (?, ?, ?, ?, ?, ?)',
+        [matchdate, local[0].id, away[0].id, local[0].id, matchday, leagueId]
       )
-      const [newMatch] = await this.getMatch(matchdate, local[0].id, away[0].id, local[0].id, matchday)
+      const [newMatch] = await this.getMatch(matchdate, local[0].id, away[0].id, local[0].id, matchday, leagueId)
       return newMatch
     } catch (error) {
       console.error('Error creating match', error)

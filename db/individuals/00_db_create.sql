@@ -46,11 +46,13 @@ create table `match` (
 	awayTeam_id int not null,
 	stadium_id int not null,
 	matchday_id int not null,
+	league_id int not null,
 	foreign key (matchday_id) references matchday(matchday),
 	foreign key (localTeam_id) references team(id),
 	foreign key (awayTeam_id) references team(id),
 	foreign key (stadium_id) references stadium(id),
-	primary key (matchday_id,matchdate,localTeam_id,awayTeam_id,stadium_id)
+	foreign key (league_id) references league(id),
+	primary key (league_id,matchday_id,matchdate,localTeam_id,awayTeam_id,stadium_id)
 );
 
 CREATE INDEX idx_matchdate ON `match` (matchdate);

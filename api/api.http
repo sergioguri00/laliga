@@ -83,11 +83,12 @@ POST http://localhost:1234/matches
 Content-Type: application/json
 
 {
-    "matchdate": "2025-01-03",
-    "localTeam": "valencia",
-    "awayTeam": "real madrid",
+    "matchdate": "2025-01-12 21:00:00",
+    "localTeam": "sociedad",
+    "awayTeam": "villarreal",
     "stadium": 10,
-    "matchday": 12
+    "matchday": 19,
+    "leagueId": 1
 }
 
 ### GET leagues

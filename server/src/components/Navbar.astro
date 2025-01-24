@@ -2,15 +2,10 @@
 import { getRelativeLocaleUrl } from "astro:i18n";
 import "../styles/global.css";
 import LanguageSelector from "./LanguageSelector.astro";
-const pageTranslations = {
-  teams: "equipos",
-};
+import { translator } from "../utils/dictionary.js";
 
 const page = Astro.request.url.toString().split("/");
-const pageId =
-  page[3] !== "en"
-    ? pageTranslations[page[4] as keyof typeof pageTranslations]
-    : page[4];
+const pageId = page[4] !== "" ? translator(page[3], page[4]) : "";
 
 const currentLang = Astro.currentLocale || "es";
 ---
@@ -36,7 +31,7 @@ const currentLang = Astro.currentLocale || "es";
       </svg>
     </a>
     {
-      page.length > 5 ? (
+      page.length > 6 ? (
         <a
           href={getRelativeLocaleUrl(currentLang, `/${page[4]}`)}
           class="font-la-liga-font text-2xl sm:text-3xl flex items-center justify-center text-mainblack hover:scale-105 transition"

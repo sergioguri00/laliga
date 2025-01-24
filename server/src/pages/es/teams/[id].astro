@@ -106,7 +106,7 @@ const currentLang = Astro.currentLocale || "es";
             <div>
               <p class="font-la-liga-font text-2xl">{`POS. ${teamPosition}`}</p>
               <p class="font-la-liga-font text-2xl">{`${teamStats.points} pts`}</p>
-              <p class="font-la-liga-font text-2xl">{`${teamStats.wins} W | ${teamStats.draws} D | ${teamStats.losses} L`}</p>
+              <p class="font-la-liga-font text-2xl">{`${teamStats.wins} V | ${teamStats.draws} E | ${teamStats.losses} D`}</p>
             </div>
           </div>
           <div>
@@ -563,7 +563,7 @@ const currentLang = Astro.currentLocale || "es";
       </div>
     </section>
 
-    <section id="resultsSection" class="p-10 hidden">
+    <section id="resultsSection" class="p-8 sm:p-10 hidden">
       <h2 class="text-3xl text-bold uppercase font-la-liga-font">
         {`${team.shortName} ${translator("es", "resultsSection")}`}
       </h2>
@@ -574,10 +574,7 @@ const currentLang = Astro.currentLocale || "es";
               <h3 class="text-2xl text-bold uppercase font-la-liga-font border-b-[1px] border-mainblack pb-2 pl-2">
                 {`${translator("es", "matchday")} ${result.matchday_id}`}
               </h3>
-              <div
-                class="grid place-items-center items-center align-middle font-la-liga-font text-sm md:text-xl gap-2 md:gap-10"
-                style="grid-template-columns: 1fr 1fr 40px 1fr 85px;"
-              >
+              <div class="grid place-items-center items-center align-middle font-la-liga-font text-sm md:text-xl sm:mx-4 gap-2 md:gap-10 results-grid">
                 <div class="flex flex-col sm:flex-row sm:gap-2 text-xl justify-self-end text-center">
                   <p>
                     {`${result.matchdate.toString().split("T")[0].split("-")[2]}/${result.matchdate.toString().split("T")[0].split("-")[1]}/${result.matchdate.toString().split("T")[0].split("-")[0]}`}
@@ -594,8 +591,8 @@ const currentLang = Astro.currentLocale || "es";
                   <img src={result.localTeamBadge} class="h-10" />
                   <p class="text-xl hidden xl:block">{result.localTeamName}</p>
                 </a>
-                <p class="font-la-liga-font text-2xl">
-                  {result.localTeamGoals} - {result.awayTeamGoals}
+                <p class="font-la-liga-font text-2xl text-[#ff4b44]">
+                  {result.localTeamGoals}-{result.awayTeamGoals}
                 </p>
                 <a
                   href={getRelativeLocaleUrl(

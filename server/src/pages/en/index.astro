@@ -1,11 +1,154 @@
 ---
-import Welcome from "../../components/Welcome.astro";
 import Layout from "../../layouts/Layout.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { translator } from "../../utils/dictionary.js";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const tableResponse = await fetch("http://localhost:1234/leagues/1/table");
+const tableData = await tableResponse.json();
+
+const lastMatchdayResponse = await fetch(
+  "http://localhost:1234/leagues/1/lastMatchday"
+);
+const lastMatchdayData = await lastMatchdayResponse.json();
+
+interface Team {
+  team_id: number;
+  shortName: string;
+  points: number;
+  matches_played: number;
+  wins: number;
+  draws: number;
+  losses: number;
+  goals_scored: number;
+  goals_conceded: number;
+  goalDifference: number;
+  badge: string;
+}
+
+const currentLang = Astro.currentLocale || "es";
 ---
 
 <Layout title="Home" description="Welcome to Astro!">
-  <Welcome />
+  <div class="p-16 flex flex-row h-full mt-20 w-full">
+    <div>
+      <h1 class="font-la-liga-font text-3xl">
+        {translator("en", "leagueTable")}
+      </h1>
+      <table class="font-la-liga-font leagueTable mt-4">
+        <tr>
+          <th>pos</th>
+          <th>{translator("en", "team")}</th>
+          <th>pts</th>
+          <th>{translator("en", "mp")}</th>
+          <th>{translator("en", "mw")}</th>
+          <th>{translator("en", "md")}</th>
+          <th>{translator("en", "ml")}</th>
+          <th>{translator("en", "gf")}</th>
+          <th>{translator("en", "ga")}</th>
+          <th>{translator("en", "gd")}</th>
+          {
+            tableData.map((team: Team, index: number) => (
+              <tr>
+                <td>{index + 1}</td>
+                <td class="flex flex-row items-center">
+                  <a
+                    href={getRelativeLocaleUrl(
+                      currentLang,
+                      `/teams/${team.team_id}`
+                    )}
+                    class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-[#ff4b44] transition"
+                  >
+                    <img src={team.badge} class="w-8 h-8 mt-1" />
+                    {team.shortName}
+                  </a>
+                </td>
+                <td>{team.points}</td>
+                <td>{team.matches_played}</td>
+                <td>{team.wins}</td>
+                <td>{team.draws}</td>
+                <td>{team.losses}</td>
+                <td>{team.goals_scored}</td>
+                <td>{team.goals_conceded}</td>
+                <td>
+                  {team.goalDifference > 0
+                    ? `+${team.goalDifference}`
+                    : team.goalDifference}
+                </td>
+              </tr>
+            ))
+          }
+        </tr>
+      </table>
+    </div>
+    <div>
+      <div class="flex flex-col">
+        <h1 class="font-la-liga-font text-3xl">
+          {translator("en", "lastMatchday")}
+        </h1>
+        {
+          lastMatchdayData.map((result: any) => (
+            <div class="mx-1 py-0 flex flex-col gap-4 relative mt-4">
+              <div
+                class="grid place-items-center items-center align-middle font-la-liga-font text-sm md:text-md gap-2 md:gap-4"
+                style="grid-template-columns: 1fr 1fr 40px 1fr 85px;"
+              >
+                <div class="flex flex-col sm:flex-row sm:gap-2 text-lg justify-self-end text-center">
+                  <p>
+                    {`${result.matchdate.toString().split("T")[0].split("-")[2]}/${result.matchdate.toString().split("T")[0].split("-")[1]}/${result.matchdate.toString().split("T")[0].split("-")[0]}`}
+                  </p>
+                  <p>{result.matchdate.toString().split("T")[1].slice(0, 5)}</p>
+                </div>
+                <a
+                  href={getRelativeLocaleUrl(
+                    currentLang,
+                    `/teams/${result.localTeamId}`
+                  )}
+                  class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-[#ff4b44] transition"
+                >
+                  <img src={result.localTeamBadge} class="h-8" />
+                  <p class="hidden xl:block">{result.localTeamName}</p>
+                </a>
+                <p class="font-la-liga-font text-2xl text-[#ff4b44]">
+                  {result.localTeamGoals}-{result.awayTeamGoals}
+                </p>
+                <a
+                  href={getRelativeLocaleUrl(
+                    currentLang,
+                    `/teams/${result.awayTeamId}`
+                  )}
+                  class="flex-row flex items-center justify-self-start hover:scale-105 hover:text-[#ff4b44] transition"
+                >
+                  <img src={result.awayTeamBadge} class="h-8" />
+                  <p class="hidden xl:block">{result.awayTeamName}</p>
+                </a>
+                <a href="">
+                  <button class="p-2 rounded-lg hover:scale-105 text-sm transition match-button uppercase">
+                    {translator("en", "viewMatch")}
+                  </button>
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="flex flex-col gap-4">
+      <a href={getRelativeLocaleUrl(currentLang, `/teams/`)}>
+        <div
+          class="flex border-2 border-gray-200 p-4 rounded-2xl w-48 h-48 hover:scale-[0.98] transition uppercase font-la-liga-font hover:text-[#ff4b44] text-3xl text-center items-center"
+          style="background-image: url('/images/background-teams-grid.png'); background-size: cover; background-position: center;"
+        >
+          {translator("en", "exploreTeams")}
+        </div>
+      </a>
+      <a href={getRelativeLocaleUrl(currentLang, `/about/`)}>
+        <div
+          class="flex border-2 border-gray-200 p-4 rounded-2xl w-48 h-48 hover:scale-[0.98] transition uppercase font-la-liga-font hover:text-[#ff4b44] text-3xl text-center items-center"
+          style="background-image: url('/images/background-teams-grid.png'); background-size: cover; background-position: center;"
+        >
+          {translator("en", "aboutWebsite")}
+        </div>
+      </a>
+    </div>
+  </div>
 </Layout>

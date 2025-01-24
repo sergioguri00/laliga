@@ -594,8 +594,8 @@ const currentLang = Astro.currentLocale || "es";
                   <img src={result.localTeamBadge} class="h-10" />
                   <p class="text-xl hidden xl:block">{result.localTeamName}</p>
                 </a>
-                <p class="font-la-liga-font text-2xl">
-                  {result.localTeamGoals} - {result.awayTeamGoals}
+                <p class="font-la-liga-font text-2xl text-[#ff4b44]">
+                  {result.localTeamGoals}-{result.awayTeamGoals}
                 </p>
                 <a
                   href={getRelativeLocaleUrl(

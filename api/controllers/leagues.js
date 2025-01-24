@@ -20,4 +20,10 @@ export class LeagueController {
     if (table) return res.json(table)
     res.status(404).send('<h1> 404 Error Not Found </h1>')
   }
+
+  static async getLastMatchday (req, res) {
+    const { id } = req.params
+    const lastMatchday = await LeagueModel.getLastMatchday(id)
+    res.json(lastMatchday)
+  }
 }
