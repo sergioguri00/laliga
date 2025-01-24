@@ -1,6 +1,8 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import { getCountryCode } from "../../../utils/countryCodes";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { translator } from "../../../utils/dictionary.js";
 import "../../../styles/global.css";
 
 const { id } = Astro.params;
@@ -52,7 +54,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
   const teamData = await teamResponse.json();
 
   if (!teamData) {
-    throw new Error("Equipo no encontrado");
+    throw new Error("team not found");
   }
 
   return { props: { teamData } };
@@ -72,15 +74,11 @@ interface Player {
 }
 
 const currentLang = Astro.currentLocale || "es";
-
-function getRelativeLocaleUrl(locale: string, path: string): string {
-  return `/${locale}${path}`;
-}
 ---
 
 <Layout
-  title=`Equipos LaLiga | ${team.shortName}`
-  description={`Toda la información sobre ${team.name}`}
+  title=`LaLiga Teams | ${team.shortName}`
+  description={`All information about ${team.name}`}
 >
   <div class="py-3 px-5 mt-20">
     {
@@ -102,7 +100,7 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
               </div>
             </div>
             <div>
-              <p class="font-bold uppercase">presidente</p>
+              <p class="font-bold uppercase">{translator("es", "president")}</p>
               <p>{team.president}</p>
             </div>
             <div>
@@ -132,7 +130,9 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
                   <p>{stadium.year}</p>
                 </div>
                 <div>
-                  <p class="font-bold uppercase">capacidad</p>
+                  <p class="font-bold uppercase">
+                    {translator("es", "capacity")}
+                  </p>
                   <p>{stadium.capacity}</p>
                 </div>
               </div>
@@ -163,25 +163,25 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
         id="squad"
         class={"cursor-pointer text-xl hover:border-[#ff4b44] transition border-b-4 border-[#ff4b44] font-bold section w-32 text-center uppercase"}
       >
-        plantilla
+        {translator("es", "squad")}
       </div>
       <div
         id="results"
         class="cursor-pointer text-xl hover:text-[#ff4b44] hover:border-[#ff4b44] transition border-b-4 section w-36 text-center uppercase"
       >
-        resultados
+        {translator("es", "results")}
       </div>
     </nav>
 
     <section id="squadSection" class="p-4 xl:p-10 hidden">
       <h2 class="text-3xl text-bold uppercase font-la-liga-font">
-        plantilla {team.shortName}
+        {`${team.shortName} ${translator("es", "squadSection")}`}
       </h2>
       <div class="flex flex-col">
         <div>
           <div class="border-b-[1px] border-mainblack w-full text-start">
             <p class="mt-4 font-la-liga-font text-2xl pb-2 uppercase">
-              entrenador
+              {translator("es", "manager")}
             </p>
           </div>
           <div
@@ -204,7 +204,9 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
                   </p>
                 </div>
                 <div class="flex flex-col">
-                  <p class="uppercase font-bold text-sm">entrenador</p>
+                  <p class="uppercase font-bold text-sm">
+                    {translator("es", "manager")}
+                  </p>
                   <div class="flex flex-row items-center">
                     <img
                       src={`/flags/${getCountryCode(manager.country)}.svg`}
@@ -225,7 +227,9 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
                 class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack"
               >
                 <div class="col-span-2 w-full">
-                  <p class="text-center uppercase font-bold">cumpleaños</p>
+                  <p class="text-center uppercase font-bold">
+                    {translator("es", "birthday")}
+                  </p>
                   <p class="text-center">
                     {manager.birthday.toString().split("T")[0]}
                   </p>
@@ -237,7 +241,9 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
             <div
               class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
-              <p class="uppercase font-la-liga-font text-2xl pb-2">porteros</p>
+              <p class="uppercase font-la-liga-font text-2xl pb-2">
+                {translator("es", "goalkeepers")}
+              </p>
             </div>
             <div
               class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
@@ -267,7 +273,9 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
                           </p>
                         </div>
                         <div class="flex flex-col">
-                          <p class="uppercase font-bold text-sm">portero</p>
+                          <p class="uppercase font-bold text-sm">
+                            {translator("es", "goalkeeper")}
+                          </p>
                           <div class="flex flex-row items-center">
                             <img
                               src={`/flags/${getCountryCode(player.country)}.svg`}
@@ -292,14 +300,16 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
                       <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
-                            cumpleaños
+                            {translator("es", "birthday")}
                           </p>
                           <p class="text-center">
                             {player.birthday.toString().split("T")[0]}
                           </p>
                         </div>
                         <div>
-                          <p class="text-center uppercase font-bold">altura</p>
+                          <p class="text-center uppercase font-bold">
+                            {translator("es", "height")}
+                          </p>
                           <p class="text-center">{player.height} cm</p>
                         </div>
                       </div>
@@ -311,7 +321,9 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
             <div
               class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
-              <p class="uppercase font-la-liga-font text-2xl pb-2">defensas</p>
+              <p class="uppercase font-la-liga-font text-2xl pb-2">
+                {translator("es", "defenders")}
+              </p>
             </div>
             <div
               class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
@@ -341,7 +353,9 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
                           </p>
                         </div>
                         <div class="flex flex-col">
-                          <p class="uppercase font-bold text-sm">defensa</p>
+                          <p class="uppercase font-bold text-sm">
+                            {translator("es", "defender")}
+                          </p>
                           <div class="flex flex-row items-center">
                             <img
                               src={`/flags/${getCountryCode(player.country)}.svg`}
@@ -366,14 +380,16 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
                       <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
-                            cumpleaños
+                            {translator("es", "birthday")}
                           </p>
                           <p class="text-center">
                             {player.birthday.toString().split("T")[0]}
                           </p>
                         </div>
                         <div>
-                          <p class="text-center uppercase font-bold">altura</p>
+                          <p class="text-center uppercase font-bold">
+                            {translator("es", "height")}
+                          </p>
                           <p class="text-center">{player.height} cm</p>
                         </div>
                       </div>
@@ -386,7 +402,7 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
               class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
               <p class="uppercase font-la-liga-font text-2xl pb-2">
-                centrocampistas
+                {translator("es", "midfielders")}
               </p>
             </div>
             <div
@@ -418,7 +434,7 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
                         </div>
                         <div class="flex flex-col">
                           <p class="uppercase font-bold text-sm">
-                            centrocampista
+                            {translator("es", "midfielder")}
                           </p>
                           <div class="flex flex-row items-center">
                             <img
@@ -444,14 +460,16 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
                       <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
-                            cumpleaños
+                            {translator("es", "birthday")}
                           </p>
                           <p class="text-center">
                             {player.birthday.toString().split("T")[0]}
                           </p>
                         </div>
                         <div>
-                          <p class="text-center uppercase font-bold">altura</p>
+                          <p class="text-center uppercase font-bold">
+                            {translator("es", "height")}
+                          </p>
                           <p class="text-center">{player.height} cm</p>
                         </div>
                       </div>
@@ -464,7 +482,7 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
               class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
               <p class="uppercase font-la-liga-font text-2xl pb-2">
-                delanteros
+                {translator("es", "forwards")}
               </p>
             </div>
             <div
@@ -495,7 +513,9 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
                           </p>
                         </div>
                         <div class="flex flex-col">
-                          <p class="uppercase font-bold text-sm">delantero</p>
+                          <p class="uppercase font-bold text-sm">
+                            {translator("es", "forward")}
+                          </p>
                           <div class="flex flex-row items-center">
                             <img
                               src={`/flags/${getCountryCode(player.country)}.svg`}
@@ -520,14 +540,16 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
                       <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
-                            cumpleaños
+                            {translator("es", "birthday")}
                           </p>
                           <p class="text-center">
                             {player.birthday.toString().split("T")[0]}
                           </p>
                         </div>
                         <div>
-                          <p class="text-center uppercase font-bold">altura</p>
+                          <p class="text-center uppercase font-bold">
+                            {translator("es", "height")}
+                          </p>
                           <p class="text-center">{player.height} cm</p>
                         </div>
                       </div>
@@ -543,14 +565,14 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
 
     <section id="resultsSection" class="p-10 hidden">
       <h2 class="text-3xl text-bold uppercase font-la-liga-font">
-        resultados {team.shortName}
+        {`${team.shortName} ${translator("es", "resultsSection")}`}
       </h2>
       <div class="flex flex-col">
         {
           resultsData.map((result: any) => (
             <div class="sm:mx-4 md:mx-10 lg:mx-20 xl:mx-40 py-2 flex flex-col gap-4 relative mt-4">
               <h3 class="text-2xl text-bold uppercase font-la-liga-font border-b-[1px] border-mainblack pb-2 pl-2">
-                jornada {result.matchday_id}
+                {`${translator("es", "matchday")} ${result.matchday_id}`}
               </h3>
               <div
                 class="grid place-items-center items-center align-middle font-la-liga-font text-sm md:text-xl gap-2 md:gap-10"
@@ -587,7 +609,7 @@ function getRelativeLocaleUrl(locale: string, path: string): string {
                 </a>
                 <a href="">
                   <button class="p-2 rounded-lg hover:scale-105 text-sm transition match-button uppercase">
-                    ver partido
+                    {translator("es", "viewMatch")}
                   </button>
                 </a>
               </div>

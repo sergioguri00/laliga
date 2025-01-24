@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Navbar from "../../components/Navbar.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import "../../styles/global.css";
 const teamsResponse = await fetch("http://localhost:1234/teams");
 const teamsData = await teamsResponse.json();
@@ -16,16 +16,9 @@ interface Team {
 }
 
 const currentLang = Astro.currentLocale || "es";
-
-function getRelativeLocaleUrl(locale: string, path: string): string {
-  return `/${locale}${path}`;
-}
 ---
 
-<Layout
-  title="Equipos LaLiga"
-  description="Explora todos los equipos de LaLiga"
->
+<Layout title="LaLiga Teams" description="Explore all the teams in LaLiga">
   <section
     class="grid justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 py-3 px-10 mt-20"
   >
