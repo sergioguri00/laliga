@@ -161,13 +161,13 @@ const currentLang = Astro.currentLocale || "es";
     <nav class="flex flex-row w-full justify-around px-5">
       <div
         id="squad"
-        class={"cursor-pointer text-xl hover:border-[#ff4b44] transition border-b-4 border-[#ff4b44] font-bold section w-24 text-center uppercase"}
+        class={"cursor-pointer text-xl hover:border-laligared transition border-b-4 border-laligared font-bold section w-24 text-center uppercase"}
       >
         {translator("en", "squad")}
       </div>
       <div
         id="results"
-        class="cursor-pointer text-xl hover:text-[#ff4b44] hover:border-[#ff4b44] transition border-b-4 section w-24 text-center uppercase"
+        class="cursor-pointer text-xl hover:text-laligared hover:border-laligared transition border-b-4 section w-24 text-center uppercase"
       >
         {translator("en", "results")}
       </div>
@@ -589,12 +589,12 @@ const currentLang = Astro.currentLocale || "es";
                     currentLang,
                     `/teams/${result.localTeamId}`
                   )}
-                  class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-[#ff4b44] transition"
+                  class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-laligared transition"
                 >
                   <img src={result.localTeamBadge} class="h-10" />
                   <p class="text-xl hidden xl:block">{result.localTeamName}</p>
                 </a>
-                <p class="font-la-liga-font text-2xl text-[#ff4b44]">
+                <p class="font-la-liga-font text-2xl text-laligared">
                   {result.localTeamGoals}-{result.awayTeamGoals}
                 </p>
                 <a
@@ -602,7 +602,7 @@ const currentLang = Astro.currentLocale || "es";
                     currentLang,
                     `/teams/${result.awayTeamId}`
                   )}
-                  class="flex-row flex items-center justify-self-start hover:scale-105 hover:text-[#ff4b44] transition"
+                  class="flex-row flex items-center justify-self-start hover:scale-105 hover:text-laligared transition"
                 >
                   <img src={result.awayTeamBadge} class="h-10" />
                   <p class="hidden xl:block">{result.awayTeamName}</p>
@@ -610,7 +610,7 @@ const currentLang = Astro.currentLocale || "es";
                 <a
                   href={getRelativeLocaleUrl(
                     currentLang,
-                    `/matches/${result.matchday_id}/${result.localTeamId}/${result.awayTeamId}`
+                    `/matches/${result.matchday_id}-${result.localTeamId}-${result.awayTeamId}`
                   )}
                 >
                   <button class="p-2 rounded-lg hover:scale-105 text-sm transition match-button uppercase">
@@ -650,24 +650,24 @@ const currentLang = Astro.currentLocale || "es";
       squadSection?.classList.add("hidden");
       resultsSection?.classList.remove("hidden");
       if (squad && results) {
-        squad.classList.remove("border-[#ff4b44]");
+        squad.classList.remove("border-laligared");
         squad.classList.remove("font-bold");
-        squad.classList.add("hover:text-[#ff4b44]");
-        results.classList.add("border-[#ff4b44]");
+        squad.classList.add("hover:text-laligared");
+        results.classList.add("border-laligared");
         results.classList.add("font-bold");
-        results.classList.remove("hover:text-[#ff4b44]");
+        results.classList.remove("hover:text-laligared");
         window.location.href = "#results";
       }
     } else {
       squadSection?.classList.remove("hidden");
       resultsSection?.classList.add("hidden");
       if (squad && results) {
-        squad.classList.add("border-[#ff4b44]");
+        squad.classList.add("border-laligared");
         squad.classList.add("font-bold");
-        squad.classList.remove("hover:text-[#ff4b44]");
-        results.classList.remove("border-[#ff4b44]");
+        squad.classList.remove("hover:text-laligared");
+        results.classList.remove("border-laligared");
         results.classList.remove("font-bold");
-        results.classList.add("hover:text-[#ff4b44]");
+        results.classList.add("hover:text-laligared");
         window.location.href = "#squad";
       }
     }

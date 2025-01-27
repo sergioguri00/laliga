@@ -32,7 +32,8 @@ const dictionary = {
     exploreTeams: 'explore laliga teams',
     about: 'about',
     aboutWebsite: 'about this website',
-    teams: 'teams'
+    teams: 'teams',
+    matches: 'matches'
   },
   es: {
     president: 'presidente',
@@ -67,7 +68,8 @@ const dictionary = {
     exploreTeams: 'ver equipos de laliga',
     about: 'acerca de',
     aboutWebsite: 'acerca de esta web',
-    teams: 'equipos'
+    teams: 'equipos',
+    matches: 'partidos'
   }
 }
 

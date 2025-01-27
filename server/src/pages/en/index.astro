@@ -73,7 +73,7 @@ const currentLang = Astro.currentLocale || "es";
                       currentLang,
                       `/teams/${team.team_id}`
                     )}
-                    class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-[#ff4b44] transition"
+                    class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-laligared transition"
                   >
                     <img src={team.badge} class="w-8 h-8 mt-1" />
                     {team.shortName}
@@ -120,12 +120,12 @@ const currentLang = Astro.currentLocale || "es";
                     currentLang,
                     `/teams/${result.localTeamId}`
                   )}
-                  class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-[#ff4b44] transition"
+                  class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-laligared transition"
                 >
                   <img src={result.localTeamBadge} class="h-8" />
                   <p class="hidden xl:block">{result.localTeamName}</p>
                 </a>
-                <p class="font-la-liga-font text-2xl text-[#ff4b44]">
+                <p class="font-la-liga-font text-2xl text-laligared">
                   {result.localTeamGoals}-{result.awayTeamGoals}
                 </p>
                 <a
@@ -133,7 +133,7 @@ const currentLang = Astro.currentLocale || "es";
                     currentLang,
                     `/teams/${result.awayTeamId}`
                   )}
-                  class="flex-row flex items-center justify-self-start hover:scale-105 hover:text-[#ff4b44] transition"
+                  class="flex-row flex items-center justify-self-start hover:scale-105 hover:text-laligared transition"
                 >
                   <img src={result.awayTeamBadge} class="h-8" />
                   <p class="hidden xl:block">{result.awayTeamName}</p>

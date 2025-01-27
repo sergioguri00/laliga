@@ -8,7 +8,7 @@ export default {
       },
       colors: {
         mainblack: '#00001B',
-        laligared: '#FF0000'
+        laligared: '#FF4B44'
       }
     }
   },

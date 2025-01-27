@@ -1,12 +1,77 @@
 ---
-const { matchdate, localTeam, awayTeam } = Astro.props;
-
-console.log(matchdate, localTeam, awayTeam);
+const { matchday, localTeam, awayTeam } = Astro.props;
 
 const localTeamStatsResponse = await fetch(
-  `http://localhost:1234/teammatchstats?matchdate=${matchdate}&team_id=${localTeam}`
+  `http://localhost:1234/teammatchstats?matchday=${matchday}&team=${localTeam}`
 );
 const localTeamStatsData = await localTeamStatsResponse.json();
 const localTeamStats = localTeamStatsData[0];
+
+const localTeamResponse = await fetch(
+  `http://localhost:1234/teams/${localTeam}`
+);
+const localTeamData = await localTeamResponse.json();
+const localTeamInfo = localTeamData[0];
+
+const awayTeamStatsResponse = await fetch(
+  `http://localhost:1234/teammatchstats?matchday=${matchday}&team=${awayTeam}`
+);
+const awayTeamStatsData = await awayTeamStatsResponse.json();
+const awayTeamStats = awayTeamStatsData[0];
+
+const awayTeamResponse = await fetch(`http://localhost:1234/teams/${awayTeam}`);
+const awayTeamData = await awayTeamResponse.json();
+const awayTeamInfo = awayTeamData[0];
+
 console.log(localTeamStats);
 ---
+
+<section class="py-20 px-16 flex flex-col">
+  <div
+    class="text-xl font-la-liga-font text-mainblack flex flex-row justify-center gap-10 items-center px-96"
+  >
+    <div class="flex flex-col justify-center items-center">
+      <img
+        src={localTeamInfo.badge}
+        alt={localTeamInfo.shortName}
+        class="w-32 h-32"
+      />
+      <p>{localTeamInfo.shortName}</p>
+    </div>
+    <div class="text-5xl text-laligared">
+      <p>{`${localTeamStats.goals}-${awayTeamStats.goals}`}</p>
+    </div>
+    <div class="flex flex-col justify-center items-center">
+      <img
+        src={awayTeamInfo.badge}
+        alt={awayTeamInfo.shortName}
+        class="w-32 h-32"
+      />
+      <p>{awayTeamInfo.shortName}</p>
+    </div>
+  </div>
+  <div class="flex flex-col px-96 py-4">
+    <div class="flex flex-col justify-center items-center">
+      <p class="-mb-6">Possession</p>
+      <div class="grid grid-cols-2">
+        <div>
+          <p>{localTeamStats.possession}</p>
+          <div
+            class="w-[320px] h-1 rounded-2xl"
+            style="background-color: #00001b"
+          >
+            {" "}
+          </div>
+        </div>
+        <div>
+          <p class="text-end">{awayTeamStats.possession}</p>
+          <div
+            class="w-[320px] h-1 rounded-2xl"
+            style="background-color: #00001b"
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

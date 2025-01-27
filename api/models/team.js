@@ -70,9 +70,9 @@ export class TeamModel {
     const results = []
     for (const match of matches) {
       const [localTeam] = await connection.execute('SELECT badge,shortName FROM team WHERE id = ?', [match.localTeam_id])
-      const [localTeamStats] = await connection.execute('SELECT goals FROM teammatchstats WHERE matchdate = ? AND team_id = ?', [match.matchdate, match.localTeam_id])
+      const [localTeamStats] = await connection.execute('SELECT goals FROM teammatchstats WHERE matchday_id = ? AND team_id = ?', [match.matchday_id, match.localTeam_id])
       const [awayTeam] = await connection.execute('SELECT badge,shortName FROM team WHERE id = ?', [match.awayTeam_id])
-      const [awayTeamStats] = await connection.execute('SELECT goals FROM teammatchstats WHERE matchdate = ? AND team_id = ?', [match.matchdate, match.awayTeam_id])
+      const [awayTeamStats] = await connection.execute('SELECT goals FROM teammatchstats WHERE matchday_id = ? AND team_id = ?', [match.matchday_id, match.awayTeam_id])
       results.push({
         matchdate: match.matchdate,
         localTeamId: match.localTeam_id,

@@ -34,7 +34,7 @@ const currentLang = Astro.currentLocale || "es";
       </svg>
     </a>
     {
-      page.length > 6 ? (
+      page[4] === "teams" ? (
         <a
           href={getRelativeLocaleUrl(currentLang, `/${page[4]}`)}
           class="font-la-liga-font text-2xl sm:text-3xl flex items-center justify-center text-mainblack hover:scale-105 transition"
