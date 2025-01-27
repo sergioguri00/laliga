@@ -1,9 +1,9 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import { getCountryCode } from "../../../utils/countryCodes";
+import Layout from "@/layouts/Layout.astro";
+import { getCountryCode } from "@/utils/countryCodes";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { translator } from "../../../utils/dictionary.js";
-import "../../../styles/global.css";
+import { translator } from "@/utils/dictionary.js";
+import "@/styles/global.css";
 
 const { id } = Astro.params;
 const teamResponse = await fetch(`http://localhost:1234/teams/${id}`);
@@ -77,8 +77,8 @@ const currentLang = Astro.currentLocale || "es";
 ---
 
 <Layout
-  title=`Equipos LaLiga | ${team.shortName}`
-  description={`Toda la información sobre ${team.name}`}
+  title=`LaLiga Teams | ${team.shortName}`
+  description={`All information about ${team.name}`}
 >
   <div class="py-3 px-5 mt-20">
     {
@@ -106,7 +106,7 @@ const currentLang = Astro.currentLocale || "es";
             <div>
               <p class="font-la-liga-font text-2xl">{`POS. ${teamPosition}`}</p>
               <p class="font-la-liga-font text-2xl">{`${teamStats.points} pts`}</p>
-              <p class="font-la-liga-font text-2xl">{`${teamStats.wins} V | ${teamStats.draws} E | ${teamStats.losses} D`}</p>
+              <p class="font-la-liga-font text-2xl">{`${teamStats.wins} W | ${teamStats.draws} D | ${teamStats.losses} L`}</p>
             </div>
           </div>
           <div>
@@ -161,13 +161,13 @@ const currentLang = Astro.currentLocale || "es";
     <nav class="flex flex-row w-full justify-around px-5">
       <div
         id="squad"
-        class={"cursor-pointer text-xl hover:border-[#ff4b44] transition border-b-4 border-[#ff4b44] font-bold section w-32 text-center uppercase"}
+        class={"cursor-pointer text-xl hover:border-laligared transition border-b-4 border-laligared font-bold section w-32 text-center uppercase"}
       >
         {translator("es", "squad")}
       </div>
       <div
         id="results"
-        class="cursor-pointer text-xl hover:text-[#ff4b44] hover:border-[#ff4b44] transition border-b-4 section w-36 text-center uppercase"
+        class="cursor-pointer text-xl hover:text-laligared hover:border-laligared transition border-b-4 section w-36 text-center uppercase"
       >
         {translator("es", "results")}
       </div>
@@ -563,7 +563,7 @@ const currentLang = Astro.currentLocale || "es";
       </div>
     </section>
 
-    <section id="resultsSection" class="p-8 sm:p-10 hidden">
+    <section id="resultsSection" class="p-10 hidden">
       <h2 class="text-3xl text-bold uppercase font-la-liga-font">
         {`${team.shortName} ${translator("es", "resultsSection")}`}
       </h2>
@@ -574,7 +574,10 @@ const currentLang = Astro.currentLocale || "es";
               <h3 class="text-2xl text-bold uppercase font-la-liga-font border-b-[1px] border-mainblack pb-2 pl-2">
                 {`${translator("es", "matchday")} ${result.matchday_id}`}
               </h3>
-              <div class="grid place-items-center items-center align-middle font-la-liga-font text-sm md:text-xl sm:mx-4 gap-2 md:gap-10 results-grid">
+              <div
+                class="grid place-items-center items-center align-middle font-la-liga-font text-sm md:text-xl gap-2 md:gap-10"
+                style="grid-template-columns: 1fr 1fr 40px 1fr 85px;"
+              >
                 <div class="flex flex-col sm:flex-row sm:gap-2 text-xl justify-self-end text-center">
                   <p>
                     {`${result.matchdate.toString().split("T")[0].split("-")[2]}/${result.matchdate.toString().split("T")[0].split("-")[1]}/${result.matchdate.toString().split("T")[0].split("-")[0]}`}
@@ -586,12 +589,12 @@ const currentLang = Astro.currentLocale || "es";
                     currentLang,
                     `/teams/${result.localTeamId}`
                   )}
-                  class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-[#ff4b44] transition"
+                  class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-laligared transition"
                 >
                   <img src={result.localTeamBadge} class="h-10" />
                   <p class="text-xl hidden xl:block">{result.localTeamName}</p>
                 </a>
-                <p class="font-la-liga-font text-2xl text-[#ff4b44]">
+                <p class="font-la-liga-font text-2xl text-laligared">
                   {result.localTeamGoals}-{result.awayTeamGoals}
                 </p>
                 <a
@@ -599,12 +602,17 @@ const currentLang = Astro.currentLocale || "es";
                     currentLang,
                     `/teams/${result.awayTeamId}`
                   )}
-                  class="flex-row flex items-center justify-self-start hover:scale-105 hover:text-[#ff4b44] transition"
+                  class="flex-row flex items-center justify-self-start hover:scale-105 hover:text-laligared transition"
                 >
                   <img src={result.awayTeamBadge} class="h-10" />
                   <p class="hidden xl:block">{result.awayTeamName}</p>
                 </a>
-                <a href="">
+                <a
+                  href={getRelativeLocaleUrl(
+                    currentLang,
+                    `/matches/${result.matchday_id}-${result.localTeamId}-${result.awayTeamId}`
+                  )}
+                >
                   <button class="p-2 rounded-lg hover:scale-105 text-sm transition match-button uppercase">
                     {translator("es", "viewMatch")}
                   </button>
@@ -642,24 +650,24 @@ const currentLang = Astro.currentLocale || "es";
       squadSection?.classList.add("hidden");
       resultsSection?.classList.remove("hidden");
       if (squad && results) {
-        squad.classList.remove("border-[#ff4b44]");
+        squad.classList.remove("border-laligared");
         squad.classList.remove("font-bold");
-        squad.classList.add("hover:text-[#ff4b44]");
-        results.classList.add("border-[#ff4b44]");
+        squad.classList.add("hover:text-laligared");
+        results.classList.add("border-laligared");
         results.classList.add("font-bold");
-        results.classList.remove("hover:text-[#ff4b44]");
+        results.classList.remove("hover:text-laligared");
         window.location.href = "#results";
       }
     } else {
       squadSection?.classList.remove("hidden");
       resultsSection?.classList.add("hidden");
       if (squad && results) {
-        squad.classList.add("border-[#ff4b44]");
+        squad.classList.add("border-laligared");
         squad.classList.add("font-bold");
-        squad.classList.remove("hover:text-[#ff4b44]");
-        results.classList.remove("border-[#ff4b44]");
+        squad.classList.remove("hover:text-laligared");
+        results.classList.remove("border-laligared");
         results.classList.remove("font-bold");
-        results.classList.add("hover:text-[#ff4b44]");
+        results.classList.add("hover:text-laligared");
         window.location.href = "#squad";
       }
     }

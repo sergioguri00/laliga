@@ -1,4 +1,6 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { translator } from "@/utils/dictionary.js";
 const { matchday, localTeam, awayTeam } = Astro.props;
 
 const localTeamStatsResponse = await fetch(
@@ -23,51 +25,198 @@ const awayTeamResponse = await fetch(`http://localhost:1234/teams/${awayTeam}`);
 const awayTeamData = await awayTeamResponse.json();
 const awayTeamInfo = awayTeamData[0];
 
-console.log(localTeamStats);
+const currentLang = Astro.currentLocale || "es";
 ---
 
-<section class="py-20 px-16 flex flex-col">
+<section class="py-20 px-4 lg:px-10 flex flex-col">
   <div
-    class="text-xl font-la-liga-font text-mainblack flex flex-row justify-center gap-10 items-center px-96"
+    class="text-xl font-la-liga-font text-mainblack flex flex-row justify-center gap-4 xl:gap-10 items-center px-4 xl:px-96"
   >
-    <div class="flex flex-col justify-center items-center">
+    <a
+      href={getRelativeLocaleUrl(currentLang, `/teams/${localTeam}`)}
+      class="flex flex-col justify-center items-center hover:scale-105 hover:text-laligared transition"
+    >
       <img
         src={localTeamInfo.badge}
         alt={localTeamInfo.shortName}
-        class="w-32 h-32"
+        class="w-20 h-20 md:w-32 md:h-32"
       />
       <p>{localTeamInfo.shortName}</p>
-    </div>
-    <div class="text-5xl text-laligared">
+    </a>
+    <div class="text-4xl sm:text-5xl text-laligared">
       <p>{`${localTeamStats.goals}-${awayTeamStats.goals}`}</p>
     </div>
-    <div class="flex flex-col justify-center items-center">
+    <a
+      href={getRelativeLocaleUrl(currentLang, `/teams/${awayTeam}`)}
+      class="flex flex-col justify-center items-center hover:scale-105 hover:text-laligared transition"
+    >
       <img
         src={awayTeamInfo.badge}
         alt={awayTeamInfo.shortName}
-        class="w-32 h-32"
+        class="w-20 h-20 md:w-32 md:h-32"
       />
       <p>{awayTeamInfo.shortName}</p>
-    </div>
+    </a>
   </div>
-  <div class="flex flex-col px-96 py-4">
+
+  <div class="flex flex-col px-4 xl:px-96 py-4">
     <div class="flex flex-col justify-center items-center">
-      <p class="-mb-6">Possession</p>
-      <div class="grid grid-cols-2">
-        <div>
+      <p class="-mb-6">{translator("en", "possession")}</p>
+      <div class="grid grid-cols-2 w-full">
+        <div class="flex flex-col">
           <p>{localTeamStats.possession}</p>
+          <div class="w-full h-1 rounded-2xl bg-slate-100">{" "}</div>
           <div
-            class="w-[320px] h-1 rounded-2xl"
-            style="background-color: #00001b"
+            class="h-1 rounded-2xl -mt-1 align-self-end"
+            style=`background-color: ${localTeamInfo.mainColor === '#ffffff' ? '#00001b' : localTeamInfo.mainColor}; width: ${localTeamStats.possession}%; align-self: flex-end;`
           >
             {" "}
           </div>
         </div>
-        <div>
+        <div class="flex flex-col">
           <p class="text-end">{awayTeamStats.possession}</p>
+          <div class="w-full h-1 rounded-2xl bg-slate-100">{}</div>
           <div
-            class="w-[320px] h-1 rounded-2xl"
-            style="background-color: #00001b"
+            class=`h-1 rounded-2xl w-[${awayTeamStats.possession}}%] -mt-1 align-self-end`
+            style=`background-color: ${awayTeamInfo.mainColor === '#ffffff' ? '#00001b' : awayTeamInfo.mainColor}; width: ${awayTeamStats.possession}%;`
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col justify-center items-center mt-6">
+      <p class="-mb-6">{translator("en", "shots")}</p>
+      <div class="grid grid-cols-2 w-full">
+        <div class="flex flex-col">
+          <p id="pLocalShots">{localTeamStats.shots}</p>
+          <div class="w-full h-1 rounded-2xl bg-slate-100">{" "}</div>
+          <div
+            id="localShots"
+            class="h-1 rounded-2xl -mt-1 align-self-end"
+            style=`background-color: ${localTeamInfo.mainColor === '#ffffff' ? '#00001b' : localTeamInfo.mainColor}; align-self: flex-end;`
+          >
+            {" "}
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <p id="pAwayShots" class="text-end">{awayTeamStats.shots}</p>
+          <div class="w-full h-1 rounded-2xl bg-slate-100">{}</div>
+          <div
+            id="awayShots"
+            class=`h-1 rounded-2xl -mt-1 align-self-end`
+            style=`background-color: ${awayTeamInfo.mainColor === '#ffffff' ? '#00001b' : awayTeamInfo.mainColor};`
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col justify-center items-center mt-6">
+      <p class="-mb-6">{translator("en", "shotsOnTarget")}</p>
+      <div class="grid grid-cols-2 w-full">
+        <div class="flex flex-col">
+          <p id="pLocalShotsOnTarget">{localTeamStats.shots_on_target}</p>
+          <div class="w-full h-1 rounded-2xl bg-slate-100">{" "}</div>
+          <div
+            id="localShotsOnTarget"
+            class="h-1 rounded-2xl -mt-1 align-self-end"
+            style=`background-color: ${localTeamInfo.mainColor === '#ffffff' ? '#00001b' : localTeamInfo.mainColor}; align-self: flex-end;`
+          >
+            {" "}
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <p id="pAwayShotsOnTarget" class="text-end">
+            {awayTeamStats.shots_on_target}
+          </p>
+          <div class="w-full h-1 rounded-2xl bg-slate-100">{}</div>
+          <div
+            id="awayShotsOnTarget"
+            class=`h-1 rounded-2xl -mt-1 align-self-end`
+            style=`background-color: ${awayTeamInfo.mainColor === '#ffffff' ? '#00001b' : awayTeamInfo.mainColor};`
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col justify-center items-center mt-6">
+      <p class="-mb-6">{translator("en", "corners")}</p>
+      <div class="grid grid-cols-2 w-full">
+        <div class="flex flex-col">
+          <p id="pLocalCorners">{localTeamStats.corners}</p>
+          <div class="w-full h-1 rounded-2xl bg-slate-100">{" "}</div>
+          <div
+            id="localCorners"
+            class="h-1 rounded-2xl -mt-1 align-self-end"
+            style=`background-color: ${localTeamInfo.mainColor === '#ffffff' ? '#00001b' : localTeamInfo.mainColor}; align-self: flex-end;`
+          >
+            {" "}
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <p id="pAwayCorners" class="text-end">
+            {awayTeamStats.corners}
+          </p>
+          <div class="w-full h-1 rounded-2xl bg-slate-100">{}</div>
+          <div
+            id="awayCorners"
+            class=`h-1 rounded-2xl -mt-1 align-self-end`
+            style=`background-color: ${awayTeamInfo.mainColor === '#ffffff' ? '#00001b' : awayTeamInfo.mainColor};`
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col justify-center items-center mt-6">
+      <p class="-mb-6">{translator("en", "offsides")}</p>
+      <div class="grid grid-cols-2 w-full">
+        <div class="flex flex-col">
+          <p id="pLocalOffsides">{localTeamStats.offsides}</p>
+          <div class="w-full h-1 rounded-2xl bg-slate-100">{" "}</div>
+          <div
+            id="localOffsides"
+            class="h-1 rounded-2xl -mt-1 align-self-end"
+            style=`background-color: ${localTeamInfo.mainColor === '#ffffff' ? '#00001b' : localTeamInfo.mainColor}; align-self: flex-end;`
+          >
+            {" "}
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <p id="pAwayOffsides" class="text-end">
+            {awayTeamStats.offsides}
+          </p>
+          <div class="w-full h-1 rounded-2xl bg-slate-100">{}</div>
+          <div
+            id="awayOffsides"
+            class=`h-1 rounded-2xl -mt-1 align-self-end`
+            style=`background-color: ${awayTeamInfo.mainColor === '#ffffff' ? '#00001b' : awayTeamInfo.mainColor};`
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col justify-center items-center mt-6">
+      <p class="-mb-6">{translator("en", "fouls")}</p>
+      <div class="grid grid-cols-2 w-full">
+        <div class="flex flex-col">
+          <p id="pLocalFouls">{localTeamStats.fouls}</p>
+          <div class="w-full h-1 rounded-2xl bg-slate-100">{" "}</div>
+          <div
+            id="localFouls"
+            class="h-1 rounded-2xl -mt-1 align-self-end"
+            style=`background-color: ${localTeamInfo.mainColor === '#ffffff' ? '#00001b' : localTeamInfo.mainColor}; align-self: flex-end;`
+          >
+            {" "}
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <p id="pAwayFouls" class="text-end">
+            {awayTeamStats.fouls}
+          </p>
+          <div class="w-full h-1 rounded-2xl bg-slate-100">{}</div>
+          <div
+            id="awayFouls"
+            class=`h-1 rounded-2xl -mt-1 align-self-end`
+            style=`background-color: ${awayTeamInfo.mainColor === '#ffffff' ? '#00001b' : awayTeamInfo.mainColor};`
           >
           </div>
         </div>
@@ -75,3 +224,88 @@ console.log(localTeamStats);
     </div>
   </div>
 </section>
+
+<script>
+  const $localShots = document.getElementById("localShots");
+  const $awayShots = document.getElementById("awayShots");
+  const $localShotsValue =
+    document.getElementById("pLocalShots")?.innerText || "0";
+  const $awayShotsValue =
+    document.getElementById("pAwayShots")?.innerText || "0";
+  const totalShots = parseInt($localShotsValue) + parseInt($awayShotsValue);
+
+  if ($localShots && $awayShots && totalShots !== 0) {
+    $localShots.style.width = `${(parseInt($localShotsValue) / totalShots) * 100}%`;
+    $awayShots.style.width = `${(parseInt($awayShotsValue) / totalShots) * 100}%`;
+  } else if ($localShots && $awayShots) {
+    $localShots.style.width = "0%";
+    $awayShots.style.width = "0%";
+  }
+
+  const $localShotsOnTarget = document.getElementById("localShotsOnTarget");
+  const $awayShotsOnTarget = document.getElementById("awayShotsOnTarget");
+  const $localShotsOnTargetValue =
+    document.getElementById("pLocalShotsOnTarget")?.innerText || "0";
+  const $awayShotsOnTargetValue =
+    document.getElementById("pAwayShotsOnTarget")?.innerText || "0";
+  const totalShotsOnTarget =
+    parseInt($localShotsOnTargetValue) + parseInt($awayShotsOnTargetValue);
+
+  if ($localShotsOnTarget && $awayShotsOnTarget && totalShotsOnTarget) {
+    $localShotsOnTarget.style.width = `${(parseInt($localShotsOnTargetValue) / totalShotsOnTarget) * 100}%`;
+    $awayShotsOnTarget.style.width = `${(parseInt($awayShotsOnTargetValue) / totalShotsOnTarget) * 100}%`;
+  } else if ($localShotsOnTarget && $awayShotsOnTarget) {
+    $localShotsOnTarget.style.width = "0%";
+    $awayShotsOnTarget.style.width = "0%";
+  }
+
+  const $localCorners = document.getElementById("localCorners");
+  const $awayCorners = document.getElementById("awayCorners");
+  const $localCornersValue =
+    document.getElementById("pLocalCorners")?.innerText || "0";
+  const $awayCornersValue =
+    document.getElementById("pAwayCorners")?.innerText || "0";
+  const totalCorners =
+    parseInt($localCornersValue) + parseInt($awayCornersValue);
+
+  if ($localCorners && $awayCorners && totalCorners !== 0) {
+    $localCorners.style.width = `${(parseInt($localCornersValue) / totalCorners) * 100}%`;
+    $awayCorners.style.width = `${(parseInt($awayCornersValue) / totalCorners) * 100}%`;
+  } else if ($localCorners && $awayCorners) {
+    $localCorners.style.width = "0%";
+    $awayCorners.style.width = "0%";
+  }
+
+  const $localOffsides = document.getElementById("localOffsides");
+  const $awayOffsides = document.getElementById("awayOffsides");
+  const $localOffsidesValue =
+    document.getElementById("pLocalOffsides")?.innerText || "0";
+  const $awayOffsidesValue =
+    document.getElementById("pAwayOffsides")?.innerText || "0";
+  const totalOffsides =
+    parseInt($localOffsidesValue) + parseInt($awayOffsidesValue);
+
+  if ($localOffsides && $awayOffsides && totalOffsides !== 0) {
+    $localOffsides.style.width = `${(parseInt($localOffsidesValue) / totalOffsides) * 100}%`;
+    $awayOffsides.style.width = `${(parseInt($awayOffsidesValue) / totalOffsides) * 100}%`;
+  } else if ($localOffsides && $awayOffsides) {
+    $localOffsides.style.width = "0%";
+    $awayOffsides.style.width = "0%";
+  }
+
+  const $localFouls = document.getElementById("localFouls");
+  const $awayFouls = document.getElementById("awayFouls");
+  const $localFoulsValue =
+    document.getElementById("pLocalFouls")?.innerText || "0";
+  const $awayFoulsValue =
+    document.getElementById("pAwayFouls")?.innerText || "0";
+  const totalFouls = parseInt($localFoulsValue) + parseInt($awayFoulsValue);
+
+  if ($localFouls && $awayFouls && totalFouls !== 0) {
+    $localFouls.style.width = `${(parseInt($localFoulsValue) / totalFouls) * 100}%`;
+    $awayFouls.style.width = `${(parseInt($awayFoulsValue) / totalFouls) * 100}%`;
+  } else if ($localFouls && $awayFouls) {
+    $localFouls.style.width = "0%";
+    $awayFouls.style.width = "0%";
+  }
+</script>

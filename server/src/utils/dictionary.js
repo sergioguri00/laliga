@@ -33,7 +33,14 @@ const dictionary = {
     about: 'about',
     aboutWebsite: 'about this website',
     teams: 'teams',
-    matches: 'matches'
+    matches: 'matches',
+    possession: 'Possession',
+    shots: 'Shots',
+    shotsOnTarget: 'Shots on target',
+    fouls: 'Fouls',
+    corners: 'Corners',
+    offsides: 'Offsides',
+    matchdayResults: 'Matchday results'
   },
   es: {
     president: 'presidente',
@@ -69,7 +76,14 @@ const dictionary = {
     about: 'acerca de',
     aboutWebsite: 'acerca de esta web',
     teams: 'equipos',
-    matches: 'partidos'
+    matches: 'partidos',
+    possession: 'Posesión',
+    shots: 'Tiros',
+    shotsOnTarget: 'Tiros a puerta',
+    fouls: 'Faltas',
+    corners: 'Córners',
+    offsides: 'Fueras de juego',
+    matchdayResults: 'Resultados de la jornada'
   }
 }
 

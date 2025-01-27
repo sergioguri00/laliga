@@ -26,4 +26,10 @@ export class LeagueController {
     const lastMatchday = await LeagueModel.getLastMatchday(id)
     res.json(lastMatchday)
   }
+
+  static async getMatchday (req, res) {
+    const { id, matchday } = req.params
+    const matchdayArray = await LeagueModel.getMatchday(id, matchday)
+    res.json(matchdayArray)
+  }
 }
