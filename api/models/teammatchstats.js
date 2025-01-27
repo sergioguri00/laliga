@@ -41,7 +41,7 @@ export class TeamMatchStatsModel {
       params.push(parseInt(fouls))
     }
 
-    query += ' ORDER BY matchdate DESC'
+    query += ' ORDER BY matchday_id DESC'
 
     const [teamsMatchStats] = await connection.execute(query, params)
     return teamsMatchStats
