@@ -1,0 +1,12 @@
+---
+const { matchdate, localTeam, awayTeam } = Astro.props;
+
+console.log(matchdate, localTeam, awayTeam);
+
+const localTeamStatsResponse = await fetch(
+  `http://localhost:1234/teammatchstats?matchdate=${matchdate}&team_id=${localTeam}`
+);
+const localTeamStatsData = await localTeamStatsResponse.json();
+const localTeamStats = localTeamStatsData[0];
+console.log(localTeamStats);
+---

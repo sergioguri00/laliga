@@ -7,7 +7,8 @@ export default {
         'la-liga-font': ['laligafont', 'sans-serif']
       },
       colors: {
-        mainblack: '#00001B'
+        mainblack: '#00001B',
+        laligared: '#FF0000'
       }
     }
   },

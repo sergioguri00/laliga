@@ -4,7 +4,7 @@ import { config } from '../../db/connect.js'
 const connection = await mysql.createConnection(config)
 
 export class TeamMatchStatsModel {
-  static async getAll ({ team, matchdate, possession, shots, shotsOnTarget, corners, offsides, fouls }) {
+  static async getAll ({ team, matchday, possession, shots, shotsOnTarget, corners, offsides, fouls }) {
     let query = 'SELECT * FROM teammatchstats WHERE 1=1'
     const params = []
 
@@ -12,9 +12,9 @@ export class TeamMatchStatsModel {
       query += ' AND team_id = ?'
       params.push(parseInt(team))
     }
-    if (matchdate) {
-      query += ' AND matchdate = ?'
-      params.push(matchdate)
+    if (matchday) {
+      query += ' AND matchday_id = ?'
+      params.push(matchday)
     }
     if (possession) {
       query += ' AND possession = ?'
@@ -50,7 +50,7 @@ export class TeamMatchStatsModel {
   static async create ({ input }) {
     const {
       team,
-      matchdate,
+      matchday,
       possession,
       shots,
       shotsOnTarget,
@@ -61,14 +61,14 @@ export class TeamMatchStatsModel {
     } = input
     try {
       const [teamId] = await connection.execute(`SELECT id FROM team WHERE LOWER(name) LIKE '%${team.toLowerCase()}%' LIMIT 1;`)
-      const [checkIfMatchExists] = await connection.execute('SELECT * FROM `match` WHERE (localTeam_id = ? OR awayTeam_id = ?) AND matchdate = ?', [teamId[0].id, teamId[0].id, matchdate])
+      const [checkIfMatchExists] = await connection.execute('SELECT * FROM `match` WHERE (localTeam_id = ? OR awayTeam_id = ?) AND matchday_id = ?', [teamId[0].id, teamId[0].id, matchday])
       if (checkIfMatchExists.length === 1) {
         await connection.query(
-          `INSERT INTO teammatchstats(team_id, matchdate, possession, shots, shots_on_target, corners, offsides, fouls, goals)
+          `INSERT INTO teammatchstats(team_id, matchday_id, possession, shots, shots_on_target, corners, offsides, fouls, goals)
           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-          [teamId[0].id, matchdate, possession, shots, shotsOnTarget, corners, offsides, fouls, goals]
+          [teamId[0].id, matchday, possession, shots, shotsOnTarget, corners, offsides, fouls, goals]
         )
-        const [checkIfMatchIsCompleted] = await connection.execute('SELECT * FROM teammatchstats WHERE matchdate = ? AND (team_id = ? OR team_id = ?)', [matchdate, checkIfMatchExists[0].localTeam_id, checkIfMatchExists[0].awayTeam_id])
+        const [checkIfMatchIsCompleted] = await connection.execute('SELECT * FROM teammatchstats WHERE matchday_id = ? AND (team_id = ? OR team_id = ?)', [matchday, checkIfMatchExists[0].localTeam_id, checkIfMatchExists[0].awayTeam_id])
         if (checkIfMatchIsCompleted.length === 2) {
           if (checkIfMatchIsCompleted[0].goals > checkIfMatchIsCompleted[1].goals) {
             await connection.query('UPDATE teamstats SET points = points + 3, matches_played = matches_played + 1, wins = wins + 1, goals_scored = goals_scored + ?, goals_conceded = goals_conceded + ?  WHERE team_id = ?', [checkIfMatchIsCompleted[0].goals, checkIfMatchIsCompleted[1].goals, checkIfMatchIsCompleted[0].team_id])
@@ -81,7 +81,7 @@ export class TeamMatchStatsModel {
             await connection.query('UPDATE teamstats SET points = points + 1, matches_played = matches_played + 1, draws = draws + 1, goals_scored = goals_scored + ?, goals_conceded = goals_conceded + ?  WHERE team_id = ?', [checkIfMatchIsCompleted[1].goals, checkIfMatchIsCompleted[0].goals, checkIfMatchIsCompleted[1].team_id])
           }
         }
-        const [newTeamMatchStats] = await connection.execute('SELECT * FROM teammatchstats WHERE team_id = ? AND matchdate = ?', [teamId[0].id, matchdate])
+        const [newTeamMatchStats] = await connection.execute('SELECT * FROM teammatchstats WHERE team_id = ? AND matchday_id = ?', [teamId[0].id, matchday])
         return newTeamMatchStats
       } else {
         return { error: 'Match does not exist' }

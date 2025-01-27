@@ -1,0 +1,44 @@
+---
+import MatchStats from "@/components/MatchStats.astro";
+import Layout from "@/layouts/Layout.astro";
+
+const { matchIds } = Astro.params;
+
+const [matchday_id, localTeam_id, awayTeam_id] = (matchIds as String).split(
+  "-"
+);
+
+export async function getStaticPaths() {
+  const matchesResponse = await fetch("http://localhost:1234/matches");
+  const matchesData = await matchesResponse.json();
+
+  const paths = matchesData.map((match: any) => {
+    const matchIds = `${match.matchday_id}-${match.localTeam_id}-${match.awayTeam_id}`;
+
+    return {
+      params: {
+        matchIds,
+      },
+    };
+  });
+
+  return paths;
+}
+
+const matchDetailsResponse = await fetch(
+  `http://localhost:1234/matches/?matchday=${matchday_id}&localTeam=${localTeam_id}&awayTeam=${awayTeam_id}`
+);
+const matchDetailsData = await matchDetailsResponse.json();
+const matchDetails = matchDetailsData[0];
+---
+
+<Layout
+  title=`Matchday ${matchday_id} | ${matchDetails.localTeam} vs ${matchDetails.awayTeam}`
+  description=`View the stats of the match between ${matchDetails.localTeam} and ${matchDetails.awayTeam}`
+>
+  <MatchStats
+    matchdate={matchDetails.matchdate}
+    localTeam={matchDetails.localTeam_id}
+    awayTeam={matchDetails.awayTeam_id}
+  />
+</Layout>

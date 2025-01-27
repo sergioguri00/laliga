@@ -3,8 +3,8 @@ import { validateTeamMatchStats } from '../schemas/teammatchstats.js'
 
 export class TeamMatchStatsController {
   static async getAll (req, res) {
-    const { team, matchdate, possession, shots, shotsOnTarget, corners, offsides, fouls } = req.query
-    const teamsmatchstats = await TeamMatchStatsModel.getAll({ team, matchdate, possession, shots, shotsOnTarget, corners, offsides, fouls })
+    const { team, matchday, possession, shots, shotsOnTarget, corners, offsides, fouls } = req.query
+    const teamsmatchstats = await TeamMatchStatsModel.getAll({ team, matchday, possession, shots, shotsOnTarget, corners, offsides, fouls })
     res.json(teamsmatchstats)
   }
 

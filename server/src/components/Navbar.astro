@@ -1,8 +1,8 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import "../styles/global.css";
-import LanguageSelector from "./LanguageSelector.astro";
-import { translator } from "../utils/dictionary.js";
+import "@/styles/global.css";
+import LanguageSelector from "@/components/LanguageSelector.astro";
+import { translator } from "@/utils/dictionary.js";
 
 const page = Astro.request.url.toString().split("/");
 const pageId = page[4] !== "" ? translator(page[3], page[4]) : "";
@@ -17,7 +17,10 @@ const currentLang = Astro.currentLocale || "es";
   <nav
     class="grid grid-cols-3 gap-4 p-4 w-full justify-items-center h-full items-center"
   >
-    <a href="/" class="navbar-logo justify-self-start ml-2 sm:ml-5">
+    <a
+      href={getRelativeLocaleUrl(currentLang, `/`)}
+      class="navbar-logo justify-self-start ml-2 sm:ml-5"
+    >
       <svg
         width="70"
         height="70"

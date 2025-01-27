@@ -5,10 +5,7 @@ const teamMatchStatsSchema = z.object({
     invalid_type_error: 'Team must be a string',
     required_error: 'Team is required'
   }),
-  matchdate: z.string().regex(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/, {
-    message: 'Matchdate must be in the format YYYY-MM-DD HH:MM:SS',
-    required_error: 'Matchdate is required'
-  }),
+  matchday: z.number.int().min(1),
   possession: z.number().int().min(0),
   shots: z.number().int().min(0).nullable(),
   shotsOnTarget: z.number().int().min(0).nullable(),

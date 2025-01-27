@@ -1,7 +1,7 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import "../../styles/global.css";
+import "@/styles/global.css";
 const teamsResponse = await fetch("http://localhost:1234/teams");
 const teamsData = await teamsResponse.json();
 const stadiumsResponse = await fetch("http://localhost:1234/stadiums");

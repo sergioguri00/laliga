@@ -1,9 +1,9 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import { getCountryCode } from "../../../utils/countryCodes";
+import Layout from "@/layouts/Layout.astro";
+import { getCountryCode } from "@/utils/countryCodes";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { translator } from "../../../utils/dictionary.js";
-import "../../../styles/global.css";
+import { translator } from "@/utils/dictionary.js";
+import "@/styles/global.css";
 
 const { id } = Astro.params;
 const teamResponse = await fetch(`http://localhost:1234/teams/${id}`);
@@ -607,7 +607,12 @@ const currentLang = Astro.currentLocale || "es";
                   <img src={result.awayTeamBadge} class="h-10" />
                   <p class="hidden xl:block">{result.awayTeamName}</p>
                 </a>
-                <a href="">
+                <a
+                  href={getRelativeLocaleUrl(
+                    currentLang,
+                    `/matches/${result.matchday_id}/${result.localTeamId}/${result.awayTeamId}`
+                  )}
+                >
                   <button class="p-2 rounded-lg hover:scale-105 text-sm transition match-button uppercase">
                     {translator("en", "viewMatch")}
                   </button>

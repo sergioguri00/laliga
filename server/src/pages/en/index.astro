@@ -1,7 +1,7 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { translator } from "../../utils/dictionary.js";
+import { translator } from "@/utils/dictionary.js";
 
 const tableResponse = await fetch("http://localhost:1234/leagues/1/table");
 const tableData = await tableResponse.json();

@@ -59,7 +59,7 @@ CREATE INDEX idx_matchdate ON `match` (matchdate);
 
 create table teammatchstats (
 	team_id int not null,
-	matchdate datetime not null,
+	matchday_id int not null,
 	possession int not null,
 	shots int,
 	shots_on_target int,
@@ -68,8 +68,8 @@ create table teammatchstats (
 	fouls int,
 	goals int not null,
 	foreign key (team_id) references team(id),
-	foreign key (matchdate) references `match`(matchdate),
-	primary key (team_id,matchdate)
+	foreign key (matchday_id) references matchday(matchday),
+	primary key (team_id,matchday_id)
 );
 
 create table manager (
@@ -104,11 +104,11 @@ create table matchevent (
 	minute int not null,
 	other_player_id int,
 	team_id int not null,
-	matchdate datetime not null,
+	matchday_id int not null,
 	foreign key (player_id) references player(id),
 	foreign key (other_player_id) references player(id),
-	foreign key (team_id, matchdate) references teammatchstats(team_id,matchdate),
-	primary key (player_id,team_id, matchdate)
+	foreign key (team_id, matchday_id) references teammatchstats(team_id,matchday_id),
+	primary key (player_id,team_id, matchday_id)
 );
 
 create table teamstats (
