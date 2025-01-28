@@ -38,40 +38,64 @@ const currentLang = Astro.currentLocale || "es";
       <th class="hidden md:table-cell">{translator(currentLang, "gf")}</th>
       <th class="hidden md:table-cell">{translator(currentLang, "ga")}</th>
       <th>{translator(currentLang, "gd")}</th>
-      {
-        tableData.map((team: Team, index: number) => (
-          <tr>
-            <td>{index + 1}</td>
-            <td class="flex flex-row items-center">
-              <a
-                href={getRelativeLocaleUrl(
-                  currentLang,
-                  `/teams/${team.team_id}`
-                )}
-                class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-laligared transition"
-              >
-                <img src={team.badge} class="w-8 h-8 mt-1" />
-                {team.shortName}
-              </a>
-            </td>
-            <td>{team.points}</td>
-            <td class="hidden md:table-cell">{team.matches_played}</td>
-            <td class="hidden md:table-cell">{team.wins}</td>
-            <td class="hidden md:table-cell">{team.draws}</td>
-            <td class="hidden md:table-cell">{team.losses}</td>
-            <td class="hidden md:table-cell">{team.goals_scored}</td>
-            <td class="hidden md:table-cell">{team.goals_conceded}</td>
-            <td>
-              {team.goalDifference > 0
-                ? `+${team.goalDifference}`
-                : team.goalDifference}
-            </td>
-          </tr>
-        ))
-      }
     </tr>
+    {
+      tableData.map((team: Team, index: number) => (
+        <tr>
+          <td class="table-cell">
+            <p class="tablePosition min-w-[30px] max-w-[30px] min-h-[30px] max-h-[30px] rounded-xl justify-self-center">
+              {index + 1}
+            </p>
+          </td>
+          <td class="table-cell">
+            <a
+              href={getRelativeLocaleUrl(currentLang, `/teams/${team.team_id}`)}
+              class="flex-row flex items-center justify-self-start hover:scale-105 hover:text-laligared transition"
+            >
+              <img src={team.badge} class="w-8 h-8 mt-1" />
+              {team.shortName}
+            </a>
+          </td>
+          <td>{team.points}</td>
+          <td class="hidden md:table-cell">{team.matches_played}</td>
+          <td class="hidden md:table-cell">{team.wins}</td>
+          <td class="hidden md:table-cell">{team.draws}</td>
+          <td class="hidden md:table-cell">{team.losses}</td>
+          <td class="hidden md:table-cell">{team.goals_scored}</td>
+          <td class="hidden md:table-cell">{team.goals_conceded}</td>
+          <td>
+            {team.goalDifference > 0
+              ? `+${team.goalDifference}`
+              : team.goalDifference}
+          </td>
+        </tr>
+      ))
+    }
   </table>
 </div>
 
-# TODO colors for the table positions 1-4-> blue, 5-> dark red, 6-> yellow,
-18-20-> red
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const tablePosition =
+      document.querySelectorAll<HTMLElement>(".tablePosition");
+
+    for (let i = 0; i < tablePosition.length; i++) {
+      if (i == 0) {
+        tablePosition[i].style.backgroundColor = "#EFBF04";
+        tablePosition[i].style.color = "white";
+      } else if (i > 0 && i < 4) {
+        tablePosition[i].style.backgroundColor = "#0000FF";
+        tablePosition[i].style.color = "white";
+      } else if (i === 4) {
+        tablePosition[i].style.backgroundColor = "#FF7600";
+        tablePosition[i].style.color = "white";
+      } else if (i === 5) {
+        tablePosition[i].style.backgroundColor = "#5CED73";
+        tablePosition[i].style.color = "white";
+      } else if (i > 16) {
+        tablePosition[i].style.backgroundColor = "red";
+        tablePosition[i].style.color = "white";
+      }
+    }
+  });
+</script>
