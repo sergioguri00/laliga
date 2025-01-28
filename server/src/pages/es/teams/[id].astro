@@ -97,7 +97,7 @@ const currentLang = Astro.currentLocale || "es";
             <div>
               <p class="font-la-liga-font text-2xl">{`POS. ${teamPosition}`}</p>
               <p class="font-la-liga-font text-2xl">{`${teamStats.points} pts`}</p>
-              <p class="font-la-liga-font text-2xl">{`${teamStats.wins} W | ${teamStats.draws} D | ${teamStats.losses} L`}</p>
+              <p class="font-la-liga-font text-2xl">{`${teamStats.wins} ${translator(currentLang, "wins")} | ${teamStats.draws} ${translator(currentLang, "draws")} | ${teamStats.losses} ${translator(currentLang, "losses")}`}</p>
             </div>
           </div>
           <div>
