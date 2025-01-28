@@ -1,0 +1,397 @@
+---
+import { translator } from "@/utils/dictionary.js";
+import { getCountryCode } from "@/utils/countryCodes.js";
+
+const { id, team, manager, players } = Astro.props;
+
+interface Player {
+  id: number;
+  name: string;
+  lastName: string;
+  knownAs: string;
+  number: number;
+  position: string;
+  country: string;
+  birthday: string;
+  height: number;
+  photo: string;
+}
+
+const currentLang = Astro.currentLocale || "es";
+---
+
+<section id=`${id}` class="xl:p-10">
+  <h2 class="text-3xl text-bold uppercase font-la-liga-font text-center">
+    {`${team.shortName} ${translator(currentLang, "squadSection")}`}
+  </h2>
+  <div class="flex flex-col">
+    <div>
+      <div class="border-b-[1px] border-mainblack w-full text-start">
+        <p class="mt-4 font-la-liga-font text-2xl pb-2 uppercase">
+          {translator(currentLang, "manager")}
+        </p>
+      </div>
+      <div
+        class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3 text-sm md:text-md xl:text-[16px]"
+      >
+        <div
+          class="text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative mt-4"
+        >
+          <div
+            class="absolute inset-0 bg-cover bg-center opacity-10"
+            style={`background-image: url('${team.badge}');`}
+          >
+          </div>
+          <div class="flex flex-col justify-between relative z-10">
+            <div class="self-start">
+              <p
+                class={`text-bold text-lg sm:text-2xl font-la-liga-font text-mainblack`}
+              >
+                {`${manager.name} ${manager.lastName}`}
+              </p>
+            </div>
+            <div class="flex flex-col">
+              <p class="uppercase font-bold text-[10px] sm:text-sm">
+                {translator(currentLang, "manager")}
+              </p>
+              <div class="flex flex-row items-center">
+                <img
+                  src={`/flags/${getCountryCode(manager.country)}.svg`}
+                  alt={manager.country}
+                  class="mr-2 w-6 h-4"
+                />
+                <p class="text-center text-[10px] sm:text-sm">
+                  {manager.country}
+                </p>
+              </div>
+            </div>
+          </div>
+          <img
+            src={manager.photo}
+            alt={manager.lastName}
+            class="w-full transition relative z-10"
+            style="align-self: center"
+          />
+          <div
+            class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack"
+          >
+            <div class="col-span-2 w-full">
+              <p class="text-center uppercase font-bold">
+                {translator(currentLang, "birthday")}
+              </p>
+              <p class="text-center">
+                {manager.birthday.toString().split("T")[0]}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="border-b-[1px] border-mainblack w-full text-start mt-10">
+          <p class="uppercase font-la-liga-font text-2xl pb-2">
+            {translator(currentLang, "goalkeepers")}
+          </p>
+        </div>
+        <div
+          class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
+        >
+          {
+            players.map((player: Player) =>
+              player.position === "Goalkeeper" ? (
+                <div class="text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
+                  <div
+                    class="absolute inset-0 bg-cover bg-center opacity-10"
+                    style={`background-image: url('${team.badge}');`}
+                  />
+                  <div class="flex flex-col justify-between relative z-10">
+                    <div class="self-start">
+                      <p
+                        class={`text-bold text-5xl font-la-liga-font`}
+                        style={`color:${team.mainColor === "#ffffff" ? "#00001B" : team.mainColor}`}
+                      >
+                        {player.number}
+                      </p>
+                      <p
+                        class={`text-bold text-lg sm:text-2xl font-la-liga-font text-mainblack`}
+                      >
+                        {player.knownAs !== null
+                          ? player.knownAs
+                          : player.lastName}
+                      </p>
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="uppercase font-bold text-[10px] sm:text-sm">
+                        {translator(currentLang, "goalkeeper")}
+                      </p>
+                      <div class="flex flex-row items-center">
+                        <img
+                          src={`/flags/${getCountryCode(player.country)}.svg`}
+                          alt={String(player.country)}
+                          class="mr-2 w-6 h-4"
+                        />
+                        <p class="text-center text-[10px] sm:text-sm">
+                          {player.country}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="" class="relative z-10" style="align-self: center">
+                    <img
+                      src={player.photo}
+                      alt={player.knownAs}
+                      class="w-full hover:opacity-80 hover:scale-[0.98] transition"
+                    />
+                  </a>
+                  <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
+                    <div>
+                      <p class="text-center uppercase font-bold">
+                        {translator(currentLang, "birthday")}
+                      </p>
+                      <p class="text-center">
+                        {player.birthday.toString().split("T")[0]}
+                      </p>
+                    </div>
+                    <div>
+                      <p class="text-center uppercase font-bold">
+                        {translator(currentLang, "height")}
+                      </p>
+                      <p class="text-center">{player.height} cm</p>
+                    </div>
+                  </div>
+                </div>
+              ) : null
+            )
+          }
+        </div>
+        <div class="border-b-[1px] border-mainblack w-full text-start mt-10">
+          <p class="uppercase font-la-liga-font text-2xl pb-2">
+            {translator(currentLang, "defenders")}
+          </p>
+        </div>
+        <div
+          class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
+        >
+          {
+            players.map((player: Player) =>
+              player.position === "Defender" ? (
+                <div class="text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
+                  <div
+                    class="absolute inset-0 bg-cover bg-center opacity-10"
+                    style={`background-image: url('${team.badge}');`}
+                  />
+                  <div class="flex flex-col justify-between relative z-10">
+                    <div class="self-start">
+                      <p
+                        class={`text-bold text-5xl font-la-liga-font`}
+                        style={`color:${team.mainColor === "#ffffff" ? "#00001B" : team.mainColor}`}
+                      >
+                        {player.number}
+                      </p>
+                      <p
+                        class={`text-bold text-lg sm:text-2xl font-la-liga-font text-mainblack`}
+                      >
+                        {player.knownAs !== null
+                          ? player.knownAs
+                          : player.lastName}
+                      </p>
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="uppercase font-bold text-[10px] sm:text-sm">
+                        {translator(currentLang, "defender")}
+                      </p>
+                      <div class="flex flex-row items-center">
+                        <img
+                          src={`/flags/${getCountryCode(player.country)}.svg`}
+                          alt={String(player.country)}
+                          class="mr-2 w-6 h-4"
+                        />
+                        <p class="text-center text-[10px] sm:text-sm">
+                          {player.country}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="" class="relative z-10" style="align-self: center">
+                    <img
+                      src={player.photo}
+                      alt={player.knownAs}
+                      class="w-full hover:opacity-80 hover:scale-[0.98] transition"
+                    />
+                  </a>
+                  <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
+                    <div>
+                      <p class="text-center uppercase font-bold">
+                        {translator(currentLang, "birthday")}
+                      </p>
+                      <p class="text-center">
+                        {player.birthday.toString().split("T")[0]}
+                      </p>
+                    </div>
+                    <div>
+                      <p class="text-center uppercase font-bold">
+                        {translator(currentLang, "height")}
+                      </p>
+                      <p class="text-center">{player.height} cm</p>
+                    </div>
+                  </div>
+                </div>
+              ) : null
+            )
+          }
+        </div>
+        <div class="border-b-[1px] border-mainblack w-full text-start mt-10">
+          <p class="uppercase font-la-liga-font text-2xl pb-2">
+            {translator(currentLang, "midfielders")}
+          </p>
+        </div>
+        <div
+          class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
+        >
+          {
+            players.map((player: Player) =>
+              player.position === "Midfielder" ? (
+                <div class="text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
+                  <div
+                    class="absolute inset-0 bg-cover bg-center opacity-10"
+                    style={`background-image: url('${team.badge}');`}
+                  />
+                  <div class="flex flex-col justify-between relative z-10">
+                    <div class="self-start">
+                      <p
+                        class={`text-bold text-5xl font-la-liga-font`}
+                        style={`color:${team.mainColor === "#ffffff" ? "#00001B" : team.mainColor}`}
+                      >
+                        {player.number}
+                      </p>
+                      <p
+                        class={`text-bold text-lg sm:text-2xl font-la-liga-font text-mainblack`}
+                      >
+                        {player.knownAs !== null
+                          ? player.knownAs
+                          : player.lastName}
+                      </p>
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="uppercase font-bold text-[10px] sm:text-sm">
+                        {translator(currentLang, "midfielder")}
+                      </p>
+                      <div class="flex flex-row items-center">
+                        <img
+                          src={`/flags/${getCountryCode(player.country)}.svg`}
+                          alt={String(player.country)}
+                          class="mr-2 w-6 h-4"
+                        />
+                        <p class="text-center text-[10px] sm:text-sm">
+                          {player.country}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="" class="relative z-10" style="align-self: center">
+                    <img
+                      src={player.photo}
+                      alt={player.knownAs}
+                      class="w-full hover:opacity-80 hover:scale-[0.98] transition"
+                    />
+                  </a>
+                  <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
+                    <div>
+                      <p class="text-center uppercase font-bold">
+                        {translator(currentLang, "birthday")}
+                      </p>
+                      <p class="text-center">
+                        {player.birthday.toString().split("T")[0]}
+                      </p>
+                    </div>
+                    <div>
+                      <p class="text-center uppercase font-bold">
+                        {translator(currentLang, "height")}
+                      </p>
+                      <p class="text-center">{player.height} cm</p>
+                    </div>
+                  </div>
+                </div>
+              ) : null
+            )
+          }
+        </div>
+        <div class="border-b-[1px] border-mainblack w-full text-start mt-10">
+          <p class="uppercase font-la-liga-font text-2xl pb-2">
+            {translator(currentLang, "forwards")}
+          </p>
+        </div>
+        <div
+          class="grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3"
+        >
+          {
+            players.map((player: Player) =>
+              player.position === "Forward" ? (
+                <div class="text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]">
+                  <div
+                    class="absolute inset-0 bg-cover bg-center opacity-10"
+                    style={`background-image: url('${team.badge}');`}
+                  />
+                  <div class="flex flex-col justify-between relative z-10">
+                    <div class="self-start">
+                      <p
+                        class={`text-bold text-5xl font-la-liga-font`}
+                        style={`color:${team.mainColor === "#ffffff" ? "#00001B" : team.mainColor}`}
+                      >
+                        {player.number}
+                      </p>
+                      <p
+                        class={`text-bold text-lg sm:text-2xl font-la-liga-font text-mainblack`}
+                      >
+                        {player.knownAs !== null
+                          ? player.knownAs
+                          : player.lastName}
+                      </p>
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="uppercase font-bold text-[10px] sm:text-sm">
+                        {translator(currentLang, "forward")}
+                      </p>
+                      <div class="flex flex-row items-center">
+                        <img
+                          src={`/flags/${getCountryCode(player.country)}.svg`}
+                          alt={String(player.country)}
+                          class="mr-2 w-6 h-4"
+                        />
+                        <p class="text-center text-[10px] sm:text-sm">
+                          {player.country}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="" class="relative z-10" style="align-self: center">
+                    <img
+                      src={player.photo}
+                      alt={player.knownAs}
+                      class="w-full hover:opacity-80 hover:scale-[0.98] transition"
+                    />
+                  </a>
+                  <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
+                    <div>
+                      <p class="text-center uppercase font-bold">
+                        {translator(currentLang, "birthday")}
+                      </p>
+                      <p class="text-center">
+                        {player.birthday.toString().split("T")[0]}
+                      </p>
+                    </div>
+                    <div>
+                      <p class="text-center uppercase font-bold">
+                        {translator(currentLang, "height")}
+                      </p>
+                      <p class="text-center">{player.height} cm</p>
+                    </div>
+                  </div>
+                </div>
+              ) : null
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

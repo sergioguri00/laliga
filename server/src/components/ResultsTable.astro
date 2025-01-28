@@ -3,7 +3,7 @@ import { translator } from "@/utils/dictionary.js";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import "@/styles/global.css";
 
-const { matchdayResultsData } = Astro.props;
+const { matchdayResultsData, teamResults } = Astro.props;
 
 const currentLang = Astro.currentLocale || "es";
 ---
@@ -12,8 +12,11 @@ const currentLang = Astro.currentLocale || "es";
   <table class="w-full text-center flex flex-col gap-4 justify-center">
     {
       matchdayResultsData.map((result: any) => (
-        <tr class="font-la-liga-font text-sm md:text-xl gap-2 md:gap-10 flex justify-between">
-          <td class="w-[5.5rem] md:w-[8rem] flex flex-col sm:flex-row sm:gap-2 text-lg sm:text-xl justify-self-end text-center">
+        <tr class={`${teamResults === true ? "block" : "hidden"} border-b-[1px] border-mainblack my-4`}>
+          <td class="uppercase font-la-liga-font text-2xl">{`${translator(currentLang,"matchday")} ${result.matchday_id}`}</td>
+        </tr>
+        <tr class="font-la-liga-font text-sm md:text-xl gap-2 md:gap-10 flex justify-between items-center">
+          <td class="w-[5.5rem] md:w-[8rem] flex flex-col sm:flex-row sm:gap-2 text-lg sm:text-xl justify-end text-center">
             <p>
               {`${result.matchdate.toString().split("T")[0].split("-")[2]}/${result.matchdate.toString().split("T")[0].split("-")[1]}/${result.matchdate.toString().split("T")[0].split("-")[0]}`}
             </p>
