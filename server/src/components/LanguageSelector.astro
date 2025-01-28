@@ -44,48 +44,50 @@ const { lang } = Astro.props;
   </ul>
 </div>
 <script>
-  const selectedLanguage = document.getElementById("selected-language");
-  const languageDropdown = document.getElementById("language-dropdown");
-  const enOption = document.getElementById("en-option");
-  const esOption = document.getElementById("es-option");
+  document.addEventListener('astro:page-load', () => {
+    const selectedLanguage = document.getElementById("selected-language");
+    const languageDropdown = document.getElementById("language-dropdown");
+    const enOption = document.getElementById("en-option");
+    const esOption = document.getElementById("es-option");
 
-  selectedLanguage?.addEventListener("click", () => {
-    if (languageDropdown?.classList.contains("hidden")) {
-      languageDropdown?.classList.remove("hidden");
-      languageDropdown?.classList.add("block");
-    } else {
-      languageDropdown?.classList.remove("block");
-      languageDropdown?.classList.add("hidden");
+    selectedLanguage?.addEventListener("click", () => {
+      if (languageDropdown?.classList.contains("hidden")) {
+        languageDropdown?.classList.remove("hidden");
+        languageDropdown?.classList.add("block");
+      } else {
+        languageDropdown?.classList.remove("block");
+        languageDropdown?.classList.add("hidden");
+      }
+    });
+
+    enOption?.addEventListener("click", () => languageOptionClick(enOption));
+
+    esOption?.addEventListener("click", () => languageOptionClick(esOption));
+
+    document.addEventListener("click", (event) => {
+      if (
+        !document
+          .getElementById("language-selector")
+          ?.contains(event.target as Node)
+      ) {
+        languageDropdown?.classList.remove("block");
+        languageDropdown?.classList.add("hidden");
+      }
+    });
+
+    function languageOptionClick(option: HTMLElement) {
+      const img = option.querySelector("img")?.src;
+      const text = option.querySelector("span")?.textContent;
+      const chnode = selectedLanguage?.childNodes[3] as Node;
+
+      if (img) selectedLanguage!.querySelector("img")!.src = img?.toString();
+      chnode.textContent = `${text}`;
+
+      let link = window.location.href.toString().split("/");
+      if (option.dataset.lang) {
+        link[3] = option.dataset.lang;
+      }
+      window.location.href = link.join("/");
     }
   });
-
-  enOption?.addEventListener("click", () => languageOptionClick(enOption));
-
-  esOption?.addEventListener("click", () => languageOptionClick(esOption));
-
-  document.addEventListener("click", (event) => {
-    if (
-      !document
-        .getElementById("language-selector")
-        ?.contains(event.target as Node)
-    ) {
-      languageDropdown?.classList.remove("block");
-      languageDropdown?.classList.add("hidden");
-    }
-  });
-
-  function languageOptionClick(option: HTMLElement) {
-    const img = option.querySelector("img")?.src;
-    const text = option.querySelector("span")?.textContent;
-    const chnode = selectedLanguage?.childNodes[3] as Node;
-
-    if (img) selectedLanguage!.querySelector("img")!.src = img?.toString();
-    chnode.textContent = `${text}`;
-
-    let link = window.location.href.toString().split("/");
-    if (option.dataset.lang) {
-      link[3] = option.dataset.lang;
-    }
-    window.location.href = link.join("/");
-  }
 </script>

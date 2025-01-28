@@ -84,6 +84,7 @@ const currentLang = Astro.currentLocale || "es";
     {
       (
         <div
+          transition:name={`team-${id}`}
           class={`w-full h-auto grid grid-cols-1 sm:h-96 sm:grid-cols-3 grid-rows-3 sm:grid-rows-1 items-center gap-4 rounded-3xl p-8 shadow-zinc-500 shadow-lg`}
           style={`background: radial-gradient(circle, ${team.secondaryColor} 0%, ${team.mainColor} 50%)`}
         >
@@ -173,7 +174,7 @@ const currentLang = Astro.currentLocale || "es";
       </div>
     </nav>
 
-    <section id="squadSection" class="p-4 xl:p-10 hidden">
+    <section id="squadSection" class="p-4 xl:p-10">
       <h2 class="text-3xl text-bold uppercase font-la-liga-font">
         {`${team.shortName} ${translator("es", "squadSection")}`}
       </h2>
@@ -627,49 +628,51 @@ const currentLang = Astro.currentLocale || "es";
 </Layout>
 
 <script>
-  if (window.location.href.includes("#results")) {
-    changeTab("results");
-  } else if (window.location.href.includes("#squad")) {
-    changeTab("squad");
-  } else {
-    const squadSection = document.getElementById("squadSection");
-    if (squadSection) squadSection.classList.remove("hidden");
-  }
-
-  const sections = document.querySelectorAll("div.section");
-  sections.forEach((section) => {
-    section.addEventListener("click", () => changeTab(section.id));
-  });
-
-  function changeTab(tab: string) {
-    const squadSection = document.getElementById("squadSection");
-    const resultsSection = document.getElementById("resultsSection");
-    const squad = document.getElementById("squad");
-    const results = document.getElementById("results");
-    if (tab === "results") {
-      squadSection?.classList.add("hidden");
-      resultsSection?.classList.remove("hidden");
-      if (squad && results) {
-        squad.classList.remove("border-laligared");
-        squad.classList.remove("font-bold");
-        squad.classList.add("hover:text-laligared");
-        results.classList.add("border-laligared");
-        results.classList.add("font-bold");
-        results.classList.remove("hover:text-laligared");
-        window.location.href = "#results";
-      }
+  document.addEventListener("astro:page-load", () => {
+    if (window.location.href.includes("#results")) {
+      changeTab("results");
+    } else if (window.location.href.includes("#squad")) {
+      changeTab("squad");
     } else {
-      squadSection?.classList.remove("hidden");
-      resultsSection?.classList.add("hidden");
-      if (squad && results) {
-        squad.classList.add("border-laligared");
-        squad.classList.add("font-bold");
-        squad.classList.remove("hover:text-laligared");
-        results.classList.remove("border-laligared");
-        results.classList.remove("font-bold");
-        results.classList.add("hover:text-laligared");
-        window.location.href = "#squad";
+      const squadSection = document.getElementById("squadSection");
+      if (squadSection) squadSection.classList.remove("hidden");
+    }
+
+    const sections = document.querySelectorAll("div.section");
+    sections.forEach((section) => {
+      section.addEventListener("click", () => changeTab(section.id));
+    });
+
+    function changeTab(tab: string) {
+      const squadSection = document.getElementById("squadSection");
+      const resultsSection = document.getElementById("resultsSection");
+      const squad = document.getElementById("squad");
+      const results = document.getElementById("results");
+      if (tab === "results") {
+        squadSection?.classList.add("hidden");
+        resultsSection?.classList.remove("hidden");
+        if (squad && results) {
+          squad.classList.remove("border-laligared");
+          squad.classList.remove("font-bold");
+          squad.classList.add("hover:text-laligared");
+          results.classList.add("border-laligared");
+          results.classList.add("font-bold");
+          results.classList.remove("hover:text-laligared");
+          window.location.href = "#results";
+        }
+      } else {
+        squadSection?.classList.remove("hidden");
+        resultsSection?.classList.add("hidden");
+        if (squad && results) {
+          squad.classList.add("border-laligared");
+          squad.classList.add("font-bold");
+          squad.classList.remove("hover:text-laligared");
+          results.classList.remove("border-laligared");
+          results.classList.remove("font-bold");
+          results.classList.add("hover:text-laligared");
+          window.location.href = "#squad";
+        }
       }
     }
-  }
+  });
 </script>
