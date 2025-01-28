@@ -108,13 +108,13 @@ POST http://localhost:1234/teammatchstats
 Content-Type: application/json
 
 {
-    "team": "celta",
-    "matchday": 4,
-    "possession": 50,
-    "shots": 12,
-    "shotsOnTarget": 3,
-    "corners": 3,
-    "offsides": 3,
-    "fouls": 10,
-    "goals": 2
+    "corners": 0,
+    "fouls": 0,
+    "goals": 0,
+    "matchday": 19,
+    "offsides": 0,
+    "possession": 0,
+    "shots": 0,
+    "shotsOnTarget": 0,
+    "team": "RCD Mallorca"
 }

@@ -60,13 +60,12 @@ export class TeamMatchStatsModel {
       goals
     } = input
     try {
-      const [teamId] = await connection.execute(`SELECT id FROM team WHERE LOWER(name) LIKE '%${team.toLowerCase()}%' LIMIT 1;`)
-      const [checkIfMatchExists] = await connection.execute('SELECT * FROM `match` WHERE (localTeam_id = ? OR awayTeam_id = ?) AND matchday_id = ?', [teamId[0].id, teamId[0].id, matchday])
+      const [checkIfMatchExists] = await connection.execute('SELECT * FROM `match` WHERE (localTeam_id = ? OR awayTeam_id = ?) AND matchday_id = ?', [team, team, matchday])
       if (checkIfMatchExists.length === 1) {
         await connection.query(
           `INSERT INTO teammatchstats(team_id, matchday_id, possession, shots, shots_on_target, corners, offsides, fouls, goals)
           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-          [teamId[0].id, matchday, possession, shots, shotsOnTarget, corners, offsides, fouls, goals]
+          [team, matchday, possession, shots, shotsOnTarget, corners, offsides, fouls, goals]
         )
         const [checkIfMatchIsCompleted] = await connection.execute('SELECT * FROM teammatchstats WHERE matchday_id = ? AND (team_id = ? OR team_id = ?)', [matchday, checkIfMatchExists[0].localTeam_id, checkIfMatchExists[0].awayTeam_id])
         if (checkIfMatchIsCompleted.length === 2) {
@@ -81,7 +80,7 @@ export class TeamMatchStatsModel {
             await connection.query('UPDATE teamstats SET points = points + 1, matches_played = matches_played + 1, draws = draws + 1, goals_scored = goals_scored + ?, goals_conceded = goals_conceded + ?  WHERE team_id = ?', [checkIfMatchIsCompleted[1].goals, checkIfMatchIsCompleted[0].goals, checkIfMatchIsCompleted[1].team_id])
           }
         }
-        const [newTeamMatchStats] = await connection.execute('SELECT * FROM teammatchstats WHERE team_id = ? AND matchday_id = ?', [teamId[0].id, matchday])
+        const [newTeamMatchStats] = await connection.execute('SELECT * FROM teammatchstats WHERE team_id = ? AND matchday_id = ?', [team, matchday])
         return newTeamMatchStats
       } else {
         return { error: 'Match does not exist' }

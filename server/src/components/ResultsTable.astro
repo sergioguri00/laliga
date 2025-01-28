@@ -53,7 +53,7 @@ const currentLang = Astro.currentLocale || "es";
             <a
               href={getRelativeLocaleUrl(
                 currentLang,
-                `/matches/${result.matchday_id}-${result.localTeamId}-${result.awayTeamId}`
+                `/editmatch/${result.matchday_id}-${result.localTeamId}-${result.awayTeamId}`
               )}
             >
               <button class="p-2 rounded-lg hover:scale-105 text-sm transition match-button uppercase">

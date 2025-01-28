@@ -1,10 +1,7 @@
 import { z } from 'zod'
 
 const teamMatchStatsSchema = z.object({
-  team: z.string({
-    invalid_type_error: 'Team must be a string',
-    required_error: 'Team is required'
-  }),
+  team: z.number().int().min(0),
   matchday: z.number().int().min(1),
   possession: z.number().int().min(0),
   shots: z.number().int().min(0).nullable(),

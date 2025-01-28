@@ -1,0 +1,340 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { translator } from "@/utils/dictionary.js";
+const { matchday, localTeam, awayTeam } = Astro.props;
+
+const localTeamStatsResponse = await fetch(
+  `http://localhost:1234/teammatchstats?matchday=${matchday}&team=${localTeam}`
+);
+const localTeamStatsData = await localTeamStatsResponse.json();
+
+function auxJSON(t: any, m: any) {
+  return {
+    team_id: t,
+    matchday_id: m,
+    possession: 0,
+    shots: 0,
+    shots_on_target: 0,
+    corners: 0,
+    offsides: 0,
+    fouls: 0,
+    goals: 0,
+  };
+}
+const localTeamStats = localTeamStatsData[0] || auxJSON(localTeam, matchday);
+
+const localTeamResponse = await fetch(
+  `http://localhost:1234/teams/${localTeam}`
+);
+const localTeamData = await localTeamResponse.json();
+const localTeamInfo = localTeamData[0];
+
+const awayTeamStatsResponse = await fetch(
+  `http://localhost:1234/teammatchstats?matchday=${matchday}&team=${awayTeam}`
+);
+const awayTeamStatsData = await awayTeamStatsResponse.json();
+const awayTeamStats = awayTeamStatsData[0] || auxJSON(awayTeam, matchday);
+
+const awayTeamResponse = await fetch(`http://localhost:1234/teams/${awayTeam}`);
+const awayTeamData = await awayTeamResponse.json();
+const awayTeamInfo = awayTeamData[0];
+
+console.log(localTeamStats, localTeamInfo, awayTeamStats, awayTeamInfo);
+
+const currentLang = Astro.currentLocale || "es";
+---
+
+<section class="py-20 px-2 lg:px-10 flex flex-col">
+  <p id="matchdayName">{matchday}</p>
+  <div
+    class="text-xl font-la-liga-font text-mainblack grid text-center items-center px-4 xl:px-96"
+    style="grid-template-columns: 40% 20% 40%"
+  >
+    <a
+      href={getRelativeLocaleUrl(currentLang, `/teams/${localTeam}`)}
+      class="flex flex-col justify-center items-center hover:scale-105 text-mainblack hover:text-laligared transition"
+    >
+      <img
+        src={localTeamInfo.badge}
+        alt={localTeamInfo.shortName}
+        class="w-20 h-20 md:w-32 md:h-32"
+      />
+      <p id="localTeamName" class="text-sm sm:text-xl">
+        {localTeam}
+      </p>
+    </a>
+    <div class="flex flex-row text-4xl sm:text-5xl text-laligared">
+      <input
+        type="number"
+        min="0"
+        max="100"
+        id="pLocalGoals"
+        value={localTeamStats.goals}
+      />
+      -
+      <input
+        type="number"
+        min="0"
+        max="100"
+        id="pAwayGoals"
+        value={awayTeamStats.goals}
+      />
+    </div>
+    <a
+      href={getRelativeLocaleUrl(currentLang, `/teams/${awayTeam}`)}
+      class="flex flex-col justify-center items-center hover:scale-105 text-mainblack hover:text-laligared transition"
+    >
+      <img
+        src={awayTeamInfo.badge}
+        alt={awayTeamInfo.shortName}
+        class="w-20 h-20 md:w-32 md:h-32"
+      />
+      <p id="awayTeamName" class="text-sm sm:text-xl">
+        {awayTeam}
+      </p>
+    </a>
+  </div>
+
+  <div class="flex flex-col px-4 xl:px-96 py-4">
+    <div class="flex flex-row justify-center items-center">
+      <p class="-mb-6">{translator(currentLang, "possession")}</p>
+      <div class="grid grid-cols-2 w-full">
+        <div class="flex flex-col">
+          <input
+            type="number"
+            min="0"
+            max="100"
+            id="pLocalPossession"
+            value={localTeamStats.possession}
+          />
+        </div>
+        <div class="flex flex-col">
+          <input
+            type="number"
+            min="0"
+            max="100"
+            id="pAwayPossession"
+            value={awayTeamStats.possession}
+          />
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row justify-center items-center mt-6">
+      <p class="-mb-6">{translator(currentLang, "shots")}</p>
+      <div class="grid grid-cols-2 w-full">
+        <div class="flex flex-col">
+          <input
+            type="number"
+            min="0"
+            max="100"
+            id="pLocalShots"
+            value={localTeamStats.shots}
+          />
+        </div>
+        <div class="flex flex-col">
+          <input
+            type="number"
+            min="0"
+            max="100"
+            id="pAwayShots"
+            value={awayTeamStats.shots}
+          />
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row justify-center items-center mt-6">
+      <p class="-mb-6">{translator(currentLang, "shotsOnTarget")}</p>
+      <div class="grid grid-cols-2 w-full">
+        <div class="flex flex-col">
+          <input
+            type="number"
+            min="0"
+            max="100"
+            id="pLocalShotsOnTarget"
+            value={localTeamStats.shots_on_target}
+          />
+        </div>
+        <div class="flex flex-col">
+          <input
+            type="number"
+            min="0"
+            max="100"
+            id="pAwayShotsOnTarget"
+            value={awayTeamStats.shots_on_target}
+          />
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row justify-center items-center mt-6">
+      <p class="-mb-6">{translator(currentLang, "corners")}</p>
+      <div class="grid grid-cols-2 w-full">
+        <div class="flex flex-col">
+          <input
+            type="number"
+            min="0"
+            max="100"
+            id="pLocalCorners"
+            value={localTeamStats.corners}
+          />
+        </div>
+        <div class="flex flex-col">
+          <input
+            type="number"
+            min="0"
+            max="100"
+            id="pAwayCorners"
+            value={awayTeamStats.corners}
+          />
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row justify-center items-center mt-6">
+      <p class="-mb-6">{translator(currentLang, "offsides")}</p>
+      <div class="grid grid-cols-2 w-full">
+        <div class="flex flex-col">
+          <input
+            type="number"
+            min="0"
+            max="100"
+            id="pLocalOffsides"
+            value={localTeamStats.offsides}
+          />
+        </div>
+        <div class="flex flex-col">
+          <input
+            type="number"
+            min="0"
+            max="100"
+            id="pAwayOffsides"
+            value={awayTeamStats.offsides}
+          />
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row justify-center items-center mt-6">
+      <p class="-mb-6">{translator(currentLang, "fouls")}</p>
+      <div class="grid grid-cols-2 w-full">
+        <div class="flex flex-col">
+          <input
+            type="number"
+            min="0"
+            max="100"
+            id="pLocalFouls"
+            value={localTeamStats.fouls}
+          />
+        </div>
+        <div class="flex flex-col">
+          <input
+            type="number"
+            min="0"
+            max="100"
+            id="pAwayFouls"
+            value={awayTeamStats.fouls}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <button id="editButton" class="bg-black text-white rounded-2xl w-12"
+    >Edit</button
+  >
+</section>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const editButton = document.getElementById("editButton");
+    if (editButton) {
+      editButton.onclick = () => {
+        const pLocalGoals = document.getElementById(
+          "pLocalGoals"
+        ) as HTMLInputElement;
+        const pAwayGoals = document.getElementById(
+          "pAwayGoals"
+        ) as HTMLInputElement;
+        const pLocalPossession = document.getElementById(
+          "pLocalPossession"
+        ) as HTMLInputElement;
+        const pAwayPossession = document.getElementById(
+          "pAwayPossession"
+        ) as HTMLInputElement;
+        const pLocalShots = document.getElementById(
+          "pLocalShots"
+        ) as HTMLInputElement;
+        const pAwayShots = document.getElementById(
+          "pAwayShots"
+        ) as HTMLInputElement;
+        const pLocalShotsOnTarget = document.getElementById(
+          "pLocalShotsOnTarget"
+        ) as HTMLInputElement;
+        const pAwayShotsOnTarget = document.getElementById(
+          "pAwayShotsOnTarget"
+        ) as HTMLInputElement;
+        const pLocalCorners = document.getElementById(
+          "pLocalCorners"
+        ) as HTMLInputElement;
+        const pAwayCorners = document.getElementById(
+          "pAwayCorners"
+        ) as HTMLInputElement;
+        const pLocalOffsides = document.getElementById(
+          "pLocalOffsides"
+        ) as HTMLInputElement;
+        const pAwayOffsides = document.getElementById(
+          "pAwayOffsides"
+        ) as HTMLInputElement;
+        const pLocalFouls = document.getElementById(
+          "pLocalFouls"
+        ) as HTMLInputElement;
+        const pAwayFouls = document.getElementById(
+          "pAwayFouls"
+        ) as HTMLInputElement;
+
+        const localTeamName =
+          document.getElementById("localTeamName")?.textContent;
+
+        const matchdayName =
+          document.getElementById("matchdayName")?.textContent;
+        const awayTeamName =
+          document.getElementById("awayTeamName")?.textContent;
+        const localData = {
+          team: parseInt(localTeamName as string),
+          matchday: parseInt(matchdayName as string),
+          possession: parseInt(pLocalPossession.value),
+          shots: parseInt(pLocalShots.value),
+          shotsOnTarget: parseInt(pLocalShotsOnTarget.value),
+          corners: parseInt(pLocalCorners.value),
+          offsides: parseInt(pLocalOffsides.value),
+          fouls: parseInt(pLocalFouls.value),
+          goals: parseInt(pLocalGoals.value),
+        };
+
+        const awayData = {
+          team: parseInt(awayTeamName as string),
+          matchday: parseInt(matchdayName as string),
+          possession: parseInt(pAwayPossession.value),
+          shots: parseInt(pAwayShots.value),
+          shotsOnTarget: parseInt(pAwayShotsOnTarget.value),
+          corners: parseInt(pAwayCorners.value),
+          offsides: parseInt(pAwayOffsides.value),
+          fouls: parseInt(pAwayFouls.value),
+          goals: parseInt(pAwayGoals.value),
+        };
+
+        fetch("http://localhost:1234/teammatchstats", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(localData),
+        });
+
+        fetch("http://localhost:1234/teammatchstats", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(awayData),
+        });
+      };
+    }
+  });
+</script>

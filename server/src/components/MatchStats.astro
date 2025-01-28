@@ -26,6 +26,8 @@ const awayTeamData = await awayTeamResponse.json();
 const awayTeamInfo = awayTeamData[0];
 
 const currentLang = Astro.currentLocale || "es";
+
+console.log(localTeamStats, localTeamInfo, awayTeamStats, awayTeamInfo);
 ---
 
 <section class="py-20 px-2 lg:px-10 flex flex-col">
