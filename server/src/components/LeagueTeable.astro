@@ -1,0 +1,76 @@
+---
+import { translator } from "@/utils/dictionary.js";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const tableResponse = await fetch("http://localhost:1234/leagues/1/table");
+const tableData = await tableResponse.json();
+
+interface Team {
+  team_id: number;
+  shortName: string;
+  points: number;
+  matches_played: number;
+  wins: number;
+  draws: number;
+  losses: number;
+  goals_scored: number;
+  goals_conceded: number;
+  goalDifference: number;
+  badge: string;
+}
+
+const currentLang = Astro.currentLocale || "es";
+
+console.log(currentLang);
+---
+
+<div>
+  <h2 class="text-2xl text-bold uppercase text-center font-la-liga-font">
+    {translator(currentLang, "leagueTable")}
+  </h2>
+  <table class="w-full font-la-liga-font leagueTable mt-4">
+    <tr>
+      <th>pos</th>
+      <th>{translator(currentLang, "team")}</th>
+      <th>pts</th>
+      <th class="hidden md:table-cell">{translator(currentLang, "mp")}</th>
+      <th class="hidden md:table-cell">{translator(currentLang, "mw")}</th>
+      <th class="hidden md:table-cell">{translator(currentLang, "md")}</th>
+      <th class="hidden md:table-cell">{translator(currentLang, "ml")}</th>
+      <th class="hidden md:table-cell">{translator(currentLang, "gf")}</th>
+      <th class="hidden md:table-cell">{translator(currentLang, "ga")}</th>
+      <th>{translator(currentLang, "gd")}</th>
+      {
+        tableData.map((team: Team, index: number) => (
+          <tr>
+            <td>{index + 1}</td>
+            <td class="flex flex-row items-center">
+              <a
+                href={getRelativeLocaleUrl(
+                  currentLang,
+                  `/teams/${team.team_id}`
+                )}
+                class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-laligared transition"
+              >
+                <img src={team.badge} class="w-8 h-8 mt-1" />
+                {team.shortName}
+              </a>
+            </td>
+            <td>{team.points}</td>
+            <td class="hidden md:table-cell">{team.matches_played}</td>
+            <td class="hidden md:table-cell">{team.wins}</td>
+            <td class="hidden md:table-cell">{team.draws}</td>
+            <td class="hidden md:table-cell">{team.losses}</td>
+            <td class="hidden md:table-cell">{team.goals_scored}</td>
+            <td class="hidden md:table-cell">{team.goals_conceded}</td>
+            <td>
+              {team.goalDifference > 0
+                ? `+${team.goalDifference}`
+                : team.goalDifference}
+            </td>
+          </tr>
+        ))
+      }
+    </tr>
+  </table>
+</div>

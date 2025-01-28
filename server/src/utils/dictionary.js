@@ -40,7 +40,8 @@ const dictionary = {
     fouls: 'Fouls',
     corners: 'Corners',
     offsides: 'Offsides',
-    matchdayResults: 'Matchday results'
+    matchdayResults: 'Matchday results',
+    explorePlayers: 'explore laliga players'
   },
   es: {
     president: 'presidente',
@@ -83,7 +84,8 @@ const dictionary = {
     fouls: 'Faltas',
     corners: 'Córners',
     offsides: 'Fueras de juego',
-    matchdayResults: 'Resultados de la jornada'
+    matchdayResults: 'Resultados de la jornada',
+    explorePlayers: 'ver jugadores de laliga'
   }
 }
 

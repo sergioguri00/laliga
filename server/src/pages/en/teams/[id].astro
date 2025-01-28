@@ -101,7 +101,9 @@ const currentLang = Astro.currentLocale || "es";
               </div>
             </div>
             <div>
-              <p class="font-bold uppercase">{translator("en", "president")}</p>
+              <p class="font-bold uppercase">
+                {translator(currentLang, "president")}
+              </p>
               <p>{team.president}</p>
             </div>
             <div>
@@ -132,7 +134,7 @@ const currentLang = Astro.currentLocale || "es";
                 </div>
                 <div>
                   <p class="font-bold uppercase">
-                    {translator("en", "capacity")}
+                    {translator(currentLang, "capacity")}
                   </p>
                   <p>{stadium.capacity}</p>
                 </div>
@@ -164,25 +166,25 @@ const currentLang = Astro.currentLocale || "es";
         id="squad"
         class={"cursor-pointer text-xl hover:border-laligared transition border-b-4 border-laligared font-bold section w-32 text-center uppercase"}
       >
-        {translator("en", "squad")}
+        {translator(currentLang, "squad")}
       </div>
       <div
         id="results"
         class="cursor-pointer text-xl hover:text-laligared hover:border-laligared transition border-b-4 section w-36 text-center uppercase"
       >
-        {translator("en", "results")}
+        {translator(currentLang, "results")}
       </div>
     </nav>
 
     <section id="squadSection" class="p-4 xl:p-10">
       <h2 class="text-3xl text-bold uppercase font-la-liga-font">
-        {`${team.shortName} ${translator("en", "squadSection")}`}
+        {`${team.shortName} ${translator(currentLang, "squadSection")}`}
       </h2>
       <div class="flex flex-col">
         <div>
           <div class="border-b-[1px] border-mainblack w-full text-start">
             <p class="mt-4 font-la-liga-font text-2xl pb-2 uppercase">
-              {translator("en", "manager")}
+              {translator(currentLang, "manager")}
             </p>
           </div>
           <div
@@ -206,7 +208,7 @@ const currentLang = Astro.currentLocale || "es";
                 </div>
                 <div class="flex flex-col">
                   <p class="uppercase font-bold text-sm">
-                    {translator("en", "manager")}
+                    {translator(currentLang, "manager")}
                   </p>
                   <div class="flex flex-row items-center">
                     <img
@@ -229,7 +231,7 @@ const currentLang = Astro.currentLocale || "es";
               >
                 <div class="col-span-2 w-full">
                   <p class="text-center uppercase font-bold">
-                    {translator("en", "birthday")}
+                    {translator(currentLang, "birthday")}
                   </p>
                   <p class="text-center">
                     {manager.birthday.toString().split("T")[0]}
@@ -243,7 +245,7 @@ const currentLang = Astro.currentLocale || "es";
               class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
               <p class="uppercase font-la-liga-font text-2xl pb-2">
-                {translator("en", "goalkeepers")}
+                {translator(currentLang, "goalkeepers")}
               </p>
             </div>
             <div
@@ -275,7 +277,7 @@ const currentLang = Astro.currentLocale || "es";
                         </div>
                         <div class="flex flex-col">
                           <p class="uppercase font-bold text-sm">
-                            {translator("en", "goalkeeper")}
+                            {translator(currentLang, "goalkeeper")}
                           </p>
                           <div class="flex flex-row items-center">
                             <img
@@ -301,7 +303,7 @@ const currentLang = Astro.currentLocale || "es";
                       <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
-                            {translator("en", "birthday")}
+                            {translator(currentLang, "birthday")}
                           </p>
                           <p class="text-center">
                             {player.birthday.toString().split("T")[0]}
@@ -309,7 +311,7 @@ const currentLang = Astro.currentLocale || "es";
                         </div>
                         <div>
                           <p class="text-center uppercase font-bold">
-                            {translator("en", "height")}
+                            {translator(currentLang, "height")}
                           </p>
                           <p class="text-center">{player.height} cm</p>
                         </div>
@@ -323,7 +325,7 @@ const currentLang = Astro.currentLocale || "es";
               class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
               <p class="uppercase font-la-liga-font text-2xl pb-2">
-                {translator("en", "defenders")}
+                {translator(currentLang, "defenders")}
               </p>
             </div>
             <div
@@ -355,7 +357,7 @@ const currentLang = Astro.currentLocale || "es";
                         </div>
                         <div class="flex flex-col">
                           <p class="uppercase font-bold text-sm">
-                            {translator("en", "defender")}
+                            {translator(currentLang, "defender")}
                           </p>
                           <div class="flex flex-row items-center">
                             <img
@@ -381,7 +383,7 @@ const currentLang = Astro.currentLocale || "es";
                       <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
-                            {translator("en", "birthday")}
+                            {translator(currentLang, "birthday")}
                           </p>
                           <p class="text-center">
                             {player.birthday.toString().split("T")[0]}
@@ -389,7 +391,7 @@ const currentLang = Astro.currentLocale || "es";
                         </div>
                         <div>
                           <p class="text-center uppercase font-bold">
-                            {translator("en", "height")}
+                            {translator(currentLang, "height")}
                           </p>
                           <p class="text-center">{player.height} cm</p>
                         </div>
@@ -403,7 +405,7 @@ const currentLang = Astro.currentLocale || "es";
               class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
               <p class="uppercase font-la-liga-font text-2xl pb-2">
-                {translator("en", "midfielders")}
+                {translator(currentLang, "midfielders")}
               </p>
             </div>
             <div
@@ -435,7 +437,7 @@ const currentLang = Astro.currentLocale || "es";
                         </div>
                         <div class="flex flex-col">
                           <p class="uppercase font-bold text-sm">
-                            {translator("en", "midfielder")}
+                            {translator(currentLang, "midfielder")}
                           </p>
                           <div class="flex flex-row items-center">
                             <img
@@ -461,7 +463,7 @@ const currentLang = Astro.currentLocale || "es";
                       <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
-                            {translator("en", "birthday")}
+                            {translator(currentLang, "birthday")}
                           </p>
                           <p class="text-center">
                             {player.birthday.toString().split("T")[0]}
@@ -469,7 +471,7 @@ const currentLang = Astro.currentLocale || "es";
                         </div>
                         <div>
                           <p class="text-center uppercase font-bold">
-                            {translator("en", "height")}
+                            {translator(currentLang, "height")}
                           </p>
                           <p class="text-center">{player.height} cm</p>
                         </div>
@@ -483,7 +485,7 @@ const currentLang = Astro.currentLocale || "es";
               class="border-b-[1px] border-mainblack w-full text-start mt-10"
             >
               <p class="uppercase font-la-liga-font text-2xl pb-2">
-                {translator("en", "forwards")}
+                {translator(currentLang, "forwards")}
               </p>
             </div>
             <div
@@ -515,7 +517,7 @@ const currentLang = Astro.currentLocale || "es";
                         </div>
                         <div class="flex flex-col">
                           <p class="uppercase font-bold text-sm">
-                            {translator("en", "forward")}
+                            {translator(currentLang, "forward")}
                           </p>
                           <div class="flex flex-row items-center">
                             <img
@@ -541,7 +543,7 @@ const currentLang = Astro.currentLocale || "es";
                       <div class="grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack">
                         <div>
                           <p class="text-center uppercase font-bold">
-                            {translator("en", "birthday")}
+                            {translator(currentLang, "birthday")}
                           </p>
                           <p class="text-center">
                             {player.birthday.toString().split("T")[0]}
@@ -549,7 +551,7 @@ const currentLang = Astro.currentLocale || "es";
                         </div>
                         <div>
                           <p class="text-center uppercase font-bold">
-                            {translator("en", "height")}
+                            {translator(currentLang, "height")}
                           </p>
                           <p class="text-center">{player.height} cm</p>
                         </div>
@@ -566,14 +568,14 @@ const currentLang = Astro.currentLocale || "es";
 
     <section id="resultsSection" class="p-10 hidden">
       <h2 class="text-3xl text-bold uppercase font-la-liga-font">
-        {`${team.shortName} ${translator("en", "resultsSection")}`}
+        {`${team.shortName} ${translator(currentLang, "resultsSection")}`}
       </h2>
       <div class="flex flex-col">
         {
           resultsData.map((result: any) => (
             <div class="sm:mx-4 md:mx-10 lg:mx-20 xl:mx-40 py-2 flex flex-col gap-4 relative mt-4">
               <h3 class="text-2xl text-bold uppercase font-la-liga-font border-b-[1px] border-mainblack pb-2 pl-2">
-                {`${translator("en", "matchday")} ${result.matchday_id}`}
+                {`${translator(currentLang, "matchday")} ${result.matchday_id}`}
               </h3>
               <div
                 class="grid place-items-center items-center align-middle font-la-liga-font text-sm md:text-xl gap-2 md:gap-10"
@@ -615,7 +617,7 @@ const currentLang = Astro.currentLocale || "es";
                   )}
                 >
                   <button class="p-2 rounded-lg hover:scale-105 text-sm transition match-button uppercase">
-                    {translator("en", "viewMatch")}
+                    {translator(currentLang, "viewMatch")}
                   </button>
                 </a>
               </div>

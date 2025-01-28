@@ -1,8 +1,8 @@
 ---
 import MatchStats from "@/components/MatchStats.astro";
 import Layout from "@/layouts/Layout.astro";
+import ResultsTable from "@/components/ResultsTable.astro";
 import { translator } from "@/utils/dictionary.js";
-import { getRelativeLocaleUrl } from "astro:i18n";
 import "@/styles/global.css";
 
 const { matchIds } = Astro.params;
@@ -51,58 +51,12 @@ const currentLang = Astro.currentLocale || "es";
     localTeam={matchDetails.localTeam_id}
     awayTeam={matchDetails.awayTeam_id}
   />
-  <section id="resultsSection" class="py-4 px-4 xl:px-10">
-    <h2 class="text-3xl text-bold uppercase font-la-liga-font">
-      {translator("en", "matchdayResults")}
+  <div>
+    <h2 class="text-2xl text-bold uppercase text-center font-la-liga-font">
+      {translator(currentLang, "matchdayResults")}
     </h2>
-    <div class="flex flex-col">
-      {
-        matchdayResultsData.map((result: any) => (
-          <div class="sm:mx-4 md:mx-10 lg:mx-20 xl:mx-40 py-2 flex flex-col gap-4 relative mt-4">
-            <div class="grid place-items-center items-center align-middle font-la-liga-font text-sm md:text-xl gap-2 md:gap-10 results-grid">
-              <div class="flex flex-col sm:flex-row sm:gap-2 text-xl justify-self-end text-center">
-                <p>
-                  {`${result.matchdate.toString().split("T")[0].split("-")[2]}/${result.matchdate.toString().split("T")[0].split("-")[1]}/${result.matchdate.toString().split("T")[0].split("-")[0]}`}
-                </p>
-                <p>{result.matchdate.toString().split("T")[1].slice(0, 5)}</p>
-              </div>
-              <a
-                href={getRelativeLocaleUrl(
-                  currentLang,
-                  `/teams/${result.localTeamId}`
-                )}
-                class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-laligared transition"
-              >
-                <img src={result.localTeamBadge} class="h-10" />
-                <p class="text-xl hidden xl:block">{result.localTeamName}</p>
-              </a>
-              <p class="font-la-liga-font text-2xl text-laligared">
-                {result.localTeamGoals}-{result.awayTeamGoals}
-              </p>
-              <a
-                href={getRelativeLocaleUrl(
-                  currentLang,
-                  `/teams/${result.awayTeamId}`
-                )}
-                class="flex-row flex items-center justify-self-start hover:scale-105 hover:text-laligared transition"
-              >
-                <img src={result.awayTeamBadge} class="h-10" />
-                <p class="hidden xl:block">{result.awayTeamName}</p>
-              </a>
-              <a
-                href={getRelativeLocaleUrl(
-                  currentLang,
-                  `/matches/${result.matchday_id}-${result.localTeamId}-${result.awayTeamId}`
-                )}
-              >
-                <button class="p-2 rounded-lg hover:scale-105 text-sm transition match-button uppercase">
-                  {translator("en", "viewMatch")}
-                </button>
-              </a>
-            </div>
-          </div>
-        ))
-      }
+    <div class="xl:px-48 md:px-10 px-2 py-4">
+      <ResultsTable matchdayResultsData={matchdayResultsData} />
     </div>
-  </section>
+  </div>
 </Layout>

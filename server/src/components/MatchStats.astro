@@ -28,40 +28,41 @@ const awayTeamInfo = awayTeamData[0];
 const currentLang = Astro.currentLocale || "es";
 ---
 
-<section class="py-20 px-4 lg:px-10 flex flex-col">
+<section class="py-20 px-2 lg:px-10 flex flex-col">
   <div
-    class="text-xl font-la-liga-font text-mainblack flex flex-row justify-center gap-4 xl:gap-10 items-center px-4 xl:px-96"
+    class="text-xl font-la-liga-font text-mainblack grid text-center items-center px-4 xl:px-96"
+    style="grid-template-columns: 40% 20% 40%"
   >
     <a
       href={getRelativeLocaleUrl(currentLang, `/teams/${localTeam}`)}
-      class="flex flex-col justify-center items-center hover:scale-105 hover:text-laligared transition"
+      class="flex flex-col justify-center items-center hover:scale-105 text-mainblack hover:text-laligared transition"
     >
       <img
         src={localTeamInfo.badge}
         alt={localTeamInfo.shortName}
         class="w-20 h-20 md:w-32 md:h-32"
       />
-      <p>{localTeamInfo.shortName}</p>
+      <p class="text-sm sm:text-xl">{localTeamInfo.shortName}</p>
     </a>
     <div class="text-4xl sm:text-5xl text-laligared">
       <p>{`${localTeamStats.goals}-${awayTeamStats.goals}`}</p>
     </div>
     <a
       href={getRelativeLocaleUrl(currentLang, `/teams/${awayTeam}`)}
-      class="flex flex-col justify-center items-center hover:scale-105 hover:text-laligared transition"
+      class="flex flex-col justify-center items-center hover:scale-105 text-mainblack hover:text-laligared transition"
     >
       <img
         src={awayTeamInfo.badge}
         alt={awayTeamInfo.shortName}
         class="w-20 h-20 md:w-32 md:h-32"
       />
-      <p>{awayTeamInfo.shortName}</p>
+      <p class="text-sm sm:text-xl">{awayTeamInfo.shortName}</p>
     </a>
   </div>
 
   <div class="flex flex-col px-4 xl:px-96 py-4">
     <div class="flex flex-col justify-center items-center">
-      <p class="-mb-6">{translator("en", "possession")}</p>
+      <p class="-mb-6">{translator(currentLang, "possession")}</p>
       <div class="grid grid-cols-2 w-full">
         <div class="flex flex-col">
           <p>{localTeamStats.possession}</p>
@@ -85,7 +86,7 @@ const currentLang = Astro.currentLocale || "es";
       </div>
     </div>
     <div class="flex flex-col justify-center items-center mt-6">
-      <p class="-mb-6">{translator("en", "shots")}</p>
+      <p class="-mb-6">{translator(currentLang, "shots")}</p>
       <div class="grid grid-cols-2 w-full">
         <div class="flex flex-col">
           <p id="pLocalShots">{localTeamStats.shots}</p>
@@ -111,7 +112,7 @@ const currentLang = Astro.currentLocale || "es";
       </div>
     </div>
     <div class="flex flex-col justify-center items-center mt-6">
-      <p class="-mb-6">{translator("en", "shotsOnTarget")}</p>
+      <p class="-mb-6">{translator(currentLang, "shotsOnTarget")}</p>
       <div class="grid grid-cols-2 w-full">
         <div class="flex flex-col">
           <p id="pLocalShotsOnTarget">{localTeamStats.shots_on_target}</p>
@@ -139,7 +140,7 @@ const currentLang = Astro.currentLocale || "es";
       </div>
     </div>
     <div class="flex flex-col justify-center items-center mt-6">
-      <p class="-mb-6">{translator("en", "corners")}</p>
+      <p class="-mb-6">{translator(currentLang, "corners")}</p>
       <div class="grid grid-cols-2 w-full">
         <div class="flex flex-col">
           <p id="pLocalCorners">{localTeamStats.corners}</p>
@@ -167,7 +168,7 @@ const currentLang = Astro.currentLocale || "es";
       </div>
     </div>
     <div class="flex flex-col justify-center items-center mt-6">
-      <p class="-mb-6">{translator("en", "offsides")}</p>
+      <p class="-mb-6">{translator(currentLang, "offsides")}</p>
       <div class="grid grid-cols-2 w-full">
         <div class="flex flex-col">
           <p id="pLocalOffsides">{localTeamStats.offsides}</p>
@@ -195,7 +196,7 @@ const currentLang = Astro.currentLocale || "es";
       </div>
     </div>
     <div class="flex flex-col justify-center items-center mt-6">
-      <p class="-mb-6">{translator("en", "fouls")}</p>
+      <p class="-mb-6">{translator(currentLang, "fouls")}</p>
       <div class="grid grid-cols-2 w-full">
         <div class="flex flex-col">
           <p id="pLocalFouls">{localTeamStats.fouls}</p>
@@ -226,86 +227,88 @@ const currentLang = Astro.currentLocale || "es";
 </section>
 
 <script>
-  const $localShots = document.getElementById("localShots");
-  const $awayShots = document.getElementById("awayShots");
-  const $localShotsValue =
-    document.getElementById("pLocalShots")?.innerText || "0";
-  const $awayShotsValue =
-    document.getElementById("pAwayShots")?.innerText || "0";
-  const totalShots = parseInt($localShotsValue) + parseInt($awayShotsValue);
+  document.addEventListener("astro:page-load", () => {
+    const $localShots = document.getElementById("localShots");
+    const $awayShots = document.getElementById("awayShots");
+    const $localShotsValue =
+      document.getElementById("pLocalShots")?.innerText || "0";
+    const $awayShotsValue =
+      document.getElementById("pAwayShots")?.innerText || "0";
+    const totalShots = parseInt($localShotsValue) + parseInt($awayShotsValue);
 
-  if ($localShots && $awayShots && totalShots !== 0) {
-    $localShots.style.width = `${(parseInt($localShotsValue) / totalShots) * 100}%`;
-    $awayShots.style.width = `${(parseInt($awayShotsValue) / totalShots) * 100}%`;
-  } else if ($localShots && $awayShots) {
-    $localShots.style.width = "0%";
-    $awayShots.style.width = "0%";
-  }
+    if ($localShots && $awayShots && totalShots !== 0) {
+      $localShots.style.width = `${(parseInt($localShotsValue) / totalShots) * 100}%`;
+      $awayShots.style.width = `${(parseInt($awayShotsValue) / totalShots) * 100}%`;
+    } else if ($localShots && $awayShots) {
+      $localShots.style.width = "0%";
+      $awayShots.style.width = "0%";
+    }
 
-  const $localShotsOnTarget = document.getElementById("localShotsOnTarget");
-  const $awayShotsOnTarget = document.getElementById("awayShotsOnTarget");
-  const $localShotsOnTargetValue =
-    document.getElementById("pLocalShotsOnTarget")?.innerText || "0";
-  const $awayShotsOnTargetValue =
-    document.getElementById("pAwayShotsOnTarget")?.innerText || "0";
-  const totalShotsOnTarget =
-    parseInt($localShotsOnTargetValue) + parseInt($awayShotsOnTargetValue);
+    const $localShotsOnTarget = document.getElementById("localShotsOnTarget");
+    const $awayShotsOnTarget = document.getElementById("awayShotsOnTarget");
+    const $localShotsOnTargetValue =
+      document.getElementById("pLocalShotsOnTarget")?.innerText || "0";
+    const $awayShotsOnTargetValue =
+      document.getElementById("pAwayShotsOnTarget")?.innerText || "0";
+    const totalShotsOnTarget =
+      parseInt($localShotsOnTargetValue) + parseInt($awayShotsOnTargetValue);
 
-  if ($localShotsOnTarget && $awayShotsOnTarget && totalShotsOnTarget) {
-    $localShotsOnTarget.style.width = `${(parseInt($localShotsOnTargetValue) / totalShotsOnTarget) * 100}%`;
-    $awayShotsOnTarget.style.width = `${(parseInt($awayShotsOnTargetValue) / totalShotsOnTarget) * 100}%`;
-  } else if ($localShotsOnTarget && $awayShotsOnTarget) {
-    $localShotsOnTarget.style.width = "0%";
-    $awayShotsOnTarget.style.width = "0%";
-  }
+    if ($localShotsOnTarget && $awayShotsOnTarget && totalShotsOnTarget) {
+      $localShotsOnTarget.style.width = `${(parseInt($localShotsOnTargetValue) / totalShotsOnTarget) * 100}%`;
+      $awayShotsOnTarget.style.width = `${(parseInt($awayShotsOnTargetValue) / totalShotsOnTarget) * 100}%`;
+    } else if ($localShotsOnTarget && $awayShotsOnTarget) {
+      $localShotsOnTarget.style.width = "0%";
+      $awayShotsOnTarget.style.width = "0%";
+    }
 
-  const $localCorners = document.getElementById("localCorners");
-  const $awayCorners = document.getElementById("awayCorners");
-  const $localCornersValue =
-    document.getElementById("pLocalCorners")?.innerText || "0";
-  const $awayCornersValue =
-    document.getElementById("pAwayCorners")?.innerText || "0";
-  const totalCorners =
-    parseInt($localCornersValue) + parseInt($awayCornersValue);
+    const $localCorners = document.getElementById("localCorners");
+    const $awayCorners = document.getElementById("awayCorners");
+    const $localCornersValue =
+      document.getElementById("pLocalCorners")?.innerText || "0";
+    const $awayCornersValue =
+      document.getElementById("pAwayCorners")?.innerText || "0";
+    const totalCorners =
+      parseInt($localCornersValue) + parseInt($awayCornersValue);
 
-  if ($localCorners && $awayCorners && totalCorners !== 0) {
-    $localCorners.style.width = `${(parseInt($localCornersValue) / totalCorners) * 100}%`;
-    $awayCorners.style.width = `${(parseInt($awayCornersValue) / totalCorners) * 100}%`;
-  } else if ($localCorners && $awayCorners) {
-    $localCorners.style.width = "0%";
-    $awayCorners.style.width = "0%";
-  }
+    if ($localCorners && $awayCorners && totalCorners !== 0) {
+      $localCorners.style.width = `${(parseInt($localCornersValue) / totalCorners) * 100}%`;
+      $awayCorners.style.width = `${(parseInt($awayCornersValue) / totalCorners) * 100}%`;
+    } else if ($localCorners && $awayCorners) {
+      $localCorners.style.width = "0%";
+      $awayCorners.style.width = "0%";
+    }
 
-  const $localOffsides = document.getElementById("localOffsides");
-  const $awayOffsides = document.getElementById("awayOffsides");
-  const $localOffsidesValue =
-    document.getElementById("pLocalOffsides")?.innerText || "0";
-  const $awayOffsidesValue =
-    document.getElementById("pAwayOffsides")?.innerText || "0";
-  const totalOffsides =
-    parseInt($localOffsidesValue) + parseInt($awayOffsidesValue);
+    const $localOffsides = document.getElementById("localOffsides");
+    const $awayOffsides = document.getElementById("awayOffsides");
+    const $localOffsidesValue =
+      document.getElementById("pLocalOffsides")?.innerText || "0";
+    const $awayOffsidesValue =
+      document.getElementById("pAwayOffsides")?.innerText || "0";
+    const totalOffsides =
+      parseInt($localOffsidesValue) + parseInt($awayOffsidesValue);
 
-  if ($localOffsides && $awayOffsides && totalOffsides !== 0) {
-    $localOffsides.style.width = `${(parseInt($localOffsidesValue) / totalOffsides) * 100}%`;
-    $awayOffsides.style.width = `${(parseInt($awayOffsidesValue) / totalOffsides) * 100}%`;
-  } else if ($localOffsides && $awayOffsides) {
-    $localOffsides.style.width = "0%";
-    $awayOffsides.style.width = "0%";
-  }
+    if ($localOffsides && $awayOffsides && totalOffsides !== 0) {
+      $localOffsides.style.width = `${(parseInt($localOffsidesValue) / totalOffsides) * 100}%`;
+      $awayOffsides.style.width = `${(parseInt($awayOffsidesValue) / totalOffsides) * 100}%`;
+    } else if ($localOffsides && $awayOffsides) {
+      $localOffsides.style.width = "0%";
+      $awayOffsides.style.width = "0%";
+    }
 
-  const $localFouls = document.getElementById("localFouls");
-  const $awayFouls = document.getElementById("awayFouls");
-  const $localFoulsValue =
-    document.getElementById("pLocalFouls")?.innerText || "0";
-  const $awayFoulsValue =
-    document.getElementById("pAwayFouls")?.innerText || "0";
-  const totalFouls = parseInt($localFoulsValue) + parseInt($awayFoulsValue);
+    const $localFouls = document.getElementById("localFouls");
+    const $awayFouls = document.getElementById("awayFouls");
+    const $localFoulsValue =
+      document.getElementById("pLocalFouls")?.innerText || "0";
+    const $awayFoulsValue =
+      document.getElementById("pAwayFouls")?.innerText || "0";
+    const totalFouls = parseInt($localFoulsValue) + parseInt($awayFoulsValue);
 
-  if ($localFouls && $awayFouls && totalFouls !== 0) {
-    $localFouls.style.width = `${(parseInt($localFoulsValue) / totalFouls) * 100}%`;
-    $awayFouls.style.width = `${(parseInt($awayFoulsValue) / totalFouls) * 100}%`;
-  } else if ($localFouls && $awayFouls) {
-    $localFouls.style.width = "0%";
-    $awayFouls.style.width = "0%";
-  }
+    if ($localFouls && $awayFouls && totalFouls !== 0) {
+      $localFouls.style.width = `${(parseInt($localFoulsValue) / totalFouls) * 100}%`;
+      $awayFouls.style.width = `${(parseInt($awayFoulsValue) / totalFouls) * 100}%`;
+    } else if ($localFouls && $awayFouls) {
+      $localFouls.style.width = "0%";
+      $awayFouls.style.width = "0%";
+    }
+  });
 </script>

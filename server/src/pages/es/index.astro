@@ -1,30 +1,15 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { getRelativeLocaleUrl } from "astro:i18n";
-import { translator } from "@/utils/dictionary.js";
+import HomeButtons from "@/components/HomeButtons.astro";
+import ResultsTable from "@/components/ResultsTable.astro";
+import LeagueTeable from "@/components/LeagueTeable.astro";
 
-const tableResponse = await fetch("http://localhost:1234/leagues/1/table");
-const tableData = await tableResponse.json();
+import { translator } from "@/utils/dictionary.js";
 
 const lastMatchdayResponse = await fetch(
   "http://localhost:1234/leagues/1/lastMatchday"
 );
 const lastMatchdayData = await lastMatchdayResponse.json();
-
-interface Team {
-  team_id: number;
-  shortName: string;
-  points: number;
-  matches_played: number;
-  wins: number;
-  draws: number;
-  losses: number;
-  goals_scored: number;
-  goals_conceded: number;
-  goalDifference: number;
-  badge: string;
-}
-
 const currentLang = Astro.currentLocale || "es";
 ---
 
@@ -32,122 +17,28 @@ const currentLang = Astro.currentLocale || "es";
   title="LaLiga | Home"
   description="Welcome to the non-official ( but better ;) ) LaLiga website!"
 >
-  <div
-    class="flex flex-row gap-4 justify-around px-16 py-24 font-la-liga-font text-3xl"
-  >
-    <a href={getRelativeLocaleUrl(currentLang, `/teams/`)}>
-      <div class="home-button">
-        {translator("es", "exploreTeams")}
+  <div class="flex flex-col justify-center items-center gap-24 xl:px-10">
+    <section
+      class="w-full flex flex-col xl:flex-row justify-center xl:justify-between gap-10 px-2 md:px-10 pt-24"
+    >
+      <div class="xl: order-1">
+        <HomeButtons />
       </div>
-    </a>
-    <a href={getRelativeLocaleUrl(currentLang, `/about/`)}>
-      <div class="home-button">
-        {translator("es", "aboutWebsite")}
+      <div class="xl: order-2">
+        <LeagueTeable />
       </div>
-    </a>
-  </div>
-  <div class="px-16 flex flex-row gap-10 justify-between h-full w-full">
-    <div>
-      <h1 class="font-la-liga-font text-3xl">
-        {translator("es", "leagueTable")}
-      </h1>
-      <table class="font-la-liga-font leagueTable mt-4">
-        <tr>
-          <th>pos</th>
-          <th>{translator("es", "team")}</th>
-          <th>pts</th>
-          <th>{translator("es", "mp")}</th>
-          <th>{translator("es", "mw")}</th>
-          <th>{translator("es", "md")}</th>
-          <th>{translator("es", "ml")}</th>
-          <th>{translator("es", "gf")}</th>
-          <th>{translator("es", "ga")}</th>
-          <th>{translator("es", "gd")}</th>
-          {
-            tableData.map((team: Team, index: number) => (
-              <tr>
-                <td>{index + 1}</td>
-                <td class="flex flex-row items-center">
-                  <a
-                    href={getRelativeLocaleUrl(
-                      currentLang,
-                      `/teams/${team.team_id}`
-                    )}
-                    class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-laligared transition"
-                  >
-                    <img src={team.badge} class="w-8 h-8 mt-1" />
-                    {team.shortName}
-                  </a>
-                </td>
-                <td>{team.points}</td>
-                <td>{team.matches_played}</td>
-                <td>{team.wins}</td>
-                <td>{team.draws}</td>
-                <td>{team.losses}</td>
-                <td>{team.goals_scored}</td>
-                <td>{team.goals_conceded}</td>
-                <td>
-                  {team.goalDifference > 0
-                    ? `+${team.goalDifference}`
-                    : team.goalDifference}
-                </td>
-              </tr>
-            ))
-          }
-        </tr>
-      </table>
-    </div>
-    <div>
-      <div class="flex flex-col">
-        <h1 class="font-la-liga-font text-3xl">
-          {translator("es", "lastMatchday")}
-        </h1>
-        {
-          lastMatchdayData.map((result: any) => (
-            <div class="mx-1 py-0 flex flex-col gap-4 relative mt-4">
-              <div
-                class="grid place-items-center items-center align-middle font-la-liga-font text-sm md:text-md gap-2 md:gap-4"
-                style="grid-template-columns: 7rem 1fr 40px 1fr 85px;"
-              >
-                <div class="flex flex-col sm:flex-row sm:gap-2 text-lg justify-self-end text-center">
-                  <p>
-                    {`${result.matchdate.toString().split("T")[0].split("-")[2]}/${result.matchdate.toString().split("T")[0].split("-")[1]}/${result.matchdate.toString().split("T")[0].split("-")[0]}`}
-                  </p>
-                  <p>{result.matchdate.toString().split("T")[1].slice(0, 5)}</p>
-                </div>
-                <a
-                  href={getRelativeLocaleUrl(
-                    currentLang,
-                    `/teams/${result.localTeamId}`
-                  )}
-                  class="flex-row flex items-center justify-self-end hover:scale-105 hover:text-laligared transition"
-                >
-                  <img src={result.localTeamBadge} class="h-8" />
-                  <p class="hidden xl:block">{result.localTeamName}</p>
-                </a>
-                <p class="font-la-liga-font text-2xl text-laligared">
-                  {result.localTeamGoals}-{result.awayTeamGoals}
-                </p>
-                <a
-                  href={getRelativeLocaleUrl(
-                    currentLang,
-                    `/teams/${result.awayTeamId}`
-                  )}
-                  class="flex-row flex items-center justify-self-start hover:scale-105 hover:text-laligared transition"
-                >
-                  <img src={result.awayTeamBadge} class="h-8" />
-                  <p class="hidden xl:block">{result.awayTeamName}</p>
-                </a>
-                <a href="">
-                  <button class="p-2 rounded-lg hover:scale-105 text-sm transition match-button uppercase">
-                    {translator("es", "viewMatch")}
-                  </button>
-                </a>
-              </div>
-            </div>
-          ))
-        }
+    </section>
+    <section
+      class="px-2 md:px-16 flex flex-col gap-10 justify-between h-full w-full"
+    >
+      <div>
+        <h2 class="text-2xl text-bold uppercase text-center font-la-liga-font">
+          {translator(currentLang, "lastMatchday")}
+        </h2>
+        <div class="xl:px-48 md:px-10 py-4">
+          <ResultsTable matchdayResultsData={lastMatchdayData} />
+        </div>
       </div>
-    </div>
+    </section>
   </div>
 </Layout>
