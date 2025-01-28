@@ -108,13 +108,13 @@ POST http://localhost:1234/teammatchstats
 Content-Type: application/json
 
 {
-    "team": "real madrid",
-    "matchdate": "2024-08-29 21:30:00",
-    "possession": 56,
-    "shots": 25,
-    "shotsOnTarget": 8,
-    "corners": 6,
-    "offsides": 0,
-    "fouls": 13,
-    "goals": 1
+    "team": "celta",
+    "matchday": 4,
+    "possession": 50,
+    "shots": 12,
+    "shotsOnTarget": 3,
+    "corners": 3,
+    "offsides": 3,
+    "fouls": 10,
+    "goals": 2
 }
