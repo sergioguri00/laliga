@@ -488,7 +488,7 @@ INSERT INTO lldb.player (name,lastName,knownAs,`number`,height,country,`position
 	 ('Endrick Felipe','Moreira de Sousa','Endrick',16,173,'Brazil','Forward','2006-07-21','https://publish-p47754-e237306.adobeaemcloud.com/adobe/dynamicmedia/deliver/dm-aid--68a92c48-1a45-4d94-911c-58e9916293ca/POSE__4.app.webp?preferwebp=true&width=420',14),
 	 ('Gonzalo','García','Gonzalo',30,182,'Spain','Forward','2004-03-24','https://assets.laliga.com/squad/2024/t186/p551466/256x278/p551466_t186_2024_1_001_000.png',14),
 	 ('Daniel','Yañez',NULL,42,177,'Spain','Forward','2007-03-28','https://assets.laliga.com/squad/2024/t186/p634864/256x278/p634864_t186_2024_1_001_000.png',14),
-	 ('Alejandro','Remiro','A. Remiro',1,191,'Spain','Goalkeeper','1995-03-24','https://cdn.realsociedad.eus//Uploads/jugadores/_0_remiro.png',14),
+	 ('Alejandro','Remiro','A. Remiro',1,191,'Spain','Goalkeeper','1995-03-24','https://cdn.realsociedad.eus//Uploads/jugadores/_0_remiro.png',15),
 	 ('Unai','Marrero',NULL,13,189,'Spain','Goalkeeper','2001-10-09','https://cdn.realsociedad.eus//Uploads/jugadores/_1_marrero.png',15),
 	 ('Aitor','Fraga',NULL,32,194,'Spain','Goalkeeper','2003-03-12','https://cdn.realsociedad.eus//Uploads/jugadores/_0_aitor-fraga.png',15),
 	 ('Egoitz','Arana',NULL,35,197,'Spain','Goalkeeper','2002-02-19','https://cdn.realsociedad.eus//Uploads/jugadores/_2_egoitz-arana.png',15),
