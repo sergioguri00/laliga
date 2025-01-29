@@ -37,13 +37,10 @@ const matchDetails = matchDetailsData[0];
 const matchdayResultsResponse = await fetch(
   `http://localhost:1234/leagues/1/matchday/${matchday_id}`
 );
-const matchdayResultsData = await matchdayResultsResponse.json();
-
-const currentLang = Astro.currentLocale || "es";
 ---
 
 <Layout
-  title=`Matchday ${matchday_id} | ${matchDetails.localTeam} vs ${matchDetails.awayTeam}`
+  title=`Jornada ${matchday_id} | ${matchDetails.localTeam} vs ${matchDetails.awayTeam}`
   description=`View the stats of the match between ${matchDetails.localTeam} and ${matchDetails.awayTeam}`
 >
   <EditMatchStats

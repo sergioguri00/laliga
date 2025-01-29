@@ -21,10 +21,18 @@ const currentLang = Astro.currentLocale || "es";
     <section
       class="w-full flex flex-col xl:flex-row justify-center xl:justify-between gap-10 px-2 md:px-10 pt-24"
     >
-      <div class="xl: order-1">
+      <div>
         <HomeButtons />
       </div>
-      <div class="xl: order-2">
+      <div>
+        <img
+          class="w-[500px] rounded-2xl h-auto"
+          src="/images/news/1/1_team.webp"
+        />
+        <p class="font-la-liga-font">esto es un titulo jajajaja</p>
+        <p>Esto es la notisia jajajaja</p>
+      </div>
+      <div>
         <LeagueTeable />
       </div>
     </section>

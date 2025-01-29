@@ -43,10 +43,11 @@ const currentLang = Astro.currentLocale || "es";
 ---
 
 <Layout
-  title=`Matchday ${matchday_id} | ${matchDetails.localTeam} vs ${matchDetails.awayTeam}`
+  title=`Jornada ${matchday_id} | ${matchDetails.localTeam} vs ${matchDetails.awayTeam}`
   description=`View the stats of the match between ${matchDetails.localTeam} and ${matchDetails.awayTeam}`
 >
   <MatchStats
+    matchdate={matchDetails.matchdate}
     matchday={matchDetails.matchday_id}
     localTeam={matchDetails.localTeam_id}
     awayTeam={matchDetails.awayTeam_id}
