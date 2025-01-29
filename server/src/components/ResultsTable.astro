@@ -1,6 +1,7 @@
 ---
 import { translator } from "@/utils/dictionary.js";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { formatDateDay, formatDateHour } from "@/utils/formatDate";
 import "@/styles/global.css";
 
 const { matchdayResultsData, teamResults } = Astro.props;
@@ -18,9 +19,9 @@ const currentLang = Astro.currentLocale || "es";
         <tr class="font-la-liga-font text-sm md:text-xl gap-2 md:gap-10 flex justify-between items-center">
           <td class="w-[5.5rem] md:w-[8rem] flex flex-col sm:flex-row sm:gap-2 text-lg sm:text-xl justify-end text-center">
             <p>
-              {`${result.matchdate.toString().split("T")[0].split("-")[2]}/${result.matchdate.toString().split("T")[0].split("-")[1]}/${result.matchdate.toString().split("T")[0].split("-")[0]}`}
+              {formatDateDay(result.matchdate)}
             </p>
-            <p>{result.matchdate.toString().split("T")[1].slice(0, 5)}</p>
+            <p>{formatDateHour(result.matchdate)}</p>
           </td>
           <td class="lg:w-60">
             <a

@@ -1,7 +1,8 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { translator } from "@/utils/dictionary.js";
-const { matchday, localTeam, awayTeam } = Astro.props;
+import { formatDateDay, formatDateHour } from "@/utils/formatDate.js";
+const { matchdate, matchday, localTeam, awayTeam } = Astro.props;
 
 const localTeamStatsResponse = await fetch(
   `http://localhost:1234/teammatchstats?matchday=${matchday}&team=${localTeam}`
@@ -15,6 +16,13 @@ const localTeamResponse = await fetch(
 const localTeamData = await localTeamResponse.json();
 const localTeamInfo = localTeamData[0];
 
+const stadiumData = await fetch(
+  `http://localhost:1234/teams/${localTeam}/stadium`
+);
+
+const stadiumInfo = await stadiumData.json();
+const stadium = stadiumInfo[0];
+
 const awayTeamStatsResponse = await fetch(
   `http://localhost:1234/teammatchstats?matchday=${matchday}&team=${awayTeam}`
 );
@@ -26,13 +34,28 @@ const awayTeamData = await awayTeamResponse.json();
 const awayTeamInfo = awayTeamData[0];
 
 const currentLang = Astro.currentLocale || "es";
-
-console.log(localTeamStats, localTeamInfo, awayTeamStats, awayTeamInfo);
 ---
 
-<section class="py-20 px-2 lg:px-10 flex flex-col">
+<section class="py-24 px-2 lg:px-10 flex flex-col">
   <div
-    class="text-xl font-la-liga-font text-mainblack grid text-center items-center px-4 xl:px-96"
+    class="grid items-center justify-center px-4 xl:px-96 text-mainblack text-sm"
+    style="grid-template-columns: 45% 5% 45%"
+  >
+    <a
+      href={`https://www.google.com/maps/search/?api=1&query=${stadium.latitude}%2C${stadium.longitude}`}
+      target="_blank"
+      rel="noreferrer noopener"
+      class="text-end inline-block hover:text-laligared transition"
+    >
+      <p>{stadium.name}</p>
+    </a>
+    <p class="text-center">·</p>
+    <p class="text-start">
+      {`${formatDateDay(matchdate)} ${formatDateHour(matchdate)}`}
+    </p>
+  </div>
+  <div
+    class="text-xl font-la-liga-font text-mainblack grid text-center items-center pt-4 px-4 xl:px-96"
     style="grid-template-columns: 40% 20% 40%"
   >
     <a
@@ -67,7 +90,7 @@ console.log(localTeamStats, localTeamInfo, awayTeamStats, awayTeamInfo);
       <p class="-mb-6">{translator(currentLang, "possession")}</p>
       <div class="grid grid-cols-2 w-full">
         <div class="flex flex-col">
-          <p>{localTeamStats.possession}</p>
+          <p>{localTeamStats.possession}%</p>
           <div class="w-full h-1 rounded-2xl bg-slate-100">{" "}</div>
           <div
             class="h-1 rounded-2xl -mt-1 align-self-end"
@@ -77,7 +100,7 @@ console.log(localTeamStats, localTeamInfo, awayTeamStats, awayTeamInfo);
           </div>
         </div>
         <div class="flex flex-col">
-          <p class="text-end">{awayTeamStats.possession}</p>
+          <p class="text-end">{awayTeamStats.possession}%</p>
           <div class="w-full h-1 rounded-2xl bg-slate-100">{}</div>
           <div
             class=`h-1 rounded-2xl w-[${awayTeamStats.possession}}%] -mt-1 align-self-end`

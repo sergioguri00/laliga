@@ -31,13 +31,13 @@ const currentLang = Astro.currentLocale || "es";
       <th>pos</th>
       <th>{translator(currentLang, "team")}</th>
       <th>pts</th>
-      <th class="hidden md:table-cell">{translator(currentLang, "mp")}</th>
+      <th>{translator(currentLang, "mp")}</th>
       <th class="hidden md:table-cell">{translator(currentLang, "mw")}</th>
       <th class="hidden md:table-cell">{translator(currentLang, "md")}</th>
       <th class="hidden md:table-cell">{translator(currentLang, "ml")}</th>
       <th class="hidden md:table-cell">{translator(currentLang, "gf")}</th>
       <th class="hidden md:table-cell">{translator(currentLang, "ga")}</th>
-      <th>{translator(currentLang, "gd")}</th>
+      <th class="hidden md:table-cell">{translator(currentLang, "gd")}</th>
     </tr>
     {
       tableData.map((team: Team, index: number) => (
@@ -57,13 +57,13 @@ const currentLang = Astro.currentLocale || "es";
             </a>
           </td>
           <td>{team.points}</td>
-          <td class="hidden md:table-cell">{team.matches_played}</td>
+          <td>{team.matches_played}</td>
           <td class="hidden md:table-cell">{team.wins}</td>
           <td class="hidden md:table-cell">{team.draws}</td>
           <td class="hidden md:table-cell">{team.losses}</td>
           <td class="hidden md:table-cell">{team.goals_scored}</td>
           <td class="hidden md:table-cell">{team.goals_conceded}</td>
-          <td>
+          <td class="hidden md:table-cell">
             {team.goalDifference > 0
               ? `+${team.goalDifference}`
               : team.goalDifference}

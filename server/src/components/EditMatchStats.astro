@@ -295,28 +295,24 @@ const currentLang = Astro.currentLocale || "es";
           document.getElementById("matchdayName")?.textContent;
         const awayTeamName =
           document.getElementById("awayTeamName")?.textContent;
-        const localData = {
-          team: parseInt(localTeamName as string),
+        const data = {
           matchday: parseInt(matchdayName as string),
-          possession: parseInt(pLocalPossession.value),
-          shots: parseInt(pLocalShots.value),
-          shotsOnTarget: parseInt(pLocalShotsOnTarget.value),
-          corners: parseInt(pLocalCorners.value),
-          offsides: parseInt(pLocalOffsides.value),
-          fouls: parseInt(pLocalFouls.value),
-          goals: parseInt(pLocalGoals.value),
-        };
-
-        const awayData = {
-          team: parseInt(awayTeamName as string),
-          matchday: parseInt(matchdayName as string),
-          possession: parseInt(pAwayPossession.value),
-          shots: parseInt(pAwayShots.value),
-          shotsOnTarget: parseInt(pAwayShotsOnTarget.value),
-          corners: parseInt(pAwayCorners.value),
-          offsides: parseInt(pAwayOffsides.value),
-          fouls: parseInt(pAwayFouls.value),
-          goals: parseInt(pAwayGoals.value),
+          localTeam: parseInt(localTeamName as string),
+          localPossession: parseInt(pLocalPossession.value),
+          localShots: parseInt(pLocalShots.value),
+          localShotsOnTarget: parseInt(pLocalShotsOnTarget.value),
+          localCorners: parseInt(pLocalCorners.value),
+          localOffsides: parseInt(pLocalOffsides.value),
+          localFouls: parseInt(pLocalFouls.value),
+          localGoals: parseInt(pLocalGoals.value),
+          awayTeam: parseInt(awayTeamName as string),
+          awayPossession: parseInt(pAwayPossession.value),
+          awayShots: parseInt(pAwayShots.value),
+          awayShotsOnTarget: parseInt(pAwayShotsOnTarget.value),
+          awayCorners: parseInt(pAwayCorners.value),
+          awayOffsides: parseInt(pAwayOffsides.value),
+          awayFouls: parseInt(pAwayFouls.value),
+          awayGoals: parseInt(pAwayGoals.value),
         };
 
         fetch("http://localhost:1234/teammatchstats", {
@@ -324,19 +320,13 @@ const currentLang = Astro.currentLocale || "es";
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(localData),
-        });
-
-        fetch("http://localhost:1234/teammatchstats", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(awayData),
+          body: JSON.stringify(data),
         }).then(
           (response) => {
             if (response.ok) {
-              alert("Match stats updated successfully");
+              window.location.href = window.location.href
+                .toString()
+                .replace("/editmatch", "/matches");
             } else {
               alert("Error updating match stats");
             }
