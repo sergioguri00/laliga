@@ -333,7 +333,18 @@ const currentLang = Astro.currentLocale || "es";
             "Content-Type": "application/json",
           },
           body: JSON.stringify(awayData),
-        });
+        }).then(
+          (response) => {
+            if (response.ok) {
+              alert("Match stats updated successfully");
+            } else {
+              alert("Error updating match stats");
+            }
+          },
+          (error) => {
+            alert("Error updating match stats");
+          }
+        );
       };
     }
   });
