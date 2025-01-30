@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import HomeButtons from "@/components/HomeButtons.astro";
 import ResultsTable from "@/components/ResultsTable.astro";
 import LeagueTeable from "@/components/LeagueTeable.astro";
+import "@/styles/global.css";
 
 import { translator } from "@/utils/dictionary.js";
 
@@ -17,20 +18,29 @@ const currentLang = Astro.currentLocale || "es";
   title="LaLiga | Inicio"
   description="Welcome to the non-official ( but better ;) ) LaLiga website!"
 >
-  <div class="flex flex-col justify-center items-center gap-24 xl:px-10">
-    <section
-      class="w-full flex flex-col xl:flex-row justify-center xl:justify-between gap-10 px-2 md:px-10 pt-24"
-    >
+  <div class="flex flex-col justify-center items-center gap-24 px-2 xl:px-10">
+    <section class="index-grid">
       <div>
         <HomeButtons />
       </div>
       <div>
         <img
-          class="w-[500px] rounded-2xl h-auto"
-          src="/images/news/1/1_team.webp"
+          class="rounded-2xl max-h-[480px] w-full max-w-[640px]"
+          src="/images/news/6/6_team.webp"
         />
-        <p class="font-la-liga-font">esto es un titulo jajajaja</p>
-        <p>Esto es la notisia jajajaja</p>
+        <p class="font-la-liga-font text-3xl text-center">
+          este es el titulo de la noticia
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+          commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+          et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
+          felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+          consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
+          nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a,
+          venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+          Integer tincidunt. Cras dapibu
+        </p>
       </div>
       <div>
         <LeagueTeable />

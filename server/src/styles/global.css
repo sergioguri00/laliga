@@ -125,3 +125,22 @@ body {
   --tw-scale-y: 1.1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+
+.index-grid {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  width: 100%;
+  justify-content: center;
+  gap: 2.5rem;
+  padding-top: 6rem;
+}
+
+@media (min-width: 1280px) {
+  .index-grid {
+    grid-template-columns: auto 1fr 1fr;
+    justify-content: space-between;
+  }
+}
+
+
+
