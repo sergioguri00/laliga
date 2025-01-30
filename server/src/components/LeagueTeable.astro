@@ -52,7 +52,7 @@ const currentLang = Astro.currentLocale || "es";
               href={getRelativeLocaleUrl(currentLang, `/teams/${team.team_id}`)}
               class="flex-row flex items-center justify-self-start hover:scale-105 hover:text-laligared transition"
             >
-              <img src={team.badge} class="w-8 h-8 mt-1" />
+              <img src={team.badge} class="w-8 h-8 mt-[1px]" />
               {team.shortName}
             </a>
           </td>
