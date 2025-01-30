@@ -1,0 +1,50 @@
+---
+const news = [
+  {
+    titulo: "El Athletic Club es malísimo",
+    descripcion: "Liadaaaaaa",
+    imagen: "/images/news/1/1_team.webp",
+  },
+  {
+    titulo: "El FC Barcelona es el equipo más goleador de LaLiga",
+    descripcion: "Descripción de la noticia 2",
+    imagen: "/images/news/6/6_team.webp",
+  },
+  {
+    titulo: "Carlo Ancelotti mastica chicle Boomer",
+    descripcion: "Descripción de la noticia 3",
+    imagen: "/images/news/14/14_manager.webp",
+  },
+  {
+    titulo: "Simeone se caga en los muertos de los árbitros",
+    descripcion: "Descripción de la noticia 4",
+    imagen: "/images/news/2/2_manager.webp",
+  },
+];
+---
+
+<section class="flex flex-col gap-10">
+  <div>
+    <img src={news[0].imagen} />
+    <p class="font-la-liga-font text-3xl text-center">{news[0].titulo}</p>
+    <p>{news[0].descripcion}</p>
+  </div>
+  <div>
+    <img src={news[2].imagen} />
+    <p class="font-la-liga-font text-3xl text-center">{news[2].titulo}</p>
+    <p>{news[2].descripcion}</p>
+  </div>
+</section>
+<style>
+  img {
+    aspect-ratio: 16/9;
+    border-radius: 1rem;
+    max-height: 480px;
+    width: 100%;
+    max-width: 640px;
+    object-fit: cover;
+  }
+  p {
+    padding-top: 5px;
+  }
+</style>
