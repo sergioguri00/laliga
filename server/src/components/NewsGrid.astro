@@ -1,50 +1,80 @@
 ---
+import Swiper from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
+import "swiper/css/effect-fade";
+import { Navigation, Autoplay, EffectFade } from "swiper/modules";
+
 const news = [
   {
     titulo: "El Athletic Club es malísimo",
-    descripcion: "Liadaaaaaa",
+    descripcion:
+      "El Athletic Club es, sin duda, uno de los equipos más desastrosos que ha pisado un campo de fútbol. Su defensa es un colador, su mediocampo parece una autopista sin peaje, y su delantera tiene menos puntería que un stormtrooper. Cada partido es un sufrimiento para sus aficionados, que ya ni se molestan en ilusionarse porque saben que, tarde o temprano, el equipo la va a liar. Si hubiera un premio al equipo más incompetente, el Athletic Club lo ganaría por goleada… aunque probablemente también lo perderían en los despachos por un error administrativo.",
     imagen: "/images/news/1/1_team.webp",
   },
   {
     titulo: "El FC Barcelona es el equipo más goleador de LaLiga",
-    descripcion: "Descripción de la noticia 2",
+    descripcion:
+      "El FC Barcelona ha demostrado una vez más por qué es sinónimo de espectáculo y buen fútbol, consolidándose como el equipo más goleador de LaLiga. Con un ataque letal, combinaciones vertiginosas y una capacidad casi innata para destrozar defensas, los blaugranas han convertido cada partido en una exhibición de su instinto ofensivo. Desde golazos de larga distancia hasta jugadas de tiki-taka que terminan en la red, su efectividad frente al arco rival es un reflejo de su identidad histórica. No importa quién esté en la plantilla, el ADN del Barça siempre tiene claro un objetivo: marcar más goles que nadie.",
     imagen: "/images/news/6/6_team.webp",
   },
   {
     titulo: "Carlo Ancelotti mastica chicle Boomer",
-    descripcion: "Descripción de la noticia 3",
+    descripcion:
+      "Carlo Ancelotti, con su eterna calma y su ceja inamovible, no solo es un maestro de la táctica, sino también del arte de masticar chicle. Pero no cualquier chicle, no. Don Carlo es un hombre de costumbres y solo confía en los legendarios Boomer, esos chicles gigantes que pierden el sabor en 30 segundos pero que él sigue masticando con la misma paciencia con la que espera a que su equipo remonte en el minuto 90. Dicen que el secreto de su temple en el banquillo no es la experiencia, sino la dosis exacta de azúcar y nostalgia que le proporcionan esos Boomer rosados que, como él, resisten el paso del tiempo sin perder su esencia.",
     imagen: "/images/news/14/14_manager.webp",
   },
   {
     titulo: "Simeone se caga en los muertos de los árbitros",
-    descripcion: "Descripción de la noticia 4",
+    descripcion:
+      "Diego Pablo Simeone es pasión en estado puro, y cuando las cosas no salen como él quiere, su temperamento explota como un volcán en erupción. Esta vez, el Cholo no se ha guardado nada y, en pleno arrebato de furia, se ha cagado en los muertos de los árbitros tras otra decisión polémica en contra del Atlético de Madrid. Gesticulando como si dirigiera una obra de teatro griego, su indignación ha sido imposible de contener, dejando claro que, para él, la justicia arbitral brilla por su ausencia. No es la primera vez que suelta una joyita así, y conociéndolo, tampoco será la última.",
     imagen: "/images/news/2/2_manager.webp",
   },
 ];
 ---
 
-<section class="flex flex-col gap-10">
-  <div>
-    <img src={news[0].imagen} />
-    <p class="font-la-liga-font text-3xl text-center">{news[0].titulo}</p>
-    <p>{news[0].descripcion}</p>
-  </div>
-  <div>
-    <img src={news[2].imagen} />
-    <p class="font-la-liga-font text-3xl text-center">{news[2].titulo}</p>
-    <p>{news[2].descripcion}</p>
+<section
+  class="flex flex-col items-center justify-center content-center h-full w-full"
+>
+  <div class="swiper-container w-full max-w-[18rem] sm:max-w-[640px] h-full">
+    <div class="swiper-wrapper">
+      {
+        news.map((item, index) => (
+          <div class="swiper-slide flex flex-col items-center gap-4">
+            <img
+              src={item.imagen}
+              alt={item.titulo}
+              class="rounded-xl w-full max-h-[480px] object-cover aspect-video"
+            />
+            <p class="font-la-liga-font text-3xl text-center py-4">
+              {item.titulo}
+            </p>
+            <p class="text-wrap whitespace-break-spaces">{item.descripcion}</p>
+          </div>
+        ))
+      }
+    </div>
   </div>
 </section>
-<style>
-  img {
-    aspect-ratio: 16/9;
-    border-radius: 1rem;
-    max-height: 480px;
-    width: 100%;
-    max-width: 640px;
-    object-fit: cover;
-  }
-  p {
-    padding-top: 5px;
-  }
-</style>
+
+<script>
+  import Swiper from "swiper";
+  import { Navigation, Autoplay, EffectFade } from "swiper/modules";
+  document.addEventListener("astro:page-load", () => {
+    new Swiper(".swiper-container", {
+      modules: [Navigation, Autoplay, EffectFade],
+      navigation: false,
+      autoplay: {
+        delay: 10000,
+        disableOnInteraction: false,
+      },
+      loop: true,
+      slidesPerView: 1,
+      effect: "fade",
+      fadeEffect: {
+        crossFade: true,
+      },
+    });
+  });
+</script>
