@@ -18,5 +18,5 @@ INSERT INTO lldb.manager (name,lastName,country,birthday,photo,team_id) VALUES
 	 ('Diego','Cocca','Argentina','1972-02-11','https://assets.laliga.com/assets/useful/default-player/512x512/manager_003.png',16),
 	 ('Francisco Javier','García Pimienta','Spain','1974-08-03','https://assets.laliga.com/squad/2024/t179/man49389/256x278/man49389_t179_2024_1_001_000.png',17),
 	 ('Diego','Martínez','Spain','1980-12-16','https://assets.laliga.com/squad/2024/t407/man47060/256x278/man47060_t407_2024_1_001_000.png',18),
-	 ('Rubén','Baraja','Spain','1975-07-11','https://assets.laliga.com/squad/2024/t191/man45720/256x278/man45720_t191_2024_1_001_000.png',19),
+	 ('Carlos','Corberán','Spain','1983-04-07','https://assets.laliga.com/assets/useful/default-player/512x512/manager_003.png',19),
 	 ('Marcelino','García','Spain','1965-08-14','https://assets.laliga.com/squad/2024/t449/man37332/512x512/man37332_t449_2024_1_003_000.png',20);

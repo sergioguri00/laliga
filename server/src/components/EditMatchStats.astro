@@ -39,8 +39,6 @@ const awayTeamResponse = await fetch(`http://localhost:1234/teams/${awayTeam}`);
 const awayTeamData = await awayTeamResponse.json();
 const awayTeamInfo = awayTeamData[0];
 
-console.log(localTeamStats, localTeamInfo, awayTeamStats, awayTeamInfo);
-
 const currentLang = Astro.currentLocale || "es";
 ---
 
