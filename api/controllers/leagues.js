@@ -32,4 +32,10 @@ export class LeagueController {
     const matchdayArray = await LeagueModel.getMatchday(id, matchday)
     res.json(matchdayArray)
   }
+
+  static async getStats (req, res) {
+    const { id } = req.params
+    const stats = await LeagueModel.getStats(id)
+    res.json(stats)
+  }
 }

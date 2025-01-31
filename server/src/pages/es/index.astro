@@ -38,7 +38,7 @@ const currentLang = Astro.currentLocale || "es";
         <h2 class="text-2xl text-bold uppercase text-center font-la-liga-font">
           {translator(currentLang, "lastMatchday")}
         </h2>
-        <div class="xl:px-48 md:px-10 py-4">
+        <div class="md:px-10 py-4">
           <ResultsTable matchdayResultsData={lastMatchdayData} />
         </div>
       </div>

@@ -12,3 +12,5 @@ leaguesRouter.get('/:id/table', LeagueController.getTable)
 leaguesRouter.get('/:id/lastMatchday', LeagueController.getLastMatchday)
 
 leaguesRouter.get('/:id/matchday/:matchday', LeagueController.getMatchday)
+
+leaguesRouter.get('/:id/stats', LeagueController.getStats)
