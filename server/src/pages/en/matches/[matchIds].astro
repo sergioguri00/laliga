@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 
     return {
       params: {
-        matchIds,
+        matchIds: matchIds,
       },
     };
   });
@@ -43,7 +43,7 @@ const currentLang = Astro.currentLocale || "es";
 ---
 
 <Layout
-  title=`Jornada ${matchday_id} | ${matchDetails.localTeam} vs ${matchDetails.awayTeam}`
+  title=`Matchday ${matchday_id} | ${matchDetails.localTeam} vs ${matchDetails.awayTeam}`
   description=`View the stats of the match between ${matchDetails.localTeam} and ${matchDetails.awayTeam}`
 >
   <MatchStats

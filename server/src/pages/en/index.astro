@@ -3,6 +3,8 @@ import Layout from "@/layouts/Layout.astro";
 import HomeButtons from "@/components/HomeButtons.astro";
 import ResultsTable from "@/components/ResultsTable.astro";
 import LeagueTeable from "@/components/LeagueTeable.astro";
+import NewsGrid from "@/components/NewsGrid.astro";
+import "@/styles/global.css";
 
 import { translator } from "@/utils/dictionary.js";
 
@@ -17,14 +19,15 @@ const currentLang = Astro.currentLocale || "es";
   title="LaLiga | Home"
   description="Welcome to the non-official ( but better ;) ) LaLiga website!"
 >
-  <div class="flex flex-col justify-center items-center gap-24 xl:px-10">
-    <section
-      class="w-full flex flex-col xl:flex-row justify-center xl:justify-between gap-10 px-2 md:px-10 pt-24"
-    >
-      <div class="xl: order-1">
+  <div class="flex flex-col justify-center items-center gap-10 px-2 xl:px-10">
+    <section class="index-grid">
+      <div>
         <HomeButtons />
       </div>
-      <div class="xl: order-2">
+      <div style="align-self: center;">
+        <NewsGrid />
+      </div>
+      <div>
         <LeagueTeable />
       </div>
     </section>
@@ -35,7 +38,7 @@ const currentLang = Astro.currentLocale || "es";
         <h2 class="text-2xl text-bold uppercase text-center font-la-liga-font">
           {translator(currentLang, "lastMatchday")}
         </h2>
-        <div class="xl:px-48 md:px-10 py-4">
+        <div class="md:px-10 py-4">
           <ResultsTable matchdayResultsData={lastMatchdayData} />
         </div>
       </div>
