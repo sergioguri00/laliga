@@ -44,7 +44,11 @@ const dictionary = {
     explorePlayers: 'explore laliga players',
     wins: 'W',
     draws: 'D',
-    losses: 'L'
+    losses: 'L',
+    goalkeeperPlural: 'goalkeepers',
+    defenderPlural: 'defenders',
+    midfielderPlural: 'midfielders',
+    forwardPlural: 'forwards'
   },
   es: {
     president: 'presidente',
@@ -91,7 +95,11 @@ const dictionary = {
     explorePlayers: 'ver jugadores de laliga',
     wins: 'V',
     draws: 'E',
-    losses: 'D'
+    losses: 'D',
+    goalkeeperPlural: 'porteros',
+    defenderPlural: 'defensas',
+    midfielderPlural: 'centrocampistas',
+    forwardPlural: 'delanteros'
   }
 }
 

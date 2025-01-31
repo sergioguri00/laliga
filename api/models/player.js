@@ -33,7 +33,7 @@ export class PlayerModel {
       params.push(country.toLowerCase())
     }
     if (position) {
-      query += ' AND country = ?'
+      query += ' AND position = ?'
       params.push(position)
     }
     if (team) {

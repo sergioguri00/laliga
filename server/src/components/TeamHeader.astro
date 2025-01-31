@@ -1,0 +1,105 @@
+---
+import { translator } from "@/utils/dictionary.js";
+const { id } = Astro.props;
+
+const teamResponse = await fetch(`http://localhost:1234/teams/${id}`);
+const teamData = await teamResponse.json();
+const team = teamData[0];
+
+const stadiumResponse = await fetch(
+  `http://localhost:1234/teams/${id}/stadium`
+);
+const stadiumData = await stadiumResponse.json();
+const stadium = stadiumData[0];
+
+const tableResponse = await fetch("http://localhost:1234/leagues/1/table");
+const tableData = await tableResponse.json();
+const teamPosition =
+  tableData.findIndex(
+    (teamLeague: { team_id: number }) => teamLeague.team_id === team.id
+  ) + 1;
+const teamStats = tableData[teamPosition - 1];
+
+const currentLang = Astro.currentLocale || "es";
+---
+
+<div class="py-3 px-5 mt-20">
+  {
+    (
+      <div
+        transition:name={`team-${team.id}`}
+        class={`w-full h-auto grid grid-cols-1 sm:h-96 sm:grid-cols-3 grid-rows-3 sm:grid-rows-1 items-center gap-4 rounded-3xl p-8 shadow-zinc-500 shadow-lg`}
+        style={`background: radial-gradient(circle, ${team.secondaryColor} 0%, ${team.mainColor} 50%)`}
+      >
+        <div
+          class={`text-center flex flex-col gap-4 ${team.mainColor === "#ffffff" || team.mainColor === "#ffd301" ? "text-mainblack" : "text-white"}`}
+        >
+          <div class="flex flex-col justify-between items-center font-la-liga-font">
+            <h1 class="text-4xl font-medium text-center font-la-liga-font">
+              {team.name}
+            </h1>
+            <div class="flex flex-row justify-center items-end">
+              <p class="text-lg mr-1 uppercase">est.</p>
+              <p class="text-2xl">{team.year}</p>
+            </div>
+          </div>
+          <div>
+            <p class="font-bold uppercase">
+              {translator(currentLang, "president")}
+            </p>
+            <p>{team.president}</p>
+          </div>
+          <div>
+            <p class="font-la-liga-font text-2xl">{`POS. ${teamPosition}`}</p>
+            <p class="font-la-liga-font text-2xl">{`${teamStats.points} pts`}</p>
+            <p class="font-la-liga-font text-2xl">{`${teamStats.wins} ${translator(currentLang, "wins")} | ${teamStats.draws} ${translator(currentLang, "draws")} | ${teamStats.losses} ${translator(currentLang, "losses")}`}</p>
+          </div>
+        </div>
+        <div>
+          <a
+            href={team.website}
+            target="_blank"
+            rel="noreferrer noopener"
+            class="flex flex-col hover:scale-105 transition"
+          >
+            <img src={team.badge} alt={team.name} class="mx-auto h-full" />
+          </a>
+        </div>
+        <div
+          class={`grid grid-rows-2 justify-center items-center ${team.mainColor === "#ffffff" || team.mainColor === "#ffd301" ? "text-mainblack" : "text-white"}`}
+        >
+          <div class="text-center">
+            <p class="text-2xl font-la-liga-font">{stadium.name}</p>
+            <div class="flex flex-row items-center mt-3 justify-between text-center">
+              <div>
+                <p class="font-bold uppercase">est.</p>
+                <p>{stadium.year}</p>
+              </div>
+              <div>
+                <p class="font-bold uppercase">
+                  {translator(currentLang, "capacity")}
+                </p>
+                <p>{stadium.capacity}</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${stadium.latitude}%2C${stadium.longitude}`}
+              target="_blank"
+              rel="noreferrer noopener"
+              class="flex flex-col hover:scale-105 transition"
+            >
+              <img
+                src={stadium.photo}
+                alt={stadium.name}
+                class="mx-auto h-24"
+              />
+              `
+            </a>
+          </div>
+        </div>
+      </div>
+    )
+  }
+</div>

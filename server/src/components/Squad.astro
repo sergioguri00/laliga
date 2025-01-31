@@ -1,6 +1,7 @@
 ---
 import { translator } from "@/utils/dictionary.js";
 import { getCountryCode } from "@/utils/countryCodes.js";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 const { id, team, manager, players } = Astro.props;
 
@@ -135,7 +136,14 @@ const currentLang = Astro.currentLocale || "es";
                       </div>
                     </div>
                   </div>
-                  <a href="" class="relative z-10" style="align-self: center">
+                  <a
+                    href={getRelativeLocaleUrl(
+                      currentLang,
+                      `/players/${player.id}`
+                    )}
+                    class="relative z-10"
+                    style="align-self: center"
+                  >
                     <img
                       src={player.photo}
                       alt={player.knownAs}

@@ -1,0 +1,165 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import TeamHeader from "@/components/TeamHeader.astro";
+import SamePositionPlayers from "@/components/SamePositionPlayers.astro";
+import { translator } from "@/utils/dictionary.js";
+import { getCountryCode } from "@/utils/countryCodes.js";
+
+const { id } = Astro.params;
+
+const playerResponse = await fetch(`http://localhost:1234/players/${id}`);
+const playerData = await playerResponse.json();
+const player = playerData[0];
+
+const teamResponse = await fetch(
+  `http://localhost:1234/teams/${player.team_id}`
+);
+const teamData = await teamResponse.json();
+const team = teamData[0];
+
+const samePositionPlayersResponse = await fetch(
+  `http://localhost:1234/players?team=${team.id}&position=${player.position}`
+);
+const samePositionPlayersData = await samePositionPlayersResponse.json();
+const samePositionPlayers = samePositionPlayersData.filter(
+  (samePositionPlayer: Player) => samePositionPlayer.id !== player.id
+);
+
+export async function getStaticPaths() {
+  const playersResponse = await fetch("http://localhost:1234/players");
+  const playersData = await playersResponse.json();
+  const paths = playersData.map((player: { id: number }) => ({
+    params: { id: player.id },
+  }));
+
+  return paths;
+}
+
+export async function getStaticProps({ params }: { params: { id: string } }) {
+  const { id } = params;
+  const playerResponse = await fetch(`http://localhost:1234/players/${id}`);
+  const playerData = await playerResponse.json();
+
+  if (!playerData) {
+    throw new Error("player not found");
+  }
+
+  return { props: { playerData } };
+}
+
+interface Player {
+  id: number;
+  name: string;
+  lastName: string;
+  knownAs: string;
+  number: number;
+  position: string;
+  country: string;
+  birthday: string;
+  height: number;
+  photo: string;
+}
+
+const currentLang = Astro.currentLocale || "es";
+
+console.log(samePositionPlayers);
+console.log(samePositionPlayers.length);
+---
+
+<Layout
+  title={`LaLiga | ${player.name} ${player.lastName}`}
+  description={`Información sobre ${player.name} ${player.lastName}`}
+>
+  <TeamHeader id={player.team_id} />
+  <section
+    class="w-full flex flex-row justify-between py-10 px-64 items-center gap-10"
+  >
+    <div class="flex flex-row">
+      <div>
+        <p class="font-la-liga-font text-6xl" style=`color: ${team.mainColor}`>
+          {player.number}
+        </p>
+        <h1 class="font-la-liga-font text-5xl">
+          {player.name}
+          {player.lastName}
+        </h1>
+        <p class="font-la-liga-font text-2xl">
+          {translator(currentLang, player.position.toLowerCase())}
+        </p>
+        <div class="flex flex-row items-center">
+          <img
+            src={`/flags/${getCountryCode(player.country)}.svg`}
+            alt={player.country}
+            class="mr-2 w-6 h-4"
+          />
+          <p class="text-center text-sm">
+            {player.country}
+          </p>
+        </div>
+        <div class="mt-4">
+          <p class="font-la-liga-font texl-lg">
+            {translator(currentLang, "height")}
+          </p>
+          <p>
+            {player.height} cm
+          </p>
+        </div>
+        <div class="mt-4">
+          <p class="font-la-liga-font texl-lg">
+            {translator(currentLang, "birthday")}
+          </p>
+          <p>
+            {player.birthday.toString().split("T")[0]}
+          </p>
+        </div>
+      </div>
+      <div>
+        <img
+          src={player.photo}
+          alt={`${player.name} ${player.lastName}`}
+          class="w-80 h-full"
+        />
+      </div>
+    </div>
+    <div>
+      <h1 class="font-la-liga-font text-2xl text-center">Estadísticas</h1>
+      <div
+        class="grid grid-cols-2 grid-rows-2 font-la-liga-font gap-2 mt-4 stats-grid"
+      >
+        <div>
+          <p>Goles marcados</p>
+          <span>0</span>
+        </div>
+        <div>
+          <p>Asistencias</p>
+          <span>1</span>
+        </div>
+        <div>
+          <p>Tarjetas amarillas</p>
+          <span>5</span>
+        </div>
+        <div>
+          <p>tarjetas rojas</p>
+          <span>2</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <SamePositionPlayers team={team} players={samePositionPlayers} />
+</Layout>
+
+<style>
+  .stats-grid {
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    span {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+      color: #ff4b44;
+    }
+  }
+</style>
