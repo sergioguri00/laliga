@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import TeamHeader from "@/components/TeamHeader.astro";
 import SamePositionPlayers from "@/components/SamePositionPlayers.astro";
-import { translator } from "@/utils/dictionary.js";
+import { translator, countryTranslator } from "@/utils/dictionary.js";
 import { getCountryCode } from "@/utils/countryCodes.js";
 
 const { id } = Astro.params;
@@ -61,9 +61,6 @@ interface Player {
 }
 
 const currentLang = Astro.currentLocale || "es";
-
-console.log(samePositionPlayers);
-console.log(samePositionPlayers.length);
 ---
 
 <Layout
@@ -102,7 +99,7 @@ console.log(samePositionPlayers.length);
             class="mr-2 w-6 h-4"
           />
           <p class="text-center text-sm">
-            {player.country}
+            {countryTranslator(currentLang, player.country)}
           </p>
         </div>
         <div class="mt-4 lg:self-start">

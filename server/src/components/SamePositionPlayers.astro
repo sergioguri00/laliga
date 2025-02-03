@@ -1,5 +1,5 @@
 ---
-import { translator } from "@/utils/dictionary.js";
+import { translator, countryTranslator } from "@/utils/dictionary.js";
 import { getCountryCode } from "@/utils/countryCodes.js";
 import { formatDateDay } from "@/utils/formatDate.js";
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -68,7 +68,7 @@ const currentLang = Astro.currentLocale || "es";
                         class="mr-2 w-6 h-4"
                       />
                       <p class="text-center text-[10px] sm:text-sm">
-                        {player.country}
+                        {countryTranslator(currentLang, player.country)}
                       </p>
                     </div>
                   </div>
