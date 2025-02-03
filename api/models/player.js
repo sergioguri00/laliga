@@ -8,17 +8,22 @@ export class PlayerModel {
     let query = 'SELECT * FROM player WHERE 1=1'
     const params = []
 
-    if (name) {
-      query += ' AND LOWER(name) LIKE ?'
-      params.push(`%${name.toLowerCase()}%`)
-    }
-    if (lastName) {
-      query += ' AND LOWER(lastName) LIKE ?'
-      params.push(`%${lastName.toLowerCase()}%`)
-    }
-    if (knownAs) {
-      query += ' AND LOWER(knownAs) LIKE ?'
-      params.push(`%${knownAs.toLowerCase()}%`)
+    if (name && lastName && knownAs) {
+      query += ' AND (LOWER(name) LIKE ? OR LOWER(lastName) LIKE ? OR LOWER(knownAs) LIKE ?)'
+      params.push(`%${name.toLowerCase()}%`, `%${lastName.toLowerCase()}%`, `%${knownAs.toLowerCase()}%`)
+    } else {
+      if (name) {
+        query += ' AND LOWER(name) LIKE ?'
+        params.push(`%${name.toLowerCase()}%`)
+      }
+      if (lastName) {
+        query += ' AND LOWER(lastName) LIKE ?'
+        params.push(`%${lastName.toLowerCase()}%`)
+      }
+      if (knownAs) {
+        query += ' AND LOWER(knownAs) LIKE ?'
+        params.push(`%${knownAs.toLowerCase()}%`)
+      }
     }
     if (number) {
       query += ' AND number = ?'
