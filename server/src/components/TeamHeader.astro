@@ -1,5 +1,6 @@
 ---
 import { translator } from "@/utils/dictionary.js";
+import { getRelativeLocaleUrl } from "astro:i18n";
 const { id } = Astro.props;
 
 const teamResponse = await fetch(`http://localhost:1234/teams/${id}`);
@@ -21,6 +22,9 @@ const teamPosition =
 const teamStats = tableData[teamPosition - 1];
 
 const currentLang = Astro.currentLocale || "es";
+
+const page = Astro.request.url.toString().split("/");
+const section = page[4];
 ---
 
 <div class="py-3 px-5 mt-20">
@@ -101,5 +105,17 @@ const currentLang = Astro.currentLocale || "es";
         </div>
       </div>
     )
+  }
+  {
+    section === "players" ? (
+      <div class="mt-6 flex w-full justify-center sm:justify-end">
+        <a
+          href={getRelativeLocaleUrl(currentLang, `/teams/${team.id}`)}
+          class="bg-mainblack text-white rounded-2xl w-fit p-4 hover:scale-105 transition hover:bg-laligared font-la-liga-font uppercase text-lg"
+        >
+          {translator(currentLang, "returnToTheTeam")}
+        </a>
+      </div>
+    ) : null
   }
 </div>

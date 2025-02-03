@@ -2,6 +2,7 @@
 import { translator } from "@/utils/dictionary.js";
 import { getCountryCode } from "@/utils/countryCodes.js";
 import { formatDateDay } from "@/utils/formatDate.js";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 const { team, players } = Astro.props;
 
@@ -24,7 +25,7 @@ const currentLang = Astro.currentLocale || "es";
 <section class="xl:p-10">
   <h2 class="text-3xl text-bold uppercase font-la-liga-font text-center">
     {
-      `Otros ${translator(currentLang, players[0].position.toLowerCase() + "Plural")} del ${team.shortName}`
+      `${translator(currentLang, "others")} ${translator(currentLang, players[0].position.toLowerCase() + "Plural")} ${translator(currentLang, "ofTheTeam")}`
     }
   </h2>
   <div class="flex flex-col">
@@ -72,7 +73,14 @@ const currentLang = Astro.currentLocale || "es";
                     </div>
                   </div>
                 </div>
-                <a href="" class="relative z-10" style="align-self: center">
+                <a
+                  href={getRelativeLocaleUrl(
+                    currentLang,
+                    `/players/${player.id}`
+                  )}
+                  class="relative z-10"
+                  style="align-self: center"
+                >
                   <img
                     src={player.photo}
                     alt={player.knownAs}
