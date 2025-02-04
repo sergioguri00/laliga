@@ -14,11 +14,6 @@ const currentLang = Astro.currentLocale || "es";
   </a>
   <a href={getRelativeLocaleUrl(currentLang, `/about/`)}>
     <div class="home-button">
-      {translator(currentLang, "explorePlayers")}
-    </div>
-  </a>
-  <a href={getRelativeLocaleUrl(currentLang, `/about/`)}>
-    <div class="home-button">
       {translator(currentLang, "aboutWebsite")}
     </div>
   </a>
