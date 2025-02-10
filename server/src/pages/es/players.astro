@@ -1,0 +1,14 @@
+---
+import { PlayerSearch } from "@/components/PlayerSearch";
+import Layout from "@/layouts/Layout.astro";
+
+const playersResponse = await fetch("http://localhost:1234/players");
+const players = await playersResponse.json();
+---
+
+<Layout
+  title="LaLiga | Jugadores"
+  description="Toda la información sobre los jugadores de LaLiga"
+>
+  <PlayerSearch players={players} />
+</Layout>
