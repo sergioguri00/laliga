@@ -8,54 +8,56 @@ const teamsResponse = await fetch('http://localhost:1234/teams')
 const teams = await teamsResponse.json()
 
 export function PlayersGrid ({ players }) {
-  return (
+  console.log(players.length)
+  return (players.length > 0
+    ? (
   <>
-  <section class='xl:p-10'>
-    <h2 class='text-3xl text-bold uppercase font-la-liga-font text-center'>
+  <section className='xl:p-10'>
+    <h2 className='text-3xl text-bold uppercase font-la-liga-font text-center'>
       {
         `${translator(currentLang, 'others')} ${translator(currentLang, players[0].position.toLowerCase() + 'Plural')} ${translator(currentLang, 'ofTheTeam')}`
       }
     </h2>
-    <div class='flex flex-col'>
+    <div className='flex flex-col'>
       <div>
         <div>
           <div
-            class={`grid mt-4 justify-items-center grid-cols-1 ${players.length < 2 ? 'sm:grid-cols-' + players.length.toString() : 'sm:grid-cols-2'} ${players.length < 3 ? 'lg:grid-cols-' + players.length.toString() : 'lg:grid-cols-3'} ${players.length < 4 ? '2xl:grid-cols-' + players.length.toString() : '2xl:grid-cols-4'} gap-4 p-3`}
+            className={'grid mt-4 justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-3'}
           >
             {
-              players.slice(0, 100).map((player) => (
-                <div class='text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]'>
+              players.map((player) => (
+                <div className='text-start border-[1px] border-mainblack rounded-lg p-10 w-full grid grid-cols-2 gap-4 relative text-sm md:text-md xl:text-[16px]' key={player.id}>
                   <div
-                    class='absolute inset-0 bg-cover bg-center opacity-10'
+                    className='absolute inset-0 bg-cover bg-center opacity-10'
                     style={{ backgroundImage: `url("${teams[(player.team_id - 1)].badge}")` }}
                   />
-                  <div class='flex flex-col justify-between relative z-10'>
-                    <div class='self-start'>
+                  <div className='flex flex-col justify-between relative z-10'>
+                    <div className='self-start'>
                       <p
-                        class='text-bold text-5xl font-la-liga-font'
+                        className='text-bold text-5xl font-la-liga-font'
                         style={{ color: `${teams[(player.team_id - 1)].mainColor === '#ffffff' ? '#00001B' : teams[(player.team_id - 1)].mainColor}` }}
                       >
                         {player.number}
                       </p>
                       <p
-                        class='text-bold text-lg sm:text-2xl font-la-liga-font text-mainblack'
+                        className='text-bold text-lg sm:text-2xl font-la-liga-font text-mainblack'
                       >
                         {player.knownAs !== null
                           ? player.knownAs
                           : player.lastName}
                       </p>
                     </div>
-                    <div class='flex flex-col'>
-                      <p class='uppercase font-bold text-[10px] sm:text-sm'>
+                    <div className='flex flex-col'>
+                      <p className='uppercase font-bold text-[10px] sm:text-sm'>
                         {translator(currentLang, 'goalkeeper')}
                       </p>
-                      <div class='flex flex-row items-center'>
+                      <div className='flex flex-row items-center'>
                         <img
                           src={`/flags/${getCountryCode(player.country)}.svg`}
                           alt={String(player.country)}
-                          class='mr-2 w-6 h-4'
+                          className='mr-2 w-6 h-4'
                         />
-                        <p class='text-center text-[10px] sm:text-sm'>
+                        <p className='text-center text-[10px] sm:text-sm'>
                           {countryTranslator(currentLang, player.country)}
                         </p>
                       </div>
@@ -66,27 +68,27 @@ export function PlayersGrid ({ players }) {
                       currentLang,
                       `/players/${player.id}`
                     )}
-                    class='relative z-10'
+                    className='relative z-10'
                     style= {{ alignSelf: 'center' }}
                   >
                     <img
                       src={player.photo}
                       alt={player.knownAs}
-                      class='w-full hover:opacity-80 hover:scale-[0.98] transition'
+                      className='w-full hover:opacity-80 hover:scale-[0.98] transition'
                     />
                   </a>
-                  <div class='grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack'>
+                  <div className='grid grid-cols-2 col-span-2 border-t-[1px] pt-2 gap-4 relative z-10 border-mainblack'>
                     <div>
-                      <p class='text-center uppercase font-bold'>
+                      <p className='text-center uppercase font-bold'>
                         {translator(currentLang, 'birthday')}
                       </p>
-                      <p class='text-center'>{formatDateDay(player.birthday)}</p>
+                      <p className='text-center'>{formatDateDay(player.birthday)}</p>
                     </div>
                     <div>
-                      <p class='text-center uppercase font-bold'>
+                      <p className='text-center uppercase font-bold'>
                         {translator(currentLang, 'height')}
                       </p>
-                      <p class='text-center'>{player.height} cm</p>
+                      <p className='text-center'>{player.height} cm</p>
                     </div>
                   </div>
                 </div>
@@ -98,5 +100,12 @@ export function PlayersGrid ({ players }) {
     </div>
   </section>
   </>
-  )
+      )
+    : (
+    <h1 className='text-3xl text-bold uppercase font-la-liga-font text-center'>
+      {translator(currentLang, 'noPlayers')}
+    </h1>
+      ))
 }
+
+export default PlayersGrid

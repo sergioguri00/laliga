@@ -58,7 +58,8 @@ const dictionary = {
     ofTheTeam: 'of the team',
     players: 'players',
     fullName: 'full name',
-    returnToTheTeam: 'return to the team'
+    returnToTheTeam: 'return to the team',
+    noPlayers: 'No players found'
   },
   es: {
     president: 'presidente',
@@ -119,7 +120,8 @@ const dictionary = {
     ofTheTeam: 'del equipo',
     players: 'jugadores',
     fullName: 'nombre completo',
-    returnToTheTeam: 'volver al equipo'
+    returnToTheTeam: 'volver al equipo',
+    noPlayers: 'No se han encontrado jugadores'
   }
 }
 

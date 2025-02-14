@@ -10,5 +10,5 @@ const players = await playersResponse.json();
   title="LaLiga | Jugadores"
   description="Toda la información sobre los jugadores de LaLiga"
 >
-  <PlayerSearch players={players} />
+  <PlayerSearch client:load players={players} />
 </Layout>
