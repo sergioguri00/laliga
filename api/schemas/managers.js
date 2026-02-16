@@ -8,7 +8,7 @@ const managerSchema = z.object({
   }).refine(startsWithUppercase, {
     message: 'Name must start with an uppercase letter'
   }),
-  lastName: z.string({
+  fullName: z.string({
     invalid_type_error: 'Last name must be a string',
     required_error: 'Last name is required'
   }).refine(startsWithUppercase, {

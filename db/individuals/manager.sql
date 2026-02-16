@@ -1,22 +1,22 @@
-INSERT INTO lldb.manager (name,lastName,country,birthday,photo,team_id) VALUES
-	 ('Ernesto','Valverde','Spain','1964-02-09','https://assets.laliga.com/squad/2024/t174/man110/256x278/man110_t174_2024_1_001_000.png',1),
-	 ('Diego','Simeone','Argentina','1970-04-28','https://assets.laliga.com/squad/2024/t175/man37905/256x278/man37905_t175_2024_1_001_000.png',2),
-	 ('Vicente','Moreno','Spain','1974-10-26','https://assets.laliga.com/squad/2024/t450/man41230/256x278/man41230_t450_2024_1_001_000.png',3),
-	 ('Borja','Jiménez','Spain','1985-01-21','https://assets.laliga.com/squad/2024/t957/man49384/256x278/man49384_t957_2024_1_001_000.png',4),
-	 ('Eduardo','Coudet','Argentina','1974-09-12','https://assets.laliga.com/squad/2024/t173/man45006/256x278/man45006_t173_2024_1_001_000.png',5),
-	 ('Hans-Dieter','Flick','Germany','1965-02-24','https://assets.laliga.com/squad/2024/t178/man52340/256x278/man52340_t178_2024_1_001_000.png',6),
-	 ('José','Bordalás','Spain','1964-03-05','https://assets.laliga.com/squad/2024/t1450/man39504/256x278/man39504_t1450_2024_1_001_000.png',7),
-	 ('Míchel','Sánchez','Spain','1975-10-30','https://assets.laliga.com/squad/2024/t2893/man48059/256x278/man48059_t2893_2024_1_001_000.png',8),
-	 ('Íñigo','Pérez','Spain','1988-01-18','https://assets.laliga.com/squad/2024/t184/man58369/256x278/man58369_t184_2024_1_001_000.png',9),
-	 ('Claudio','Giráldez','Spain','1988-02-24','https://assets.laliga.com/squad/2024/t176/man61996/256x278/man61996_t176_2024_1_001_000.png',10);
-INSERT INTO lldb.manager (name,lastName,country,birthday,photo,team_id) VALUES
-	 ('Manolo','González','Spain','1979-01-14','https://assets.laliga.com/squad/2024/t177/man50805/256x278/man50805_t177_2024_1_001_000.png',11),
-	 ('Jagoba','Arrasate','Spain','1978-04-22','https://assets.laliga.com/squad/2024/t181/man42602/256x278/man42602_t181_2024_1_001_000.png',12),
-	 ('Manuel','Pellegrini','Chile','1953-09-16','https://assets.laliga.com/squad/2024/t185/man257/256x278/man257_t185_2024_1_001_000.png',13),
-	 ('Carlo','Ancelotti','Italy','1959-06-10','https://assets.laliga.com/squad/2024/t186/man50/256x278/man50_t186_2024_1_001_000.png',14),
-	 ('Imanol','Alguacil','Spain','1971-07-04','https://assets.laliga.com/squad/2024/t188/man44987/256x278/man44987_t188_2024_1_001_000.png',15),
-	 ('Diego','Cocca','Argentina','1972-02-11','https://assets.laliga.com/assets/useful/default-player/512x512/manager_003.png',16),
-	 ('Francisco Javier','García Pimienta','Spain','1974-08-03','https://assets.laliga.com/squad/2024/t179/man49389/256x278/man49389_t179_2024_1_001_000.png',17),
-	 ('Diego','Martínez','Spain','1980-12-16','https://assets.laliga.com/squad/2024/t407/man47060/256x278/man47060_t407_2024_1_001_000.png',18),
-	 ('Carlos','Corberán','Spain','1983-04-07','https://assets.laliga.com/assets/useful/default-player/512x512/manager_003.png',19),
-	 ('Marcelino','García','Spain','1965-08-14','https://assets.laliga.com/squad/2024/t449/man37332/512x512/man37332_t449_2024_1_003_000.png',20);
+INSERT INTO lldb.manager (name,fullName,country,birthday,photo,team_id) VALUES
+	 ('Valverde','Ernesto Valverde','Spain','1964-02-09','https://assets.laliga.com/squad/2025/t174/man110/512x512/man110_t174_2025_1_003_000.png',1),
+	 ('Simeone','Diego Simeone','Argentina','1970-04-28','https://assets.laliga.com/squad/2025/t175/man37905/512x512/man37905_t175_2025_1_004_000.png',2),
+	 ('Alessio Lisci','Alessio Lisci','Italy','1985-11-04','https://assets.laliga.com/squad/2025/t450/man56493/512x512/man56493_t450_2025_1_003_000.png',3),
+	 ('Claudio Giraldez','Claudio Giráldez','Spain','1988-02-24','https://assets.laliga.com/squad/2025/t176/man61996/512x512/man61996_t176_2025_1_003_000.png',4),
+	 ('Coudet','Eduardo Coudet','Argentina','1974-09-12','https://assets.laliga.com/squad/2025/t173/man45006/512x512/man45006_t173_2025_1_003_000.png',5),
+	 ('Eder Sarabia','Eder Sarabia','Spain','1981-01-12','https://assets.laliga.com/squad/2025/t954/man46473/512x512/man46473_t954_2025_1_003_000.png',6),
+	 ('Hansi Flick','Hans-Dieter Flick','Germany','1965-02-24','https://assets.laliga.com/squad/2025/t178/man52340/512x512/man52340_t178_2025_1_003_000.png',7),
+	 ('Jose Bordalas','José Bordalás','Spain','1964-03-05','https://assets.laliga.com/squad/2025/t1450/man39504/512x512/man39504_t1450_2025_1_003_000.png',8),
+	 ('Michel','Míchel Sánchez','Spain','1975-10-30','https://assets.laliga.com/squad/2025/t2893/man48059/512x512/man48059_t2893_2025_1_003_000.png',9),
+	 ('Luis Castro','Luís Manuel Ferreira de Castro','Portugal','1980-05-07','https://assets.laliga.com/assets/public/backgrounds/avatar-noplayer-2.png',10),
+	 ('Iñigo Perez','Iñigo Pérez','Spain','1988-01-18','https://assets.laliga.com/squad/2025/t184/man58369/256x278/man58369_t184_2025_1_001_000.png',11);
+INSERT INTO lldb.manager (name,fullName,country,birthday,photo,team_id) VALUES
+	 ('Manolo Gonzalez','José Manuel González Álvarez','Spain','1979-01-14','https://assets.laliga.com/squad/2025/t177/man50805/256x278/man50805_t177_2025_1_001_000.png',12),
+	 ('Jagoba Arrasate','Jagoba Arrasate','Spain','1978-04-22','https://assets.laliga.com/squad/2025/t181/man42602/256x278/man42602_t181_2025_0_001_000.png',13),
+	 ('Manuel Pellegrini','Manuel Pellegrini','Chile','1953-09-16','https://assets.laliga.com/squad/2025/t185/man257/256x278/man257_t185_2025_1_001_000.png',14),
+	 ('Arbeloa','Álvaro Arbeloa','Spain','1983-01-17','https://assets.laliga.com/assets/public/backgrounds/avatar-noplayer-2.png',15),
+	 ('Guillermo Almada','Guillermo Almada','Uruguay','1966-06-18','https://assets.laliga.com/assets/public/backgrounds/avatar-noplayer-2.png',16),
+	 ('Matarazzo','Pellegrino Matarazzo','United States','1977-11-28','https://assets.laliga.com/assets/public/backgrounds/avatar-noplayer-2.png',17),
+	 ('Matias Almeyda','Matías Almeyda','Argentina','1973-12-21','https://assets.laliga.com/squad/2025/t179/man40865/256x278/man40865_t179_2025_1_001_000.png',18),
+	 ('Carlos Corberan','Carlos Corberán','Spain','1983-04-07','https://assets.laliga.com/squad/2025/t191/man53715/256x278/man53715_t191_2025_1_001_000.png',19),
+	 ('Marcelino','Marcelino García','Spain','1965-08-14','https://assets.laliga.com/squad/2025/t449/man37332/512x512/man37332_t449_2025_1_003_000.png',20);

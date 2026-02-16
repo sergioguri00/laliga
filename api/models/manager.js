@@ -4,7 +4,7 @@ import { config } from '../../db/connect.js'
 const connection = await mysql.createConnection(config)
 
 export class ManagerModel {
-  static async getAll ({ name, lastName, country, team }) {
+  static async getAll ({ name, fullName, country, team }) {
     let query = 'SELECT * FROM manager WHERE 1=1'
     const params = []
 
@@ -13,9 +13,9 @@ export class ManagerModel {
       params.push(`%${name}%`)
     }
 
-    if (lastName) {
-      query += ' AND lastName LIKE ?'
-      params.push(`%${lastName}%`)
+    if (fullName) {
+      query += ' AND fullName LIKE ?'
+      params.push(`%${fullName}%`)
     }
 
     if (country) {
@@ -40,7 +40,7 @@ export class ManagerModel {
   static async create ({ input }) {
     const {
       name,
-      lastName,
+      fullName,
       country,
       birthday,
       photo,
@@ -48,8 +48,8 @@ export class ManagerModel {
     } = input
     try {
       const [insertResult] = await connection.query(
-        'INSERT INTO manager(name,lastName,country,birthday,photo,team_id) VALUES (?, ?, ?, ?, ?, ?)',
-        [name, lastName, country, birthday, photo, teamId]
+        'INSERT INTO manager(name,fullName,country,birthday,photo,team_id) VALUES (?, ?, ?, ?, ?, ?)',
+        [name, fullName, country, birthday, photo, teamId]
       )
       const [newManager] = await connection.execute('SELECT * FROM manager WHERE id = ?', [insertResult.insertId])
       return newManager

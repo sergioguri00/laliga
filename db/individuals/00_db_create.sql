@@ -75,7 +75,7 @@ create table teammatchstats (
 create table manager (
 	id int auto_increment primary key,
 	name varchar(100) not null,
-	lastName varchar(100) not null,
+	fullName varchar(100) not null,
 	country varchar(100) not null,
 	birthday date not null,
 	photo text,

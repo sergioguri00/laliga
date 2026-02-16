@@ -3,8 +3,8 @@ import { validatePartialManager, validateManager } from '../schemas/managers.js'
 
 export class ManagerController {
   static async getAll (req, res) {
-    const { name, lastName, country, team } = req.query
-    const managers = await ManagerModel.getAll({ name, lastName, country, team })
+    const { name, fullName, country, team } = req.query
+    const managers = await ManagerModel.getAll({ name, fullName, country, team })
     res.json(managers)
   }
 

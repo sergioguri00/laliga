@@ -121,11 +121,11 @@ export class LeagueModel {
     const [lastPosition] = await connection.execute('SELECT team_id, points, wins, draws, losses FROM teamstats WHERE league_id = ? AND points = (SELECT MIN(points) FROM teamstats WHERE league_id = ?) LIMIT 1;', [id, id])
     const [mostDraws] = await connection.execute('SELECT team_id, draws FROM teamstats WHERE league_id = ? AND draws = (SELECT MAX(draws) FROM teamstats WHERE league_id = ?) LIMIT 1;', [id, id])
 
-    const [mostGoalsTeam] = await connection.execute('SELECT t.shortName, t.city, m.name, m.lastName FROM team t JOIN manager m ON t.id = m.team_id WHERE t.id = ?', [mostGoals[0].team_id])
-    const [lessGoalsTeam] = await connection.execute('SELECT t.shortName, t.city, m.name, m.lastName FROM team t JOIN manager m ON t.id = m.team_id WHERE t.id = ?', [lessGoals[0].team_id])
-    const [firstPositionTeam] = await connection.execute('SELECT t.shortName, t.city, m.name, m.lastName FROM team t JOIN manager m ON t.id = m.team_id WHERE t.id = ?', [firstPosition[0].team_id])
-    const [lastPositionTeam] = await connection.execute('SELECT t.shortName, t.city, m.name, m.lastName FROM team t JOIN manager m ON t.id = m.team_id WHERE t.id = ?', [lastPosition[0].team_id])
-    const [mostDrawsTeam] = await connection.execute('SELECT t.shortName, t.city, m.name, m.lastName FROM team t JOIN manager m ON t.id = m.team_id WHERE t.id = ?', [mostDraws[0].team_id])
+    const [mostGoalsTeam] = await connection.execute('SELECT t.shortName, t.city, m.name, m.fullName FROM team t JOIN manager m ON t.id = m.team_id WHERE t.id = ?', [mostGoals[0].team_id])
+    const [lessGoalsTeam] = await connection.execute('SELECT t.shortName, t.city, m.name, m.fullName FROM team t JOIN manager m ON t.id = m.team_id WHERE t.id = ?', [lessGoals[0].team_id])
+    const [firstPositionTeam] = await connection.execute('SELECT t.shortName, t.city, m.name, m.fullName FROM team t JOIN manager m ON t.id = m.team_id WHERE t.id = ?', [firstPosition[0].team_id])
+    const [lastPositionTeam] = await connection.execute('SELECT t.shortName, t.city, m.name, m.fullName FROM team t JOIN manager m ON t.id = m.team_id WHERE t.id = ?', [lastPosition[0].team_id])
+    const [mostDrawsTeam] = await connection.execute('SELECT t.shortName, t.city, m.name, m.fullName FROM team t JOIN manager m ON t.id = m.team_id WHERE t.id = ?', [mostDraws[0].team_id])
 
     const data = {
       mostGoals: {
