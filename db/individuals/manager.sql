@@ -14,9 +14,9 @@ INSERT INTO lldb.manager (name,fullName,country,birthday,photo,team_id) VALUES
 	 ('Manolo Gonzalez','José Manuel González Álvarez','Spain','1979-01-14','https://assets.laliga.com/squad/2025/t177/man50805/256x278/man50805_t177_2025_1_001_000.png',12),
 	 ('Jagoba Arrasate','Jagoba Arrasate','Spain','1978-04-22','https://assets.laliga.com/squad/2025/t181/man42602/256x278/man42602_t181_2025_0_001_000.png',13),
 	 ('Manuel Pellegrini','Manuel Pellegrini','Chile','1953-09-16','https://assets.laliga.com/squad/2025/t185/man257/256x278/man257_t185_2025_1_001_000.png',14),
-	 ('Arbeloa','Álvaro Arbeloa','Spain','1983-01-17','https://assets.laliga.com/assets/public/backgrounds/avatar-noplayer-2.png',15),
-	 ('Guillermo Almada','Guillermo Almada','Uruguay','1966-06-18','https://assets.laliga.com/assets/public/backgrounds/avatar-noplayer-2.png',16),
-	 ('Matarazzo','Pellegrino Matarazzo','United States','1977-11-28','https://assets.laliga.com/assets/public/backgrounds/avatar-noplayer-2.png',17),
+	 ('Arbeloa','Álvaro Arbeloa','Spain','1983-01-17','https://assets.realmadrid.com/is/image/realmadrid/Arbeloa_380x501-1?$Desktop$&fit=wrap&wid=288&hei=384',15),
+	 ('Guillermo Almada','Guillermo Almada','Uruguay','1966-06-18','https://statics-maker.llt-services.com/ovi/images/2026/01/05/small-wp/9ab67612-506c-4219-a0c8-57a8a8196dc2-76.webp',16),
+	 ('Matarazzo','Pellegrino Matarazzo','United States','1977-11-28','https://cdn.realsociedad.eus//Uploads/jugadores/_uph0023_sf.png',17),
 	 ('Matias Almeyda','Matías Almeyda','Argentina','1973-12-21','https://assets.laliga.com/squad/2025/t179/man40865/256x278/man40865_t179_2025_1_001_000.png',18),
 	 ('Carlos Corberan','Carlos Corberán','Spain','1983-04-07','https://assets.laliga.com/squad/2025/t191/man53715/256x278/man53715_t191_2025_1_001_000.png',19),
 	 ('Marcelino','Marcelino García','Spain','1965-08-14','https://assets.laliga.com/squad/2025/t449/man37332/512x512/man37332_t449_2025_1_003_000.png',20);
